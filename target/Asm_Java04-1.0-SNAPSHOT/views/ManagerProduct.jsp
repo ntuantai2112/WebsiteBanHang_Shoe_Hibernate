@@ -49,7 +49,7 @@
         }
 
         .table-wrapper {
-            background: #fff;
+            /*background: #fff;*/
             padding: 20px 25px;
             border-radius: 3px;
             min-width: 1000px;
@@ -58,7 +58,7 @@
 
         .table-title {
             padding-bottom: 15px;
-            background: #fff;
+            /*background: #fff;*/
             color: #fff;
             padding: 16px 30px;
             min-width: 100%;
@@ -100,7 +100,7 @@
         }
 
         table.table tr th, table.table tr td {
-            border-color: #e9e9e9;
+            /*border-color: #e9e9e9;*/
             padding: 12px 15px;
             vertical-align: middle;
         }
@@ -114,11 +114,11 @@
         }
 
         table.table-striped tbody tr:nth-of-type(odd) {
-            background-color: #fcfcfc;
+            /*background-color: #fcfcfc;*/
         }
 
         table.table-striped.table-hover tbody tr:hover {
-            background: #f5f5f5;
+            /*background: #f5f5f5;*/
         }
 
         table.table th i {
@@ -343,44 +343,78 @@
 <jsp:include page="Header.jsp"></jsp:include>
 
 <div class="container  ">
-    <div class="table-responsive">
-        <div class="table-wrapper">
+
+
+
+
+
+    <div class="card mt-5">
+        <div class="card-header">Thêm mới sản phẩm</div>
+        <div class="card-body">
+            <form action="/product/add" method="post">
+                <div class="form-group">
+                    <%--@declare id=""--%><label for="">Mã sản phẩm</label>
+                    <input type="text" class="form-control" name="ma" placeholder="Mã sản phẩm">
+                </div>
+
+                <div class="form-group">
+                    <label for="">Tên sản phẩm</label>
+                    <input type="text" class="form-control" name="ten" placeholder="Tên sản phẩm">
+                </div>
+
+                <div class="form-group">
+                    <label for="">Image</label>
+                    <input type="file" class="form-control" name="image" placeholder="image">
+                </div>
+
+                <div class="text-center mt-3">
+                    <button type="reset" class="btn  btn-outline-secondary">Reset</button>
+                    <button type="submit" class="btn btn-success">Thêm</button>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+
+    <div class="">
+        <div class="">
             <div class="table-title ">
-                <div class="row">
-                    <div class="col-sm-6">
-                        <h2>Manage <b>Product</b></h2>
-                    </div>
-                    <div class="col-sm-6">
-                        <a href="/product/add" class="btn btn-success text-center" data-toggle="modal"><i
-                                class="material-icons">&#xE147;</i> <span>Add New Product </span></a>
-                        <%--                        <a href="#deleteEmployeeModal" class="btn btn-danger  text-center" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Delete</span></a>--%>
-                    </div>
+                <div class="row text-center mt-4 mb-1">
+<%--                    <div class="col-sm-6 ">--%>
+                        <h2>Danh Sách Sản Phẩm</h2>
+<%--                    </div>--%>
+<%--                    <div class="col-sm-6">--%>
+<%--                        <a href="/product/add" class="btn btn-success text-center" data-toggle="modal"><i--%>
+<%--                                class="material-icons">&#xE147;</i> <span>Add New Product </span></a>--%>
+<%--                        &lt;%&ndash;                        <a href="#deleteEmployeeModal" class="btn btn-danger  text-center" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Delete</span></a>&ndash;%&gt;--%>
+<%--                    </div>--%>
                 </div>
             </div>
-            <table class="table table-striped table-hover bg-white">
+            <table class="table bg-light ">
                 <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Name</th>
+                    <th>Mã Sản Phẩm</th>
+                    <th>Tên Sản Phẩm</th>
                     <th>Image</th>
-                    <th>Price</th>
+                    <th></th>
                     <th>Actions</th>
                 </tr>
                 </thead>
                 <tbody>
-                <c:forEach items="${listP}" var="p">
+                <c:forEach items="${listP}" var="product">
                     <tr>
-
                         <td>
-                                ${p.id}
+                                ${product.id}
                         </td>
-                        <td>${p.name}</td>
-                        <td><img src="${p.image}" alt="" style="width: 100px; height: 100px"></td>
-                        <td>${p.price} $</td>
+                        <td>${product.ma}</td>
+                        <td>${product.ten}</td>
+                        <td><img src="" alt="" style="width: 100px; height: 100px"></td>
                         <td>
-                            <a href="/product/update?id=${p.id}" class="edit" data-toggle="modal"><i
+                            <a href="/product/update?id=${product.id}" class="edit" data-toggle="modal"><i
                                     class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                            <a href="/product/delete?id=${p.id}" class="delete" data-toggle="modal"><i
+                            <a href="/product/delete?id=${product.id}" class="delete" data-toggle="modal"><i
                                     class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
                         </td>
                     </tr>
@@ -388,18 +422,18 @@
                 </c:forEach>
                 </tbody>
             </table>
-            <div class="clearfix">
-                <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
-                <ul class="pagination">
-                    <li class="page-item disabled"><a href="#">Previous</a></li>
-                    <li class="page-item"><a href="#" class="page-link">1</a></li>
-                    <li class="page-item"><a href="#" class="page-link">2</a></li>
-                    <li class="page-item active"><a href="#" class="page-link">3</a></li>
-                    <li class="page-item"><a href="#" class="page-link">4</a></li>
-                    <li class="page-item"><a href="#" class="page-link">5</a></li>
-                    <li class="page-item"><a href="#" class="page-link">Next</a></li>
-                </ul>
-            </div>
+<%--            <div class="clearfix">--%>
+<%--                <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>--%>
+<%--                <ul class="pagination">--%>
+<%--                    <li class="page-item disabled"><a href="#">Previous</a></li>--%>
+<%--                    <li class="page-item"><a href="#" class="page-link">1</a></li>--%>
+<%--                    <li class="page-item"><a href="#" class="page-link">2</a></li>--%>
+<%--                    <li class="page-item active"><a href="#" class="page-link">3</a></li>--%>
+<%--                    <li class="page-item"><a href="#" class="page-link">4</a></li>--%>
+<%--                    <li class="page-item"><a href="#" class="page-link">5</a></li>--%>
+<%--                    <li class="page-item"><a href="#" class="page-link">Next</a></li>--%>
+<%--                </ul>--%>
+<%--            </div>--%>
         </div>
     </div>
 </div>

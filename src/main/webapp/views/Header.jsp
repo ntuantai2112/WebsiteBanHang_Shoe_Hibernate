@@ -1,6 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<!-- Start Top Nav -->
 <nav class="navbar navbar-expand-lg bg-dark navbar-light d-none d-lg-block" id="templatemo_nav_top">
     <div class="container text-light">
         <div class="w-100 d-flex justify-content-between">
@@ -63,17 +62,17 @@
                             Manager
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#">Manager Product</a></li>
-                            <li><a class="dropdown-item" href="#">Manager Color</a></li>
-                            <li><a class="dropdown-item" href="#">Manager Produce</a></li>
+                            <li><a class="dropdown-item" href="/manager-product">Manager Product</a></li>
+                            <li><a class="dropdown-item" href="/manager-color">Manager Color</a></li>
+                            <li><a class="dropdown-item" href="/manager-producer">Manager Produce</a></li>
                             <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#">Manager Employee</a></li>
-                            <li><a class="dropdown-item" href="#">Manager Customer</a></li>
-                            <li><a class="dropdown-item" href="#">Manager Category</a></li>
+                            <li><a class="dropdown-item" href="/manager-employee">Manager Employee</a></li>
+                            <li><a class="dropdown-item" href="/manager-customer">Manager Customer</a></li>
+                            <li><a class="dropdown-item" href="/manager-category">Manager Category</a></li>
                             <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#">Manager Detail Product</a></li>
-                            <li><a class="dropdown-item" href="#">Manager Shop</a></li>
-                            <li><a class="dropdown-item" href="#">Manager Position</a></li>
+                            <li><a class="dropdown-item" href="/manager-detail-product">Manager Detail Product</a></li>
+                            <li><a class="dropdown-item" href="/manager-shop">Manager Shop</a></li>
+                            <li><a class="dropdown-item" href="/manager-position">Manager Position</a></li>
                         </ul>
                     </li>
 

@@ -25,12 +25,20 @@ public class SanPham {
     )
     private UUID Id;
     @Column(name = "Ma")
-    private String Ma;
+    private String ma;
     @Column(name = "Ten")
+    private String ten;
+//    @Column(name = "image")
+//    private String image;
 
-    private String Ten;
-    @Column(name = "image")
-    private String image;
+    public SanPham(String ma, String ten) {
+        this.ma = ma;
+        this.ten = ten;
+    }
 
-
+//    public SanPham(String ma, String ten, String image) {
+//        this.ma = ma;
+//        this.ten = ten;
+//        this.image = image;
+//    }
 }

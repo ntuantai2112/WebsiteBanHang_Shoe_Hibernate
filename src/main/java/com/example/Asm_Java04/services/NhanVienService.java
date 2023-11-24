@@ -2,22 +2,29 @@ package com.example.Asm_Java04.services;
 
 import com.example.Asm_Java04.model.NhanVien;
 import com.example.Asm_Java04.model.SanPham;
+import com.example.Asm_Java04.repositories.NhanVienRepository;
 
 import java.util.List;
+import java.util.UUID;
 
 public class NhanVienService {
-    public List<NhanVien> getAll(){
 
-        return null;
-    };
+    private NhanVienRepository nhanVienRepository = new NhanVienRepository();
 
-    public void insert(NhanVien sp){
+    public List<NhanVien> getAll() {
 
-    };
-    public void update(NhanVien sp){
+        return nhanVienRepository.getList();
+    }
+    public void insert(NhanVien nv) {
+        nhanVienRepository.createNhanVien(nv);
+    }
 
-    };
-    public void delete( NhanVien sp){
+    public void update(NhanVien nv) {
+        nhanVienRepository.updateNhanVien(nv);
+    }
 
-    };
+    public void delete(UUID id) {
+        nhanVienRepository.deleteNhanVien(id);
+    }
+
 }

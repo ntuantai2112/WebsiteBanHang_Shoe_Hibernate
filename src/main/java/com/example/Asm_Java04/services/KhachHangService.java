@@ -2,22 +2,26 @@ package com.example.Asm_Java04.services;
 
 import com.example.Asm_Java04.model.KhachHang;
 import com.example.Asm_Java04.model.SanPham;
+import com.example.Asm_Java04.repositories.KhachHangRepository;
 
 import java.util.List;
+import java.util.UUID;
 
 public class KhachHangService {
+
+    private KhachHangRepository khachHangRepository = new KhachHangRepository();
     public List<KhachHang> getAll(){
 
-        return null;
+        return khachHangRepository.getList();
     };
 
-    public void insert(KhachHang sp){
-
+    public void insert(KhachHang khachHang){
+        khachHangRepository.createKhachHang(khachHang);
     };
-    public void update(KhachHang sp){
-
+    public void update(KhachHang khachHang){
+        khachHangRepository.updateKhachHang(khachHang);
     };
-    public void delete( KhachHang sp){
-
+    public void delete( UUID id){
+        khachHangRepository.deleteKhachHang(id);
     };
 }

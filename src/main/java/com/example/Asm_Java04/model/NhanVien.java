@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.UUID;
 
 @Entity
@@ -29,14 +29,14 @@ public class NhanVien {
     @Column(name = "Ma")
     private String ma;
 
-    @Column(name = "Ho")
-    private String ho;
+    @Column(name = "Ten")
+    private String ten;
 
     @Column(name = "TenDem")
     private String tenDem;
 
-    @Column(name = "Ten")
-    private String ten;
+    @Column(name = "Ho")
+    private String ho;
 
     @Column(name = "GioiTinh")
     private String gioiTinh;
@@ -56,11 +56,15 @@ public class NhanVien {
     @Column(name = "TrangThai")
     private Integer trangThai;
 
-    @Column(name = "IdCH")
-    private String idCH;
+    @ManyToOne()
+    @JoinColumn(
+            name = "IdCH",
+            referencedColumnName = "Id"
+    )
+    private CuaHang cuaHang;
 
-    @Column(name = "IdGuiBC")
-        private String idGuiBC;
+//    @Column(name = "IdGuiBC")
+//        private String idGuiBC;
 
     @ManyToOne()
     @JoinColumn(
@@ -69,5 +73,18 @@ public class NhanVien {
     )
     private ChucVu cv;
 
-
+    public NhanVien(String ma, String ten, String tenDem, String ho, String gioiTinh, Date ngaySinh, String diaChi, String sdt, String matKhau, Integer trangThai, CuaHang cuaHang, ChucVu cv) {
+        this.ma = ma;
+        this.ten = ten;
+        this.tenDem = tenDem;
+        this.ho = ho;
+        this.gioiTinh = gioiTinh;
+        this.ngaySinh = ngaySinh;
+        this.diaChi = diaChi;
+        this.sdt = sdt;
+        this.matKhau = matKhau;
+        this.trangThai = trangThai;
+        this.cuaHang = cuaHang;
+        this.cv = cv;
+    }
 }

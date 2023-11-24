@@ -2,22 +2,26 @@ package com.example.Asm_Java04.services;
 
 import com.example.Asm_Java04.model.MauSac;
 import com.example.Asm_Java04.model.SanPham;
+import com.example.Asm_Java04.repositories.MauSacRepository;
 
 import java.util.List;
+import java.util.UUID;
 
 public class MauSacService {
+
+    MauSacRepository mauSacRepository = new MauSacRepository();
     public List<MauSac> getAll(){
 
-        return null;
+        return mauSacRepository.getList();
     };
 
-    public void insert(MauSac sp){
-
+    public void insertMauSac(MauSac ms){
+        mauSacRepository.createMauSac(ms);
     };
     public void update(MauSac sp){
-
+        mauSacRepository.updateMauSac(sp);
     };
-    public void delete( MauSac sp){
-
+    public void delete( UUID sp){
+        mauSacRepository.deleteMauSac(sp);
     };
 }

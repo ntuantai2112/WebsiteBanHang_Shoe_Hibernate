@@ -1,61 +1,67 @@
-//package com.example.Assignment.controller;
-//
-//import com.example.Assignment.model.Account;
-//import com.example.Assignment.model.Category;
-//import com.example.Assignment.model.Product;
-//import com.example.Assignment.service.CategoryService;
-//import com.example.Assignment.service.ProductService;
-//import jakarta.servlet.*;
-//import jakarta.servlet.http.*;
-//import jakarta.servlet.annotation.*;
-//
-//import java.io.IOException;
-//import java.util.List;
-//
-//@WebServlet(name = "ManagerProduct", value = {"/manager-product"
-//        , "/product/add", "/product/update", "/product/delete"
-//})
-//public class ManagerProduct extends HttpServlet {
-//    @Override
-//    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//        String uri = request.getRequestURI();
-//        ProductService productService = new ProductService();
-//        CategoryService categoryService = new CategoryService();
-//
-//        if (uri.contains("/manager-product")) {
-//            HttpSession session = request.getSession();
-//            Account account = (Account) session.getAttribute("acc");
-//            if (account == null) {
-//                response.sendRedirect("/login");
-//            }
-//
-//            int id = account.getId();
-//            if (account.getId() == null) {
-//                response.sendRedirect("/login");
-//            }
-//            List<Product> list = productService.getProductBySellID(id);
-//
-//            request.setAttribute("listP", list);
-//
-//
-//            request.getRequestDispatcher("/views/ManagerProduct.jsp").forward(request, response);
-//        } else if (uri.contains("/delete")) {
-//            String productID = request.getParameter("id");
-//            Integer id = Integer.parseInt(productID);
-//            productService.delete(id);
-//            response.sendRedirect("/manager-product");
-//        } else if (uri.contains("/add")) {
+package com.example.Asm_Java04.controller;
+
+import com.example.Asm_Java04.model.MauSac;
+import com.example.Asm_Java04.model.SanPham;
+import com.example.Asm_Java04.services.DongSanPhamService;
+import com.example.Asm_Java04.services.SanPhamService;
+import jakarta.servlet.*;
+import jakarta.servlet.http.*;
+import jakarta.servlet.annotation.*;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
+
+@WebServlet(name = "/ManagerProduct", value = {"/manager-product"
+        , "/product/add", "/product/update", "/product/delete"
+})
+
+public class ManagerProduct extends HttpServlet {
+
+    SanPhamService sanPhamService = new SanPhamService();
+
+
+
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String uri = request.getRequestURI();
+        if (uri.contains("/manager-product")) {
+            ArrayList<SanPham> list =  sanPhamService.getAll();
+            request.setAttribute("listP", list);
+            request.getRequestDispatcher("/views/ManagerProduct.jsp").forward(request, response);
+        } else if (uri.contains("/delete")) {
+            String mauSacID = request.getParameter("id");
+            if (mauSacID != null && !mauSacID.isEmpty()) {
+                try {
+                    UUID uuid = UUID.fromString(mauSacID);
+                    sanPhamService.delete(uuid);
+                } catch (IllegalArgumentException e) {
+                    e.printStackTrace();
+                }
+            }
+            response.sendRedirect("/manager-product");
+        } else if (uri.contains("/add")) {
 //            List<Category> listC = categoryService.getAllCategory();
 //            request.setAttribute("listC", listC);
 //            request.getRequestDispatcher("/views/AddProduct.jsp").forward(request, response);
-//
-//        }
-//
-//
-//    }
-//
-//    @Override
-//    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//
-//    }
-//}
+
+        }
+
+
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String uri = request.getRequestURI();
+        if(uri.contains("/add")){
+            String ma = request.getParameter("ma");
+            String ten = request.getParameter("ten");
+            System.out.println(ma);
+            System.out.println(ten);
+            SanPham sanPham = new SanPham(ma,ten);
+            sanPhamService.insert(sanPham);
+            response.sendRedirect("/manager-product");
+        }
+    }
+}

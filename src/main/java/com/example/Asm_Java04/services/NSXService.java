@@ -2,23 +2,28 @@ package com.example.Asm_Java04.services;
 
 import com.example.Asm_Java04.model.NSX;
 import com.example.Asm_Java04.model.SanPham;
+import com.example.Asm_Java04.repositories.NSXRepository;
 
 import java.util.List;
+import java.util.UUID;
 
 public class NSXService {
 
+    NSXRepository nsxRepository = new NSXRepository();
+
+
     public List<NSX> getAll(){
 
-        return null;
+        return nsxRepository.getList();
     };
 
-    public void insert(NSX sp){
-
+    public void insert(NSX nsx){
+        nsxRepository.createNSX(nsx);
     };
-    public void update(NSX sp){
-
+    public void update(NSX nsx){
+        nsxRepository.updateNSX(nsx);
     };
-    public void delete( NSX sp){
-
+    public void delete( UUID id){
+        nsxRepository.deleteNSX(id);
     };
 }

@@ -19,13 +19,21 @@ import java.util.UUID;
 public class MauSac {
     @Id
     @Column(name = "Id")
+    @GeneratedValue(generator = "UUID")
     @GenericGenerator(
             name = "UUID",
             strategy = "org.hibernate.id.UUIDGenerator"
     )
-    private UUID Id;
-    private String Ma;
-    private String Ten;
+    private UUID id;
 
+    @Column(name = "Ma")
+    private String ma;
+    @Column(name = "Ten")
+    private String ten;
+
+    public MauSac(String ma, String ten) {
+        this.ma = ma;
+        this.ten = ten;
+    }
 
 }

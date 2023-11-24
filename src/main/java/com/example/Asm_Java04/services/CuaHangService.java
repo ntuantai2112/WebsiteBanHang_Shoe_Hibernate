@@ -2,22 +2,28 @@ package com.example.Asm_Java04.services;
 
 import com.example.Asm_Java04.model.CuaHang;
 import com.example.Asm_Java04.model.SanPham;
+import com.example.Asm_Java04.repositories.CuaHangRepository;
 
 import java.util.List;
+import java.util.UUID;
 
 public class CuaHangService {
+
+    private CuaHangRepository cuaHangRepository = new CuaHangRepository();
+
+
     public List<CuaHang> getAll(){
 
-        return null;
+        return cuaHangRepository.getList();
     };
 
-    public void insert(CuaHang sp){
-
+    public void insert(CuaHang ch){
+        cuaHangRepository.createCuaHang(ch);
     };
-    public void update(CuaHang sp){
-
+    public void update(CuaHang ch){
+        cuaHangRepository.updateCuaHang(ch);
     };
-    public void delete( CuaHang sp){
-
+    public void delete( UUID id){
+        cuaHangRepository.deleteCuaHang(id);
     };
 }
