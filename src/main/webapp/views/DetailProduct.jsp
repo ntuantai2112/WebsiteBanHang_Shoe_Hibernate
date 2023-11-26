@@ -349,19 +349,23 @@
 
 
     <div class="card mt-5">
-        <div class="card-header">Thêm mới màu sắc</div>
+        <div class="card-header">Thêm mới sản phẩm</div>
         <div class="card-body">
-            <form action="/color/add" method="post">
+            <form action="/product/add" method="post">
                 <div class="form-group">
-                    <label for="">Mã màu sắc</label>
-                    <input type="text" class="form-control" name="ma" placeholder="Mã màu sắc">
+                    <%--@declare id=""--%><label for="">Mã sản phẩm</label>
+                    <input type="text" class="form-control" name="ma" placeholder="Mã sản phẩm">
                 </div>
 
                 <div class="form-group">
-                    <%--@declare id=""--%><label for="">Tên màu sắc</label>
-                    <input type="text" class="form-control" name="ten" placeholder="Tên màu sắc">
+                    <label for="">Tên sản phẩm</label>
+                    <input type="text" class="form-control" name="ten" placeholder="Tên sản phẩm">
                 </div>
 
+                <div class="form-group">
+                    <label for="">Image</label>
+                    <input type="file" class="form-control" name="image" placeholder="image">
+                </div>
 
                 <div class="text-center mt-3">
                     <button type="reset" class="btn  btn-outline-secondary">Reset</button>
@@ -377,31 +381,40 @@
         <div class="">
             <div class="table-title ">
                 <div class="row text-center mt-4 mb-1">
-                        <h2>Danh Sách Màu Sắc</h2>
+<%--                    <div class="col-sm-6 ">--%>
+                        <h2>Danh Sách Sản Phẩm</h2>
+<%--                    </div>--%>
+<%--                    <div class="col-sm-6">--%>
+<%--                        <a href="/product/add" class="btn btn-success text-center" data-toggle="modal"><i--%>
+<%--                                class="material-icons">&#xE147;</i> <span>Add New Product </span></a>--%>
+<%--                        &lt;%&ndash;                        <a href="#deleteEmployeeModal" class="btn btn-danger  text-center" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Delete</span></a>&ndash;%&gt;--%>
+<%--                    </div>--%>
                 </div>
             </div>
             <table class="table bg-light ">
                 <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Mã Màu Sắc</th>
-                    <th>Tên Màu Sắc</th>
+                    <th>Mã Sản Phẩm</th>
+                    <th>Tên Sản Phẩm</th>
+                    <th>Image</th>
+                    <th></th>
                     <th>Actions</th>
                 </tr>
                 </thead>
                 <tbody>
-                <c:forEach items="${listMS}" var="ms">
+                <c:forEach items="${listP}" var="product">
                     <tr>
-
                         <td>
-                                ${ms.id}
+                                ${product.id}
                         </td>
-                        <td> ${ms.ma}</td>
-                        <td>${ms.ten}</td>
+                        <td>${product.ma}</td>
+                        <td>${product.ten}</td>
+                        <td><img src="" alt="" style="width: 100px; height: 100px"></td>
                         <td>
-                            <a href="/color/detail?id=${ms.id}" class="edit" data-toggle="modal"><i
+                            <a href="/product/update?id=${product.id}" class="edit" data-toggle="modal"><i
                                     class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                            <a href="/color/delete?id=${ms.id}" class="delete" data-toggle="modal"><i
+                            <a href="/product/delete?id=${product.id}" class="delete" data-toggle="modal"><i
                                     class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
                         </td>
                     </tr>

@@ -17,7 +17,7 @@ import java.util.UUID;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class ChucVu {
+public class ChucVu extends MauSac {
     @Id
     @Column(name = "Id")
     @GeneratedValue(generator = "UUID")

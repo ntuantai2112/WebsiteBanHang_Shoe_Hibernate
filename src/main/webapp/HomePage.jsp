@@ -190,17 +190,17 @@
         <div class="col-12 col-md-4 p-5 mt-3">
             <a href="#"><img src="assets/img/Giay_Bitis02.jpg" class="rounded-circle img-fluid border"></a>
             <h5 class="text-center mt-3 mb-3">Bitis</h5>
-            <p class="text-center"><a class="btn btn-success" href="/shop">Go Shop</a></p>
+            <p class="text-center"><a class="btn btn-success" href="/store">Go Shop</a></p>
         </div>
         <div class="col-12 col-md-4 p-5 mt-3">
             <a href="#"><img src="./assets/img/category_img_02.jpg" class="rounded-circle img-fluid border"></a>
             <h2 class="h5 text-center mt-3 mb-3">Nike</h2>
-            <p class="text-center"><a class="btn btn-success" href="/shop">Go Shop</a></p>
+            <p class="text-center"><a class="btn btn-success" href="/store">Go Shop</a></p>
         </div>
         <div class="col-12 col-md-4 p-5 mt-3">
             <a href="#"><img src="./assets/img/giay_conver01.jpg" class="rounded-circle img-fluid border"></a>
             <h2 class="h5 text-center mt-3 mb-3">Converse</h2>
-            <p class="text-center"><a class="btn btn-success" href="/shop">Go Shop</a></p>
+            <p class="text-center"><a class="btn btn-success" href="/store">Go Shop</a></p>
         </div>
     </div>
 </section>
@@ -220,48 +220,49 @@
             </div>
         </div>
         <div id="content" class=" row">
-<%--            <c:forEach items="${listProduct}" var="p">--%>
-<%--                <div class="product col-12 col-md-4 mb-4">--%>
-<%--                    <div class="card h-100 card_title">--%>
-<%--                        <a href="/detail?pid=" class="">--%>
-<%--                            <img src="" class="card-img-top image_link" alt="...">--%>
-<%--                        </a>--%>
-<%--                        <div class="card-body">--%>
-<%--                            <ul class="list-unstyled d-flex justify-content-between">--%>
-<%--                                <li>--%>
-<%--                                    <i class="text-warning fa fa-star"></i>--%>
-<%--                                    <i class="text-warning fa fa-star"></i>--%>
-<%--                                    <i class="text-warning fa fa-star"></i>--%>
-<%--                                    <i class="text-muted fa fa-star"></i>--%>
-<%--                                    <i class="text-muted fa fa-star"></i>--%>
-<%--                                </li>--%>
-<%--                                <li class="text-muted text-right fw-bold text-danger">  $</li>--%>
-<%--                            </ul>--%>
-<%--                            <a href="/detail?pid=" class="product_name  fs-3  "></a>--%>
-<%--                            <div class="row d-flex justify-content-between align-items-center">--%>
-<%--                                <div class="col-7">--%>
-<%--                                    <p class="text-muted">Reviews (24)</p>--%>
-<%--                                </div>--%>
-<%--                                <div class="col-5">--%>
-<%--                                    <a href="#">--%>
-<%--                                        <button type="submit" class="btn btn-success btn-lg" name="submit"--%>
-<%--                                                value="addtocard">Add To Cart--%>
-<%--                                        </button>--%>
-<%--                                    </a>--%>
-<%--                                </div>--%>
-<%--                            </div>--%>
+            <c:forEach items="${listProduct}" var="p">
+                <div class="product col-12 col-md-4 mb-4">
+                    <div class="card h-100 card_title">
+                        <a href="/detail?pid=${p.id}" class="">
+                            <img src="${p.hinhAnh}" class="card-img-top image_link" alt="...">
+                        </a>
+                        <div class="card-body">
+                            <h2>${p.ten}</h2>
+                            <ul class="list-unstyled d-flex justify-content-between">
+                                <li>
+                                    <i class="text-warning fa fa-star"></i>
+                                    <i class="text-warning fa fa-star"></i>
+                                    <i class="text-warning fa fa-star"></i>
+                                    <i class="text-muted fa fa-star"></i>
+                                    <i class="text-muted fa fa-star"></i>
+                                </li>
+                                <li class="text-muted text-right fw-bold text-danger">  $</li>
+                            </ul>
+                            <a href="/detail?pid=" class="product_name  fs-3  "></a>
+                            <div class="row d-flex justify-content-between align-items-center">
+                                <div class="col-7">
+                                    <p class="text-muted">Reviews (24)</p>
+                                </div>
+                                <div class="col-5">
+                                    <a href="#">
+                                        <button type="submit" class="btn btn-success btn-lg" name="submit"
+                                                value="addtocard">Add To Cart
+                                        </button>
+                                    </a>
+                                </div>
+                            </div>
 
-<%--                        </div>--%>
-<%--                    </div>--%>
-<%--                </div>--%>
+                        </div>
+                    </div>
+                </div>
 
-<%--            </c:forEach>--%>
+            </c:forEach>
         </div>
 
-        <%-- Thêm sản phẩm  --%>
-<%--        <div class="">--%>
-<%--            <button type="submit" onclick="loadMore()" class="btn btn-primary ">Load More</button>--%>
-<%--        </div>--%>
+         Thêm sản phẩm
+        <div class="">
+            <button type="submit" onclick="loadMore()" class="btn btn-primary ">Load More</button>
+        </div>
 
 
     </div>
@@ -282,27 +283,27 @@
 <!-- End Script -->
 <script>
 
-    // function loadMore() {
-    //
-    //     var amount = document.getElementsByClassName("product").length;
-    //
-    //
-    //     $.ajax({
-    //         url: "/load-more",  // Đường dẫn đến API hoặc file xử lý
-    //         method: "GET",  // Phương thức HTTP (GET, POST, PUT, DELETE, v.v.)
-    //         data: {
-    //             exits: amount
-    //         },
-    //         success: function (data) {
-    //             var row = document.getElementById("content");
-    //             row.innerHTML += data;
-    //
-    //         },
-    //         error: function (xhr, status, error) {
-    //         }
-    //     });
-    //
-    // }
+    function loadMore() {
+
+        var amount = document.getElementsByClassName("product").length;
+
+
+        $.ajax({
+            url: "/load-more",  // Đường dẫn đến API hoặc file xử lý
+            method: "GET",  // Phương thức HTTP (GET, POST, PUT, DELETE, v.v.)
+            data: {
+                exits: amount
+            },
+            success: function (data) {
+                var row = document.getElementById("content");
+                row.innerHTML += data;
+
+            },
+            error: function (xhr, status, error) {
+            }
+        });
+
+    }
 
 
 </script>

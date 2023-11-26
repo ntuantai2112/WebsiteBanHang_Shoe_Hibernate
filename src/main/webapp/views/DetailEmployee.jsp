@@ -1,6 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -349,17 +350,81 @@
 
 
     <div class="card mt-5">
-        <div class="card-header">Thêm mới màu sắc</div>
+        <div class="card-header">Thêm mới nhân viên</div>
         <div class="card-body">
-            <form action="/color/add" method="post">
+            <form action="/employee/add" method="post">
                 <div class="form-group">
-                    <label for="">Mã màu sắc</label>
-                    <input type="text" class="form-control" name="ma" placeholder="Mã màu sắc">
+                    <label for="">Mã nhân viên</label>
+                    <input type="text" class="form-control" name="ma" placeholder="Mã nhân viên">
                 </div>
 
                 <div class="form-group">
-                    <%--@declare id=""--%><label for="">Tên màu sắc</label>
-                    <input type="text" class="form-control" name="ten" placeholder="Tên màu sắc">
+                    <label for="">Họ tên khách hàng</label>
+                    <input type="text" class="form-control" name="ten" placeholder="Họ tên nhân viên">
+                </div>
+
+
+                <div class="form-group">
+                    <label for="">Giới tính</label>
+                    <div class="row">
+                        <div class="col-auto">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="gioiTinh" id="flexRadioDefault1" checked>
+                                <label class="form-check-label" for="flexRadioDefault1">
+                                   Nam
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="gioiTinh" id="flexRadioDefault2" >
+                                <label class="form-check-label" for="flexRadioDefault2">
+                                   Nữ
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="">Ngày sinh</label>
+                    <input type="date" class="form-control" name="ngaySinh" placeholder="Ngày sinh">
+                </div>
+
+                <div class="form-group">
+                    <%--@declare id=""--%><label for="">Địa Chỉ</label>
+                    <input type="text" class="form-control" name="diaChi" placeholder="Địa Chỉ">
+                </div>
+
+                <div class="form-group">
+                    <label for="">Số điện thoại</label>
+                    <input type="number" class="form-control" name="sdt" placeholder="Số điện thoại">
+                </div>
+
+                <div class="form-group">
+                    <%--@declare id=""--%><label for="">Mật Khẩu</label>
+                    <input type="password" class="form-control" name="matKhau" placeholder="Mật Khẩu">
+                </div>
+
+                <div class="form-group">
+                    <%--@declare id=""--%><label for="">Cửa Hàng</label>
+                        <select class="form-select" aria-label="Default select example" name="cuaHang">
+                            <option selected>Open this select menu</option>
+                        </select>
+                </div>
+
+                <div class="form-group">
+                    <%--@declare id=""--%><label for="">Chức Vụ</label>
+                        <select class="form-select" aria-label="Default select example" name="chucVu">
+                            <option selected>Open this select menu</option>
+                        </select>
+                </div>
+
+                <div class="form-group">
+                    <%--@declare id=""--%><label for="">Trạng Thái</label>
+                        <select class="form-select" aria-label="Default select example" name="chucVu">
+                            <option selected>Open this select menu</option>
+                        </select>
                 </div>
 
 
@@ -377,50 +442,67 @@
         <div class="">
             <div class="table-title ">
                 <div class="row text-center mt-4 mb-1">
-                        <h2>Danh Sách Màu Sắc</h2>
+                    <h2>Danh Sách Nhân Viên</h2>
                 </div>
             </div>
             <table class="table bg-light ">
                 <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Mã Màu Sắc</th>
-                    <th>Tên Màu Sắc</th>
+                    <th>Mã Nhân Viên</th>
+                    <th>Họ Tên Nhân Viên</th>
+                    <th>Giới Tính</th>
+                    <th>Ngày Sinh</th>
+                    <th>Địa Chỉ</th>
+                    <th>Số Điện Thoại</th>
+                    <th>Mật Khẩu</th>
+                    <th>Cửa Hàng</th>
+                    <th>Chức Vụ</th>
+                    <th>Trạng Thái</th>
                     <th>Actions</th>
                 </tr>
                 </thead>
                 <tbody>
-                <c:forEach items="${listMS}" var="ms">
+                <c:forEach items="${listNV}" var="nv">
                     <tr>
+                        <td>${nv.id}</td>
+                        <td>${nv.ma}</td>
+                        <td>${nvkh.ho} ${kh.nv} ${nv.ten}</td>
+                        <td>${nv.gioiTinh}</td>
 
                         <td>
-                                ${ms.id}
+                            <fmt:formatDate value="${nv.ngaySinh}" pattern="dd/MM/yyyy" var="formattedDate" />
+                            <c:out value="${formattedDate}" />
                         </td>
-                        <td> ${ms.ma}</td>
-                        <td>${ms.ten}</td>
+                        <td>${nv.diaChi}</td>
+                        <td>${nv.sdt}</td>
+                        <td>${kh.matKhau}</td>
+                        <td>${kh.cuaHang.ten}</td>
+                        <td>${kh.cv.ten}</td>
+                        <td>${kh.trangThai}</td>
+
                         <td>
-                            <a href="/color/detail?id=${ms.id}" class="edit" data-toggle="modal"><i
+                            <a href="/employee/update?id=${kh.id}" class="edit" data-toggle="modal"><i
                                     class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                            <a href="/color/delete?id=${ms.id}" class="delete" data-toggle="modal"><i
+                            <a href="/employee/delete?id=${kh.id}" class="delete" data-toggle="modal"><i
                                     class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
                         </td>
                     </tr>
-
                 </c:forEach>
                 </tbody>
             </table>
-<%--            <div class="clearfix">--%>
-<%--                <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>--%>
-<%--                <ul class="pagination">--%>
-<%--                    <li class="page-item disabled"><a href="#">Previous</a></li>--%>
-<%--                    <li class="page-item"><a href="#" class="page-link">1</a></li>--%>
-<%--                    <li class="page-item"><a href="#" class="page-link">2</a></li>--%>
-<%--                    <li class="page-item active"><a href="#" class="page-link">3</a></li>--%>
-<%--                    <li class="page-item"><a href="#" class="page-link">4</a></li>--%>
-<%--                    <li class="page-item"><a href="#" class="page-link">5</a></li>--%>
-<%--                    <li class="page-item"><a href="#" class="page-link">Next</a></li>--%>
-<%--                </ul>--%>
-<%--            </div>--%>
+            <%--            <div class="clearfix">--%>
+            <%--                <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>--%>
+            <%--                <ul class="pagination">--%>
+            <%--                    <li class="page-item disabled"><a href="#">Previous</a></li>--%>
+            <%--                    <li class="page-item"><a href="#" class="page-link">1</a></li>--%>
+            <%--                    <li class="page-item"><a href="#" class="page-link">2</a></li>--%>
+            <%--                    <li class="page-item active"><a href="#" class="page-link">3</a></li>--%>
+            <%--                    <li class="page-item"><a href="#" class="page-link">4</a></li>--%>
+            <%--                    <li class="page-item"><a href="#" class="page-link">5</a></li>--%>
+            <%--                    <li class="page-item"><a href="#" class="page-link">Next</a></li>--%>
+            <%--                </ul>--%>
+            <%--            </div>--%>
         </div>
     </div>
 </div>

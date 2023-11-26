@@ -1,6 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -342,24 +343,49 @@
 <!-- Header -->
 <jsp:include page="Header.jsp"></jsp:include>
 
-<div class="container  ">
-
-
-
-
-
+<div class="mx-2">
     <div class="card mt-5">
-        <div class="card-header">Thêm mới màu sắc</div>
+        <div class="card-header">Thêm mới khách hàng</div>
         <div class="card-body">
-            <form action="/color/add" method="post">
+            <form action="/customer/add" method="post">
                 <div class="form-group">
-                    <label for="">Mã màu sắc</label>
-                    <input type="text" class="form-control" name="ma" placeholder="Mã màu sắc">
+                    <label for="">Mã khách hàng</label>
+                    <input type="text" class="form-control" name="ma" placeholder="Mã khách hàng">
                 </div>
 
                 <div class="form-group">
-                    <%--@declare id=""--%><label for="">Tên màu sắc</label>
-                    <input type="text" class="form-control" name="ten" placeholder="Tên màu sắc">
+                    <label for="">Họ tên khách hàng</label>
+                    <input type="text" class="form-control" name="ten" placeholder="Họ tên khách hàng">
+                </div>
+
+                <div class="form-group">
+                    <label for="">Ngày sinh</label>
+                    <input type="date" class="form-control" name="ngaySinh" placeholder="Ngày sinh">
+                </div>
+
+                <div class="form-group">
+                    <label for="">Số điện thoại</label>
+                    <input type="number" class="form-control" name="sdt" placeholder="Số điện thoại">
+                </div>
+
+                <div class="form-group">
+                    <%--@declare id=""--%><label for="">Địa Chỉ</label>
+                    <input type="text" class="form-control" name="diaChi" placeholder="Địa Chỉ">
+                </div>
+
+                <div class="form-group">
+                    <%--@declare id=""--%><label for="">Thành Phố</label>
+                    <input type="text" class="form-control" name="thanhPho" placeholder="Thành Phố">
+                </div>
+
+                <div class="form-group">
+                    <%--@declare id=""--%><label for="">Quốc gia</label>
+                    <input type="text" class="form-control" name="quocGia" placeholder="Quốc gia">
+                </div>
+
+                <div class="form-group">
+                    <%--@declare id=""--%><label for="">Mật Khẩu</label>
+                    <input type="password" class="form-control" name="matKhau" placeholder="Mật Khẩu">
                 </div>
 
 
@@ -377,50 +403,68 @@
         <div class="">
             <div class="table-title ">
                 <div class="row text-center mt-4 mb-1">
-                        <h2>Danh Sách Màu Sắc</h2>
+                    <%--                    <div class="col-sm-6 ">--%>
+                    <h2>Danh Sách Cửa Hàng</h2>
+                    <%--                    </div>--%>
+                    <%--                    <div class="col-sm-6">--%>
+                    <%--                        <a href="/product/add" class="btn btn-success text-center" data-toggle="modal"><i--%>
+                    <%--                                class="material-icons">&#xE147;</i> <span>Add New Product </span></a>--%>
+                    <%--                        &lt;%&ndash;                        <a href="#deleteEmployeeModal" class="btn btn-danger  text-center" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Delete</span></a>&ndash;%&gt;--%>
+                    <%--                    </div>--%>
                 </div>
             </div>
             <table class="table bg-light ">
                 <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Mã Màu Sắc</th>
-                    <th>Tên Màu Sắc</th>
+                    <th>Mã Khách Hàng</th>
+                    <th>Họ Tên Khách Hàng</th>
+                    <th>Ngày Sinh</th>
+                    <th>Số Điện Thoại</th>
+                    <th>Địa Chỉ</th>
+                    <th>Thành Phố</th>
+                    <th>Quốc Gia</th>
+                    <th>Mật Khẩu</th>
                     <th>Actions</th>
                 </tr>
                 </thead>
                 <tbody>
-                <c:forEach items="${listMS}" var="ms">
+                <c:forEach items="${listKH}" var="kh">
                     <tr>
-
+                        <td>${kh.id}</td>
+                        <td>${kh.ma}</td>
+                        <td>${kh.ho} ${kh.tenDem} ${kh.ten}</td>
                         <td>
-                                ${ms.id}
+                            <fmt:formatDate value="${kh.ngaySinh}" pattern="dd/MM/yyyy" var="formattedDate" />
+                            <c:out value="${formattedDate}" />
                         </td>
-                        <td> ${ms.ma}</td>
-                        <td>${ms.ten}</td>
+                        <td>${kh.sdt}</td>
+                        <td>${kh.diaChi}</td>
+                        <td>${kh.thanhPho}</td>
+                        <td>${kh.quocGia}</td>
+                        <td>${kh.matKhau}</td>
                         <td>
-                            <a href="/color/detail?id=${ms.id}" class="edit" data-toggle="modal"><i
+                            <a href="/customer/update?id=${kh.id}" class="edit" data-toggle="modal"><i
                                     class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                            <a href="/color/delete?id=${ms.id}" class="delete" data-toggle="modal"><i
+                            <a href="/customer/delete?id=${kh.id}" class="delete" data-toggle="modal"><i
                                     class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
                         </td>
                     </tr>
-
                 </c:forEach>
                 </tbody>
             </table>
-<%--            <div class="clearfix">--%>
-<%--                <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>--%>
-<%--                <ul class="pagination">--%>
-<%--                    <li class="page-item disabled"><a href="#">Previous</a></li>--%>
-<%--                    <li class="page-item"><a href="#" class="page-link">1</a></li>--%>
-<%--                    <li class="page-item"><a href="#" class="page-link">2</a></li>--%>
-<%--                    <li class="page-item active"><a href="#" class="page-link">3</a></li>--%>
-<%--                    <li class="page-item"><a href="#" class="page-link">4</a></li>--%>
-<%--                    <li class="page-item"><a href="#" class="page-link">5</a></li>--%>
-<%--                    <li class="page-item"><a href="#" class="page-link">Next</a></li>--%>
-<%--                </ul>--%>
-<%--            </div>--%>
+            <%--            <div class="clearfix">--%>
+            <%--                <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>--%>
+            <%--                <ul class="pagination">--%>
+            <%--                    <li class="page-item disabled"><a href="#">Previous</a></li>--%>
+            <%--                    <li class="page-item"><a href="#" class="page-link">1</a></li>--%>
+            <%--                    <li class="page-item"><a href="#" class="page-link">2</a></li>--%>
+            <%--                    <li class="page-item active"><a href="#" class="page-link">3</a></li>--%>
+            <%--                    <li class="page-item"><a href="#" class="page-link">4</a></li>--%>
+            <%--                    <li class="page-item"><a href="#" class="page-link">5</a></li>--%>
+            <%--                    <li class="page-item"><a href="#" class="page-link">Next</a></li>--%>
+            <%--                </ul>--%>
+            <%--            </div>--%>
         </div>
     </div>
 </div>

@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.UUID;
 
 @WebServlet(name = "/ManagerColor", value = {"/manager-color"
-        , "/color/add", "/color/update", "/color/delete"
+        , "/color/add", "/color/update", "/color/delete", "/color/detail"
 })
 public class ManagerColor extends HttpServlet {
     MauSacService mauSacService = new MauSacService();
@@ -29,7 +29,7 @@ public class ManagerColor extends HttpServlet {
         if (uri.contains("/manager-color")) {
 //            HttpSession session = request.getSession();
             ArrayList<MauSac> listMS = (ArrayList<MauSac>) mauSacService.getAll();
-            request.setAttribute("listMS",listMS);
+            request.setAttribute("listMS", listMS);
 
             request.getRequestDispatcher("/views/ManagerColor.jsp").forward(request, response);
         } else if (uri.contains("/delete")) {
@@ -43,13 +43,20 @@ public class ManagerColor extends HttpServlet {
                 }
             }
             response.sendRedirect("/manager-color");
-        } else if (uri.contains("/add")) {
-//            List<Category> listC = categoryService.getAllCategory();
-//            request.setAttribute("listC", listC);
-//            request.getRequestDispatcher("/views/AddProduct.jsp").forward(request, response);
+        } else if (uri.contains("/detail")) {
+            String mauSacID = request.getParameter("id");
+            if (mauSacID != null && !mauSacID.isEmpty()) {
+                try {
+                    UUID uuid = UUID.fromString(mauSacID);
+                    MauSac mauSacDetail = mauSacService.findMauSactByID(uuid);
+                    request.setAttribute("MSDetial", mauSacDetail);
+                    request.getRequestDispatcher("/views/DetailColor.jsp").forward(request, response);
 
+                } catch (IllegalArgumentException e) {
+                    e.printStackTrace();
+                }
+            }
         }
-
 
     }
 
@@ -57,15 +64,16 @@ public class ManagerColor extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         String uri = request.getRequestURI();
-        if(uri.contains("/add")){
+        if (uri.contains("/add")) {
             String ma = request.getParameter("ma");
             String ten = request.getParameter("ten");
             System.out.println(ma);
             System.out.println(ten);
-            MauSac mauSac = new MauSac(ma,ten);
+            MauSac mauSac = new MauSac(ma, ten);
             mauSacService.insertMauSac(mauSac);
             response.sendRedirect("/manager-color");
         }
 
     }
+
 }

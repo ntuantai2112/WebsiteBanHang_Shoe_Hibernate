@@ -1,6 +1,5 @@
 package com.example.Asm_Java04.repositories;
 
-import com.example.Asm_Java04.model.ChucVu;
 import com.example.Asm_Java04.model.MauSac;
 import com.example.Asm_Java04.model.SanPham;
 import com.example.Asm_Java04.util.HibernateUtil;
@@ -16,7 +15,7 @@ public class MauSacRepository {
     public ArrayList<MauSac> getList() {
         ArrayList<MauSac> ketQua = new ArrayList<>();
         try (Session session  = HibernateUtil.getFACTORY().openSession();)  {
-            ketQua = (ArrayList<MauSac>) session.createQuery("from MauSac ").list();
+            ketQua = (ArrayList<MauSac>) session.createQuery("from MauSac").list();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -74,17 +73,17 @@ public class MauSacRepository {
         }
     }
 
-//    public MauSac findChucVutByID(UUID id){
-//        Transaction transaction = null;
-//        try(Session session  = HibernateUtil.getFACTORY().openSession()) {
-//            String jpql = "Select o from ChucVu o where o.id = :id";
-//            TypedQuery<ChucVu> query = session.createQuery(jpql, ChucVu.class);
-//            query.setParameter("id", id);
-//            return query.getSingleResult();
-//        }catch (Exception e){
-//            e.printStackTrace();
-//            transaction.rollback();
-//        }
-//        return null;
-//    }
+    public MauSac findMauSactByID(UUID id){
+        Transaction transaction = null;
+        try(Session session  = HibernateUtil.getFACTORY().openSession()) {
+            String jpql = "Select o from MauSac o where o.id = :id";
+            TypedQuery<MauSac> query = session.createQuery(jpql, MauSac.class);
+            query.setParameter("id", id);
+            return query.getSingleResult();
+        }catch (Exception e){
+            e.printStackTrace();
+            transaction.rollback();
+        }
+        return null;
+    }
 }

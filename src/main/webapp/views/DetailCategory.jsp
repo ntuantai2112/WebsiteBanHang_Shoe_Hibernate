@@ -349,23 +349,27 @@
 
 
     <div class="card mt-5">
-        <div class="card-header">Thêm mới màu sắc</div>
+        <div class="card-header">Chi tiết danh mục</div>
         <div class="card-body">
-            <form action="/color/add" method="post">
+            <form action="/category/update" method="post">
                 <div class="form-group">
-                    <label for="">Mã màu sắc</label>
-                    <input type="text" class="form-control" name="ma" placeholder="Mã màu sắc">
+                    <%--@declare id=""--%><label for="">ID</label>
+                    <input disabled value="" type="text" class="form-control" name="ma" placeholder="ID danh mục">
+                </div>
+                <div class="form-group">
+                    <%--@declare id=""--%><label for="">Mã danh mục</label>
+                    <input type="text" value="" class="form-control" name="ma" placeholder="Mã danh mục">
                 </div>
 
                 <div class="form-group">
-                    <%--@declare id=""--%><label for="">Tên màu sắc</label>
-                    <input type="text" class="form-control" name="ten" placeholder="Tên màu sắc">
+                    <label for="">Tên danh mục</label>
+                    <input type="text" value="" class="form-control" name="ten" placeholder="Tên danh mục">
                 </div>
 
 
                 <div class="text-center mt-3">
                     <button type="reset" class="btn  btn-outline-secondary">Reset</button>
-                    <button type="submit" class="btn btn-success">Thêm</button>
+                    <button type="submit" class="btn btn-warning">Sửa</button>
                 </div>
 
             </form>
@@ -373,147 +377,6 @@
         </div>
     </div>
 
-    <div class="">
-        <div class="">
-            <div class="table-title ">
-                <div class="row text-center mt-4 mb-1">
-                        <h2>Danh Sách Màu Sắc</h2>
-                </div>
-            </div>
-            <table class="table bg-light ">
-                <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Mã Màu Sắc</th>
-                    <th>Tên Màu Sắc</th>
-                    <th>Actions</th>
-                </tr>
-                </thead>
-                <tbody>
-                <c:forEach items="${listMS}" var="ms">
-                    <tr>
-
-                        <td>
-                                ${ms.id}
-                        </td>
-                        <td> ${ms.ma}</td>
-                        <td>${ms.ten}</td>
-                        <td>
-                            <a href="/color/detail?id=${ms.id}" class="edit" data-toggle="modal"><i
-                                    class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                            <a href="/color/delete?id=${ms.id}" class="delete" data-toggle="modal"><i
-                                    class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-                        </td>
-                    </tr>
-
-                </c:forEach>
-                </tbody>
-            </table>
-<%--            <div class="clearfix">--%>
-<%--                <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>--%>
-<%--                <ul class="pagination">--%>
-<%--                    <li class="page-item disabled"><a href="#">Previous</a></li>--%>
-<%--                    <li class="page-item"><a href="#" class="page-link">1</a></li>--%>
-<%--                    <li class="page-item"><a href="#" class="page-link">2</a></li>--%>
-<%--                    <li class="page-item active"><a href="#" class="page-link">3</a></li>--%>
-<%--                    <li class="page-item"><a href="#" class="page-link">4</a></li>--%>
-<%--                    <li class="page-item"><a href="#" class="page-link">5</a></li>--%>
-<%--                    <li class="page-item"><a href="#" class="page-link">Next</a></li>--%>
-<%--                </ul>--%>
-<%--            </div>--%>
-        </div>
-    </div>
-</div>
-<!-- Edit Modal HTML -->
-<div id="addEmployeeModal" class="modal fade">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <form>
-                <div class="modal-header">
-                    <h4 class="modal-title">Add Employee</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                </div>
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label>Name</label>s
-                        <input type="text" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Email</label>
-                        <input type="email" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Address</label>
-                        <textarea class="form-control" required></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label>Phone</label>
-                        <input type="text" class="form-control" required>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                    <input type="submit" class="btn btn-success" value="Add">
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-<!-- Edit Modal HTML -->
-<div id="editEmployeeModal" class="modal fade">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <form>
-                <div class="modal-header">
-                    <h4 class="modal-title">Edit Employee</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                </div>
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label>Name</label>
-                        <input type="text" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Email</label>
-                        <input type="email" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Address</label>
-                        <textarea class="form-control" required></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label>Phone</label>
-                        <input type="text" class="form-control" required>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                    <input type="submit" class="btn btn-info" value="Save">
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-<!-- Delete Modal HTML -->
-<div id="deleteEmployeeModal" class="modal fade">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <form>
-                <div class="modal-header">
-                    <h4 class="modal-title">Delete Employee</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                </div>
-                <div class="modal-body">
-                    <p>Are you sure you want to delete these Records?</p>
-                    <p class="text-warning"><small>This action cannot be undone.</small></p>
-                </div>
-                <div class="modal-footer">
-                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                    <input type="submit" class="btn btn-danger" value="Delete">
-                </div>
-            </form>
-        </div>
-    </div>
 </div>
 
 <!-- Start Footer -->

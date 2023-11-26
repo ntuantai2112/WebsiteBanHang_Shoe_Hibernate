@@ -11,7 +11,6 @@ public class MauSacService {
 
     MauSacRepository mauSacRepository = new MauSacRepository();
     public List<MauSac> getAll(){
-
         return mauSacRepository.getList();
     };
 
@@ -24,4 +23,8 @@ public class MauSacService {
     public void delete( UUID sp){
         mauSacRepository.deleteMauSac(sp);
     };
+
+    public MauSac findMauSactByID(UUID id){
+        return mauSacRepository.findMauSactByID(id);
+    }
 }

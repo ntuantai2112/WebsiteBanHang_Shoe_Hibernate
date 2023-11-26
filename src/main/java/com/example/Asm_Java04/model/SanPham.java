@@ -28,17 +28,17 @@ public class SanPham {
     private String ma;
     @Column(name = "Ten")
     private String ten;
-//    @Column(name = "image")
-//    private String image;
+    @Column(name = "HinhAnh")
+    private String hinhAnh;
 
     public SanPham(String ma, String ten) {
         this.ma = ma;
         this.ten = ten;
     }
 
-//    public SanPham(String ma, String ten, String image) {
-//        this.ma = ma;
-//        this.ten = ten;
-//        this.image = image;
-//    }
+    public SanPham(String ma, String ten, String hinhAnh) {
+        this.ma = ma;
+        this.ten = ten;
+        this.hinhAnh= hinhAnh;
+    }
 }

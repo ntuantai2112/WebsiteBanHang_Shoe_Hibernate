@@ -349,17 +349,17 @@
 
 
     <div class="card mt-5">
-        <div class="card-header">Thêm mới màu sắc</div>
+        <div class="card-header">Thêm mới nhà sản xuất</div>
         <div class="card-body">
-            <form action="/color/add" method="post">
+            <form action="/producer/add" method="post">
                 <div class="form-group">
-                    <label for="">Mã màu sắc</label>
-                    <input type="text" class="form-control" name="ma" placeholder="Mã màu sắc">
+                    <label for="">Mã nhà sản xuất</label>
+                    <input type="text" class="form-control" name="ma" placeholder="Mã nhà sản xuất">
                 </div>
 
                 <div class="form-group">
-                    <%--@declare id=""--%><label for="">Tên màu sắc</label>
-                    <input type="text" class="form-control" name="ten" placeholder="Tên màu sắc">
+                    <%--@declare id=""--%><label for="">Tên nhà sản xuấtc</label>
+                    <input type="text" class="form-control" name="ten" placeholder="Tên nhà sản xuất">
                 </div>
 
 
@@ -377,20 +377,20 @@
         <div class="">
             <div class="table-title ">
                 <div class="row text-center mt-4 mb-1">
-                        <h2>Danh Sách Màu Sắc</h2>
+                        <h2>Danh Sách Nhà Sản Xuất</h2>
                 </div>
             </div>
             <table class="table bg-light ">
                 <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Mã Màu Sắc</th>
-                    <th>Tên Màu Sắc</th>
+                    <th>Mã Nhà Sản Xuất</th>
+                    <th>Tên Nhà Sản Xuất</th>
                     <th>Actions</th>
                 </tr>
                 </thead>
                 <tbody>
-                <c:forEach items="${listMS}" var="ms">
+                <c:forEach items="${listNSX}" var="ms">
                     <tr>
 
                         <td>
@@ -399,9 +399,9 @@
                         <td> ${ms.ma}</td>
                         <td>${ms.ten}</td>
                         <td>
-                            <a href="/color/detail?id=${ms.id}" class="edit" data-toggle="modal"><i
+                            <a href="/producer/update?id=${ms.id}" class="edit" data-toggle="modal"><i
                                     class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                            <a href="/color/delete?id=${ms.id}" class="delete" data-toggle="modal"><i
+                            <a href="/producer/delete?id=${ms.id}" class="delete" data-toggle="modal"><i
                                     class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
                         </td>
                     </tr>

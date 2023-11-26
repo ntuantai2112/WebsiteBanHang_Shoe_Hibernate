@@ -50,7 +50,7 @@
                         <a class="nav-link" href="/views/about.jsp">About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/shop">Shop</a>
+                        <a class="nav-link" href="/store">Shop</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/views/contact.jsp">Contact</a>

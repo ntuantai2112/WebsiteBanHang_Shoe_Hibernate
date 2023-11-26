@@ -114,7 +114,7 @@
 <body>
 <!-- Header-->
 <jsp:include page="Header.jsp"></jsp:include>
-<jsp:useBean id="a" class="com.example.Assignment.dao.DAO_Product" scope="request"></jsp:useBean>
+<%--<jsp:useBean id="a" class="com.example.Assignment.dao.DAO_Product" scope="request"></jsp:useBean>--%>
 <!-- Close Header -->
 
 <!-- Modal -->
@@ -126,7 +126,7 @@
         </div>
         <form action="/search" method="post" class="modal-content modal-body border-0 p-0">
             <div class="input-group mb-2">
-                <input type="text" value="${valueSearch}" class="form-control" id="inputModalSearch" name="keyword"
+                <input type="text" value="" class="form-control" id="inputModalSearch" name="keyword"
                        placeholder="Search ...">
                 <button type="submit" class="input-group-text bg-success text-light">
                     <i class="fa fa-fw fa-search text-white"></i>
@@ -153,7 +153,7 @@
                     <li class="pb-3 list-group-item text-white ${tag == c.id ? "active" : ""} ">
 
                         <a class="category_link text-decoration-none active" href="/category?cid=${c.id}">
-                                ${c.name}
+                                ${c.ten}
                                 <%--                        <i class="fa fa-fw fa-chevron-circle-down mt-1"></i>--%>
                         </a>
                     </li>
@@ -171,7 +171,7 @@
                     <div class="col-md-4">
                         <div class="card mb-4 product-wap rounded-0 card_title">
                             <div class="card rounded-0">
-                                <img class="card-img rounded-0 img-fluid" src="${p.image}">
+                                <img class="card-img rounded-0 img-fluid" src="${p.hinhAnh}">
                                 <div class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
                                     <ul class="list-unstyled">
                                         <li><a class="btn btn-success text-white" href="/shop"><i
@@ -187,9 +187,9 @@
                                     <%--   Title --%>
                                 <div class="row">
                                     <h3><a href="/detail?pid=${p.id}"
-                                           class="h3 name_product  text-decoration-none">${p.name}</a></h3>
+                                           class="h3 name_product  text-decoration-none">${p.ten}</a></h3>
 
-                                    <p class="fw-bold mb-0">${p.price} $</p>
+<%--                                    <p class="fw-bold mb-0">${p.price} $</p>--%>
                                 </div>
                             </div>
                         </div>
@@ -202,14 +202,14 @@
             <%-- Dòng phân  trang --%>
             <div div="row">
                 <ul class="pagination pagination-lg justify-content-end">
-                    <c:forEach begin="1" end="${a.numberPage}" var="i">
+<%--                    <c:forEach begin="1" end="${a.numberPage}" var="i">--%>
 
-                        <li class="page-item ">
-                            <a class="page-link <c:if test="${i == index }">active</c:if>   rounded-0 mr-3 shadow-sm border-top-0 border-left-0"
-                               href="/shop?index=${i}" tabindex="-1" style="color: black">${i}</a>
-                        </li>
+<%--                        <li class="page-item ">--%>
+<%--                            <a class="page-link <c:if test="${i == index }">active</c:if>   rounded-0 mr-3 shadow-sm border-top-0 border-left-0"--%>
+<%--                               href="/store?index=${i}" tabindex="-1" style="color: black">${i}</a>--%>
+<%--                        </li>--%>
 
-                    </c:forEach>
+<%--                    </c:forEach>--%>
                 </ul>
             </div>
 
