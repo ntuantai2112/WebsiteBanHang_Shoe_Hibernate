@@ -26,5 +26,7 @@ public class SanPhamService {
         sanPhamRepository.deleteSanPham(id);
     };
 
-
+    public SanPham findSanPhamByID(UUID id){
+        return sanPhamRepository.findSanPhamByID(id);
+    }
 }

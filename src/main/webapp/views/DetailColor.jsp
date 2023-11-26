@@ -347,19 +347,19 @@
     <div class="card mt-5">
         <div class="card-header">Chi tiết màu sắc</div>
         <div class="card-body">
-            <form action="/color/update?id=${mauSacDetail.id}" method="post">
+            <form action="/color/update?id=${MSDetial.id}" method="post">
                 <div class="form-group">
                     <label for="">ID</label>
-                    <input type="text" disabled value="${mauSacDetail.id}" class="form-control" name="ma" placeholder="ID màu sắc">
+                    <input type="text" disabled value="${MSDetial.id}" class="form-control" name="ma" placeholder="ID màu sắc">
                 </div>
                 <div class="form-group">
                     <label for="">Mã màu sắc</label>
-                    <input type="text" value="${mauSacDetail.ma}" class="form-control" name="ma" placeholder="Mã màu sắc">
+                    <input type="text" value="${MSDetial.ma}" class="form-control" name="ma" placeholder="Mã màu sắc">
                 </div>
 
                 <div class="form-group">
                     <%--@declare id=""--%><label for="">Tên màu sắc</label>
-                    <input type="text" value="${mauSacDetail.ten}" class="form-control" name="ten" placeholder="Tên màu sắc">
+                    <input type="text" value="${MSDetial.ten}" class="form-control" name="ten" placeholder="Tên màu sắc">
                 </div>
 
 

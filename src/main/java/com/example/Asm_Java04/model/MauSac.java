@@ -19,7 +19,6 @@ import java.util.UUID;
 public class MauSac {
     @Id
     @Column(name = "Id")
-    @GeneratedValue(generator = "UUID")
     @GenericGenerator(
             name = "UUID",
             strategy = "org.hibernate.id.UUIDGenerator"
@@ -35,5 +34,7 @@ public class MauSac {
         this.ma = ma;
         this.ten = ten;
     }
+
+
 
 }

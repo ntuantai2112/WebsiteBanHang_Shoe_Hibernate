@@ -24,4 +24,8 @@ public class KhachHangService {
     public void delete( UUID id){
         khachHangRepository.deleteKhachHang(id);
     };
+
+    public KhachHang findKhachHangtByID(UUID id){
+        return khachHangRepository.findKhachHangtByID(id);
+    }
 }

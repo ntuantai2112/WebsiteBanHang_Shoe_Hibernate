@@ -12,6 +12,8 @@ import java.util.List;
 import java.util.UUID;
 
 public class MauSacRepository {
+
+
     public ArrayList<MauSac> getList() {
         ArrayList<MauSac> ketQua = new ArrayList<>();
         try (Session session  = HibernateUtil.getFACTORY().openSession();)  {
@@ -42,16 +44,12 @@ public class MauSacRepository {
         try(Session session  = HibernateUtil.getFACTORY().openSession()) {
             //Tạo ra Transaction
             transaction = session.beginTransaction();
-            session.update(ms);
+            session.saveOrUpdate(ms);
             transaction.commit();
         } catch (Exception e) {
-//            if (transaction != null) {
             e.printStackTrace();
             transaction.rollback();
         }
-//        } finally {
-//            session.close();
-//        }
     }
 
     public void deleteMauSac(UUID id){
@@ -86,4 +84,6 @@ public class MauSacRepository {
         }
         return null;
     }
+
+
 }

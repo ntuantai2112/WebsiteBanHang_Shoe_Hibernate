@@ -1,9 +1,11 @@
 package com.example.Asm_Java04.repositories;
 
 import com.example.Asm_Java04.model.ChucVu;
+import com.example.Asm_Java04.model.CuaHang;
 import com.example.Asm_Java04.model.DongSP;
 import com.example.Asm_Java04.model.SanPham;
 import com.example.Asm_Java04.util.HibernateUtil;
+import jakarta.persistence.TypedQuery;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -73,5 +75,19 @@ public class DongSanPhamRepository {
             e.printStackTrace();
             transaction.rollback();
         }
+    }
+
+    public DongSP findCategorytByID(UUID id){
+        Transaction transaction = null;
+        try(Session session  = HibernateUtil.getFACTORY().openSession()) {
+            String jpql = "Select o from DongSP o where o.id = :id";
+            TypedQuery<DongSP> query = session.createQuery(jpql, DongSP.class);
+            query.setParameter("id", id);
+            return query.getSingleResult();
+        }catch (Exception e){
+            e.printStackTrace();
+            transaction.rollback();
+        }
+        return null;
     }
 }

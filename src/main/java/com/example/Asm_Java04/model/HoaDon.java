@@ -16,22 +16,45 @@ import java.util.UUID;
 @AllArgsConstructor
 public class HoaDon {
 
+
     @Id
-    @Column(name = "Id")
+    @GeneratedValue(generator = "UUID")
     @GenericGenerator(
             name = "UUID",
             strategy = "org.hibernate.id.UUIDGenerator"
     )
-
+    @Column(name = "Id")
     private UUID id;
+
+    @Column(name = "Ma")
     private String ma;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "NgayTao")
     private Date ngayTao;
-    private Date ngayThanhtoan;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "NgayThanhToan")
+    private Date ngayThanhToan;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "NgayShip")
     private Date ngayShip;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "NgayNhan")
     private Date ngayNhan;
+
+    @Column(name = "TinhTrang")
     private String tinhTrang;
-    private String tenNguoinhan;
+
+    @Column(name = "TenNguoiNhan")
+    private String tenNguoiNhan;
+
+    @Column(name = "DiaChi")
     private String diaChi;
+
+    @Column(name = "Sdt")
     private String sdt;
 
 

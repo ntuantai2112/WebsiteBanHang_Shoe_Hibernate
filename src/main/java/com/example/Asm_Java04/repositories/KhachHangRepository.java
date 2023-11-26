@@ -76,11 +76,11 @@ public class KhachHangRepository {
         }
     }
 
-    public ChucVu findKhachHangtByID(UUID id){
+    public KhachHang findKhachHangtByID(UUID id){
         Transaction transaction = null;
         try(Session session  = HibernateUtil.getFACTORY().openSession()) {
             String jpql = "Select o from ChucVu o where o.id = :id";
-            TypedQuery<ChucVu> query = session.createQuery(jpql, ChucVu.class);
+            TypedQuery<KhachHang> query = session.createQuery(jpql, KhachHang.class);
             query.setParameter("id", id);
             return query.getSingleResult();
         }catch (Exception e){

@@ -27,8 +27,7 @@ public class ManagerColor extends HttpServlet {
         String uri = request.getRequestURI();
 
         if (uri.contains("/manager-color")) {
-//            HttpSession session = request.getSession();
-            ArrayList<MauSac> listMS = (ArrayList<MauSac>) mauSacService.getAll();
+           ArrayList<MauSac> listMS =  mauSacService.getAll();
             request.setAttribute("listMS", listMS);
 
             request.getRequestDispatcher("/views/ManagerColor.jsp").forward(request, response);
@@ -67,10 +66,17 @@ public class ManagerColor extends HttpServlet {
         if (uri.contains("/add")) {
             String ma = request.getParameter("ma");
             String ten = request.getParameter("ten");
-            System.out.println(ma);
-            System.out.println(ten);
             MauSac mauSac = new MauSac(ma, ten);
             mauSacService.insertMauSac(mauSac);
+            response.sendRedirect("/manager-color");
+        }
+        else  if (uri.contains("/update")){
+            String id = request.getParameter("id");
+            UUID mauSacID = UUID.fromString(id);
+            String ma = request.getParameter("ma");
+            String ten = request.getParameter("ten");
+            MauSac mauSac = new MauSac(mauSacID,ma, ten);
+            mauSacService.update(mauSac);
             response.sendRedirect("/manager-color");
         }
 

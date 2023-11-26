@@ -4,6 +4,7 @@ import com.example.Asm_Java04.model.ChucVu;
 import com.example.Asm_Java04.model.CuaHang;
 import com.example.Asm_Java04.model.SanPham;
 import com.example.Asm_Java04.util.HibernateUtil;
+import jakarta.persistence.TypedQuery;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -73,5 +74,19 @@ public class CuaHangRepository {
             e.printStackTrace();
             transaction.rollback();
         }
+    }
+
+    public CuaHang findCuaHangByID(UUID id){
+        Transaction transaction = null;
+        try(Session session  = HibernateUtil.getFACTORY().openSession()) {
+            String jpql = "Select o from CuaHang o where o.id = :id";
+            TypedQuery<CuaHang> query = session.createQuery(jpql, CuaHang.class);
+            query.setParameter("id", id);
+            return query.getSingleResult();
+        }catch (Exception e){
+            e.printStackTrace();
+            transaction.rollback();
+        }
+        return null;
     }
 }

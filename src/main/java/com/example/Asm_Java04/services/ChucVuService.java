@@ -25,4 +25,8 @@ public class ChucVuService {
     public void delete( UUID id){
         chucVuRepository.deleteChucVu(id);
     };
+
+    public ChucVu findChucVutByID(UUID id){
+        return chucVuRepository.findChucVutByID(id);
+    }
 }

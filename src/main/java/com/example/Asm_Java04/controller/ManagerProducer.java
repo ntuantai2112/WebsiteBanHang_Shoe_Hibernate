@@ -1,5 +1,6 @@
 package com.example.Asm_Java04.controller;
 
+import com.example.Asm_Java04.model.ChucVu;
 import com.example.Asm_Java04.model.DongSP;
 import com.example.Asm_Java04.model.NSX;
 import com.example.Asm_Java04.services.DongSanPhamService;
@@ -15,7 +16,7 @@ import java.util.ArrayList;
 import java.util.UUID;
 
 @WebServlet(name = "/ManagerProducer", value = {"/manager-producer"
-        , "/producer/add", "/producer/update", "/producer/delete"
+        , "/producer/add", "/producer/update", "/producer/delete","/producer/detail"
 })
 public class ManagerProducer extends HttpServlet {
     NSXService nsxService = new NSXService();
@@ -28,7 +29,7 @@ public class ManagerProducer extends HttpServlet {
         if (uri.contains("/manager-producer")) {
 //            HttpSession session = request.getSession();
             ArrayList<NSX> listNSX = (ArrayList<NSX>) nsxService.getAll();
-            request.setAttribute("listNSX",listNSX);
+            request.setAttribute("listNSX", listNSX);
 
             request.getRequestDispatcher("/views/ManagerProducer.jsp").forward(request, response);
         } else if (uri.contains("/delete")) {
@@ -42,12 +43,21 @@ public class ManagerProducer extends HttpServlet {
                 }
             }
             response.sendRedirect("/manager-producer");
-        } else if (uri.contains("/add")) {
-//            List<Category> listC = categoryService.getAllCategory();
-//            request.setAttribute("listC", listC);
-//            request.getRequestDispatcher("/views/AddProduct.jsp").forward(request, response);
+        } else if (uri.contains("/detail")) {
+            String mauSacID = request.getParameter("id");
+            if (mauSacID != null && !mauSacID.isEmpty()) {
+                try {
+                    UUID uuid = UUID.fromString(mauSacID);
+                    NSX nsx = nsxService.findNSXtByID(uuid);
+                    request.setAttribute("nsxDetail", nsx);
+                    request.getRequestDispatcher("/views/DetailProducer.jsp").forward(request, response);
 
+                } catch (IllegalArgumentException e) {
+                    e.printStackTrace();
+                }
+            }
         }
+
 
 
     }
@@ -63,6 +73,18 @@ public class ManagerProducer extends HttpServlet {
             System.out.println(ten);
             NSX nsx = new NSX(ma,ten);
             nsxService.insert(nsx);
+            response.sendRedirect("/manager-producer");
+        }
+         else if(uri.contains("/update")){
+            String id = request.getParameter("id");
+            UUID nsxID = UUID.fromString(id);
+            String ma = request.getParameter("ma");
+            String ten = request.getParameter("ten");
+            System.out.println(id);
+            System.out.println(ma);
+            System.out.println(ten);
+            NSX nsx = new NSX(nsxID,ma,ten);
+            nsxService.update(nsx);
             response.sendRedirect("/manager-producer");
         }
 

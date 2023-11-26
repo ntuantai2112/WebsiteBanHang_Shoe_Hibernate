@@ -26,4 +26,8 @@ public class NSXService {
     public void delete( UUID id){
         nsxRepository.deleteNSX(id);
     };
+
+    public NSX findNSXtByID(UUID id){
+        return nsxRepository.findNSXtByID(id);
+    }
 }

@@ -27,4 +27,8 @@ public class NhanVienService {
         nhanVienRepository.deleteNhanVien(id);
     }
 
+    public NhanVien findNhanVientByID(UUID id){
+        return nhanVienRepository.findNhanVientByID(id);
+    }
+
 }

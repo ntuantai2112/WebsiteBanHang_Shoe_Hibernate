@@ -26,4 +26,8 @@ public class CuaHangService {
     public void delete( UUID id){
         cuaHangRepository.deleteCuaHang(id);
     };
+
+    public CuaHang findCuaHangByID(UUID id){
+        return cuaHangRepository.findCuaHangByID(id);
+    }
 }

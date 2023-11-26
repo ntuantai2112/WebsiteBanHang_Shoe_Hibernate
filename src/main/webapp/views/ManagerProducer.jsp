@@ -354,12 +354,12 @@
             <form action="/producer/add" method="post">
                 <div class="form-group">
                     <label for="">Mã nhà sản xuất</label>
-                    <input type="text" class="form-control" name="ma" placeholder="Mã nhà sản xuất">
+                    <input required type="text" class="form-control" name="ma" placeholder="Mã nhà sản xuất">
                 </div>
 
                 <div class="form-group">
                     <%--@declare id=""--%><label for="">Tên nhà sản xuấtc</label>
-                    <input type="text" class="form-control" name="ten" placeholder="Tên nhà sản xuất">
+                    <input required type="text" class="form-control" name="ten" placeholder="Tên nhà sản xuất">
                 </div>
 
 
@@ -390,18 +390,18 @@
                 </tr>
                 </thead>
                 <tbody>
-                <c:forEach items="${listNSX}" var="ms">
+                <c:forEach items="${listNSX}" var="nsx">
                     <tr>
 
                         <td>
-                                ${ms.id}
+                                ${nsx.id}
                         </td>
-                        <td> ${ms.ma}</td>
-                        <td>${ms.ten}</td>
+                        <td> ${nsx.ma}</td>
+                        <td>${nsx.ten}</td>
                         <td>
-                            <a href="/producer/update?id=${ms.id}" class="edit" data-toggle="modal"><i
+                            <a href="/producer/detail?id=${nsx.id}" class="edit" data-toggle="modal"><i
                                     class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                            <a href="/producer/delete?id=${ms.id}" class="delete" data-toggle="modal"><i
+                            <a href="/producer/delete?id=${nsx.id}" class="delete" data-toggle="modal"><i
                                     class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
                         </td>
                     </tr>

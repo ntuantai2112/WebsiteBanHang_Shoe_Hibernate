@@ -1,6 +1,7 @@
 package com.example.Asm_Java04.controller;
 
 import com.example.Asm_Java04.model.ChucVu;
+import com.example.Asm_Java04.model.MauSac;
 import com.example.Asm_Java04.services.ChucVuService;
 import com.example.Asm_Java04.services.DongSanPhamService;
 import com.example.Asm_Java04.services.SanPhamService;
@@ -16,7 +17,7 @@ import java.util.ArrayList;
 import java.util.UUID;
 
 @WebServlet(name = "/ManagerPosition", value = {"/manager-position"
-        , "/position/add", "/position/update", "/position/delete"
+        , "/position/add", "/position/update", "/position/delete","/position/detail"
 })
 public class ManagerPosition extends HttpServlet {
     ChucVuService chucVuService = new ChucVuService();
@@ -43,11 +44,20 @@ public class ManagerPosition extends HttpServlet {
                 }
             }
             response.sendRedirect("/manager-position");
-        } else if (uri.contains("/add")) {
-//            List<Category> listC = categoryService.getAllCategory();
-//            request.setAttribute("listC", listC);
-//            request.getRequestDispatcher("/views/AddProduct.jsp").forward(request, response);
+        }
+        else if (uri.contains("/detail")) {
+            String mauSacID = request.getParameter("id");
+            if (mauSacID != null && !mauSacID.isEmpty()) {
+                try {
+                    UUID uuid = UUID.fromString(mauSacID);
+                    ChucVu chucVuDetail = chucVuService.findChucVutByID(uuid);
+                    request.setAttribute("chucVuDetail", chucVuDetail);
+                    request.getRequestDispatcher("/views/DetailPosition.jsp").forward(request, response);
 
+                } catch (IllegalArgumentException e) {
+                    e.printStackTrace();
+                }
+            }
         }
 
 
@@ -62,6 +72,15 @@ public class ManagerPosition extends HttpServlet {
             String ten = request.getParameter("ten");
             ChucVu chucVu = new ChucVu(ma,ten);
             chucVuService.insert(chucVu);
+            response.sendRedirect("/manager-position");
+        }
+        else if(uri.contains("/update")){
+            String id = request.getParameter("id");
+            UUID chucVuID = UUID.fromString(id);
+            String ma = request.getParameter("ma");
+            String ten = request.getParameter("ten");
+            ChucVu chucVu = new ChucVu(chucVuID,ma,ten);
+            chucVuService.update(chucVu);
             response.sendRedirect("/manager-position");
         }
 

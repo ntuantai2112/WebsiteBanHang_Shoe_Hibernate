@@ -26,14 +26,34 @@ public class ChiTietSanPham {
             strategy = "org.hibernate.id.UUIDGenerator"
     )
     private UUID id;
-    private String idsp;
-    private String idnsx;
-    private String idmausac;
-    private String iddongsp;
+    @ManyToOne
+    @JoinColumn(name = "IdSP")
+    private SanPham sanPham;
+
+    @ManyToOne
+    @JoinColumn(name = "IdNSX")
+    private NSX nhaSanXuat;
+
+    @ManyToOne
+    @JoinColumn(name = "IdMauSac")
+    private MauSac mauSac;
+
+    @ManyToOne
+    @JoinColumn(name = "IdDongSP")
+    private DongSP dongSanPham;
+    @Column(name = "NamBH")
     private int nambh;
+
+    @Column(name = "MoTa")
     private String mota;
+
+    @Column(name = "SoLuongTon")
     private int soluongton;
+
+    @Column(name = "GiaNhap")
     private double gianhap;
+
+    @Column(name = "GiaBan")
     private double giaban;
 
 

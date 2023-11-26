@@ -1,5 +1,6 @@
 package com.example.Asm_Java04.services;
 
+import com.example.Asm_Java04.model.CuaHang;
 import com.example.Asm_Java04.model.DongSP;
 import com.example.Asm_Java04.model.SanPham;
 import com.example.Asm_Java04.repositories.DongSanPhamRepository;
@@ -24,4 +25,8 @@ public class DongSanPhamService {
     public void delete( UUID id){
         dongSanPhamRepository.deleteDongSP(id);
     };
+
+    public DongSP findCategorytByID(UUID id){
+        return findCategorytByID(id);
+    }
 }
