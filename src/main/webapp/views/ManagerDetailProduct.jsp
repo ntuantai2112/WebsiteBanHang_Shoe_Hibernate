@@ -1,6 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -342,55 +343,73 @@
 <!-- Header -->
 <jsp:include page="Header.jsp"></jsp:include>
 
-<div class="container  ">
-
-
-
-
-
+<div class="">
     <div class="card mt-5">
-        <div class="card-header">Thêm mới sản phẩm</div>
+        <div class="card-header">Thêm mới chi tiết sản phẩm</div>
         <div class="card-body">
-            <form>
+            <form action="/detail-product/add" method="post">
                 <div class="form-group">
-                    <label for="">Product Name</label>
-                    <input type="text" class="form-control" name="name" placeholder="Tên sản phẩm">
-                </div>
-
-                <div class="form-group">
-                    <label for="">Image</label>
-                    <input type="file" class="form-control" name="image" placeholder="image">
-                </div>
-
-                <div class="form-group">
-                    <label for="">Price</label>
-                    <input type="text" class="form-control" name="name" placeholder="Giá sản phẩm">
-                </div>
-
-                <div class="form-group">
-                    <label for="">Title</label>
-                    <input type="text" class="form-control" name="title" id="" placeholder="Tiêu đề">
-                    <label for="" ng-if="" class="text-denger"></label>
-                </div>
-
-                <div class="form-group">
-                    <label for="">Description</label>
-                    <div class="mb-3">
-                        <textarea class="form-control" name="description" id="exampleFormControlTextarea1"
-                                  rows="3"></textarea>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="">Category</label>
-
-                    <select name="category" class="form-select" aria-label="Default select example">
-<%--                        <c:forEach items="${listC}" var="category">--%>
-
-<%--                            <option name="lop" value="${category.name}">${category.name}</option>--%>
-<%--                        </c:forEach>--%>
+                    <label for="">Sản Phẩm</label>
+                    <select class="form-select" aria-label="Default select example" name="sanPham">
+                        <c:forEach items="${listSP}" var="sp">
+                            <option value="${sp.id}" >${sp.ten}</option>
+                        </c:forEach>
                     </select>
                 </div>
+                <div class="form-group">
+                    <label for="">Nhà Sản Xuất</label>
+                    <select class="form-select" aria-label="Default select example" name="nhaSanXuat">
+                        <c:forEach items="${listNSX}" var="nsx">
+                            <option value="${nsx.id}" >${nsx.ten}</option>
+                        </c:forEach>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="">Màu Sắc</label>
+                    <select class="form-select" aria-label="Default select example" name="mauSac">
+                        <c:forEach items="${listMS}" var="ms">
+                            <option value="${ms.id}" >${ms.ten}</option>
+                        </c:forEach>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="">Đồng Sản Phẩm</label>
+                    <select class="form-select" aria-label="Default select example" name="dongSanPham">
+                        <c:forEach items="${listDongSP}" var="dongSP">
+                            <option value="${dongSP.id}" >${dongSP.ten}</option>
+                        </c:forEach>
+                    </select>
+                </div>
+
+
+
+                <div class="form-group">
+                    <label for="">Năm Bảo Hành</label>
+                    <input type="number"  class="form-control" name="namBH" placeholder="Năm Bảo Hành">
+                </div>
+
+                <div class="form-group">
+                    <%--@declare id=""--%><label for="">Mô Tả</label>
+                    <input type="text"  class="form-control" name="moTa" placeholder="Mô Tả">
+                </div>
+
+                <div class="form-group">
+                    <label for="">Số Lượng Tồn</label>
+                    <input type="number"  class="form-control" name="soLuongTon" placeholder="Số Lượng Tồn">
+                </div>
+
+                <div class="form-group">
+                    <label for="">Giá Nhập</label>
+                    <input type="number"  class="form-control" name="giaNhap" placeholder="Gía Nhập">
+                </div>
+
+                <div class="form-group">
+                    <label for="">Giá Bán</label>
+                    <input type="number"  class="form-control" name="giaBan" placeholder="Giá Bán">
+                </div>
+
 
 
                 <div class="text-center mt-3">
@@ -407,153 +426,70 @@
         <div class="">
             <div class="table-title ">
                 <div class="row text-center mt-4 mb-1">
-<%--                    <div class="col-sm-6 ">--%>
-                        <h2>Danh Sách Sản Phẩm</h2>
-<%--                    </div>--%>
-<%--                    <div class="col-sm-6">--%>
-<%--                        <a href="/product/add" class="btn btn-success text-center" data-toggle="modal"><i--%>
-<%--                                class="material-icons">&#xE147;</i> <span>Add New Product </span></a>--%>
-<%--                        &lt;%&ndash;                        <a href="#deleteEmployeeModal" class="btn btn-danger  text-center" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Delete</span></a>&ndash;%&gt;--%>
-<%--                    </div>--%>
+                    <h2>Danh Sách Nhân Viên</h2>
                 </div>
             </div>
             <table class="table bg-light ">
                 <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Name</th>
-                    <th>Image</th>
-                    <th>Price</th>
+                    <th>Sản Phẩm</th>
+                    <th>Nhà Sản Xuất</th>
+                    <th>Màu Sắc</th>
+                    <th>Đồng Sản Phẩm</th>
+                    <th>Năm Bảo Hàng</th>
+                    <th>Mô Tả</th>
+                    <th>Số Lượng Tồn</th>
+                    <th>Giá Nhập</th>
+                    <th>Giá Bán</th>
                     <th>Actions</th>
                 </tr>
                 </thead>
                 <tbody>
-<%--                <c:forEach items="${listP}" var="p">--%>
+                <c:forEach items="${listDetailProduct}" var="sp">
                     <tr>
+                        <td>${sp.id}</td>
+                        <td>${sp.sanPham.ten}</td>
+                        <td>${sp.nhaSanXuat.ten}</td>
+                        <td>${sp.mauSac.ten}</td>
+                        <td>${sp.dongSanPham.ten}</td>
 
                         <td>
-                               1
+                                ${sp.namBH}
                         </td>
-                        <td>1</td>
-                        <td><img src="" alt="" style="width: 100px; height: 100px"></td>
-                        <td>1$</td>
                         <td>
-                            <a href="/product/update?id=${p.id}" class="edit" data-toggle="modal"><i
+                                ${sp.moTa}
+                        </td>
+                        <td> ${sp.soLuongTon}</td>
+                        <td> ${sp.giaNhap}</td>
+                        <td> ${sp.giaBan}</td>
+
+                        <td>
+                            <a href="/detail-product/detail?id=${sp.id}" class="edit" data-toggle="modal"><i
                                     class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                            <a href="/product/delete?id=${p.id}" class="delete" data-toggle="modal"><i
+                            <a href="/detail-product/delete?id=${sp.id}" class="delete" data-toggle="modal"><i
                                     class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
                         </td>
                     </tr>
-
-<%--                </c:forEach>--%>
+                </c:forEach>
                 </tbody>
             </table>
-<%--            <div class="clearfix">--%>
-<%--                <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>--%>
-<%--                <ul class="pagination">--%>
-<%--                    <li class="page-item disabled"><a href="#">Previous</a></li>--%>
-<%--                    <li class="page-item"><a href="#" class="page-link">1</a></li>--%>
-<%--                    <li class="page-item"><a href="#" class="page-link">2</a></li>--%>
-<%--                    <li class="page-item active"><a href="#" class="page-link">3</a></li>--%>
-<%--                    <li class="page-item"><a href="#" class="page-link">4</a></li>--%>
-<%--                    <li class="page-item"><a href="#" class="page-link">5</a></li>--%>
-<%--                    <li class="page-item"><a href="#" class="page-link">Next</a></li>--%>
-<%--                </ul>--%>
-<%--            </div>--%>
+            <%--            <div class="clearfix">--%>
+            <%--                <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>--%>
+            <%--                <ul class="pagination">--%>
+            <%--                    <li class="page-item disabled"><a href="#">Previous</a></li>--%>
+            <%--                    <li class="page-item"><a href="#" class="page-link">1</a></li>--%>
+            <%--                    <li class="page-item"><a href="#" class="page-link">2</a></li>--%>
+            <%--                    <li class="page-item active"><a href="#" class="page-link">3</a></li>--%>
+            <%--                    <li class="page-item"><a href="#" class="page-link">4</a></li>--%>
+            <%--                    <li class="page-item"><a href="#" class="page-link">5</a></li>--%>
+            <%--                    <li class="page-item"><a href="#" class="page-link">Next</a></li>--%>
+            <%--                </ul>--%>
+            <%--            </div>--%>
         </div>
     </div>
 </div>
-<!-- Edit Modal HTML -->
-<div id="addEmployeeModal" class="modal fade">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <form>
-                <div class="modal-header">
-                    <h4 class="modal-title">Add Employee</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                </div>
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label>Name</label>s
-                        <input type="text" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Email</label>
-                        <input type="email" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Address</label>
-                        <textarea class="form-control" required></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label>Phone</label>
-                        <input type="text" class="form-control" required>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                    <input type="submit" class="btn btn-success" value="Add">
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-<!-- Edit Modal HTML -->
-<div id="editEmployeeModal" class="modal fade">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <form>
-                <div class="modal-header">
-                    <h4 class="modal-title">Edit Employee</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                </div>
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label>Name</label>
-                        <input type="text" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Email</label>
-                        <input type="email" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Address</label>
-                        <textarea class="form-control" required></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label>Phone</label>
-                        <input type="text" class="form-control" required>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                    <input type="submit" class="btn btn-info" value="Save">
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-<!-- Delete Modal HTML -->
-<div id="deleteEmployeeModal" class="modal fade">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <form>
-                <div class="modal-header">
-                    <h4 class="modal-title">Delete Employee</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                </div>
-                <div class="modal-body">
-                    <p>Are you sure you want to delete these Records?</p>
-                    <p class="text-warning"><small>This action cannot be undone.</small></p>
-                </div>
-                <div class="modal-footer">
-                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                    <input type="submit" class="btn btn-danger" value="Delete">
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
+
 
 <!-- Start Footer -->
 <jsp:include page="Footer.jsp"></jsp:include>

@@ -343,24 +343,19 @@
 <!-- Header -->
 <jsp:include page="Header.jsp"></jsp:include>
 
-<div class="container  ">
-
-
-
-
-
+<div class="">
     <div class="card mt-5">
         <div class="card-header">Thêm mới nhân viên</div>
         <div class="card-body">
             <form action="/employee/add" method="post">
                 <div class="form-group">
                     <label for="">Mã nhân viên</label>
-                    <input type="text" class="form-control" name="ma" placeholder="Mã nhân viên">
+                    <input type="text" required class="form-control" name="ma" placeholder="Mã nhân viên">
                 </div>
 
                 <div class="form-group">
-                    <label for="">Họ tên khách hàng</label>
-                    <input type="text" class="form-control" name="ten" placeholder="Họ tên nhân viên">
+                    <label for="">Họ tên nhân viên</label>
+                    <input type="text" required class="form-control" name="ten" placeholder="Họ tên nhân viên">
                 </div>
 
 
@@ -369,17 +364,18 @@
                     <div class="row">
                         <div class="col-auto">
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="gioiTinh" id="flexRadioDefault1" checked>
+                                <input value="Nam" class="form-check-input" type="radio" name="gioiTinh" id="flexRadioDefault1"
+                                       checked>
                                 <label class="form-check-label" for="flexRadioDefault1">
-                                   Nam
+                                    Nam
                                 </label>
                             </div>
                         </div>
                         <div class="col-auto">
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="gioiTinh" id="flexRadioDefault2" >
+                                <input value="Nữ" class="form-check-input" type="radio" name="gioiTinh" id="flexRadioDefault2">
                                 <label class="form-check-label" for="flexRadioDefault2">
-                                   Nữ
+                                    Nữ
                                 </label>
                             </div>
                         </div>
@@ -388,43 +384,62 @@
 
                 <div class="form-group">
                     <label for="">Ngày sinh</label>
-                    <input type="date" class="form-control" name="ngaySinh" placeholder="Ngày sinh">
+                    <input type="date" required class="form-control" name="ngaySinh" placeholder="Ngày sinh">
                 </div>
 
                 <div class="form-group">
                     <%--@declare id=""--%><label for="">Địa Chỉ</label>
-                    <input type="text" class="form-control" name="diaChi" placeholder="Địa Chỉ">
+                    <input type="text" required class="form-control" name="diaChi" placeholder="Địa Chỉ">
                 </div>
 
                 <div class="form-group">
                     <label for="">Số điện thoại</label>
-                    <input type="number" class="form-control" name="sdt" placeholder="Số điện thoại">
+                    <input type="text" required class="form-control" name="sdt" placeholder="Số điện thoại">
                 </div>
 
                 <div class="form-group">
                     <%--@declare id=""--%><label for="">Mật Khẩu</label>
-                    <input type="password" class="form-control" name="matKhau" placeholder="Mật Khẩu">
+                    <input type="password" required class="form-control" name="matKhau" placeholder="Mật Khẩu">
                 </div>
 
                 <div class="form-group">
                     <%--@declare id=""--%><label for="">Cửa Hàng</label>
-                        <select class="form-select" aria-label="Default select example" name="cuaHang">
-                            <option selected>Open this select menu</option>
-                        </select>
+                    <select class="form-select" aria-label="Default select example" name="cuaHang">
+                       <c:forEach items="${listCH}" var="ch">
+                        <option value="${ch.id}">${ch.ten}</option>
+                       </c:forEach>
+                    </select>
                 </div>
 
                 <div class="form-group">
                     <%--@declare id=""--%><label for="">Chức Vụ</label>
-                        <select class="form-select" aria-label="Default select example" name="chucVu">
-                            <option selected>Open this select menu</option>
-                        </select>
+                    <select class="form-select" aria-label="Default select example" name="cv">
+                        <c:forEach items="${listCV}" var="cv">
+                            <option value="${cv.id}">${cv.ten}</option>
+                        </c:forEach>
+                    </select>
                 </div>
 
                 <div class="form-group">
                     <%--@declare id=""--%><label for="">Trạng Thái</label>
-                        <select class="form-select" aria-label="Default select example" name="chucVu">
-                            <option selected>Open this select menu</option>
-                        </select>
+                    <div class="row">
+                        <div class="col-auto">
+                            <div class="form-check">
+                                <input  class="form-check-input" value="1" type="radio" name="trangThai" checked>
+                                <label class="form-check-label" for="flexRadioDefault1">
+                                    Đang Đi Làm
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" value="0" name="trangThai">
+                                <label class="form-check-label" for="flexRadioDefault2">
+                                    Nghỉ Làm
+                                </label>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
 
@@ -467,24 +482,24 @@
                     <tr>
                         <td>${nv.id}</td>
                         <td>${nv.ma}</td>
-                        <td>${nvkh.ho} ${kh.nv} ${nv.ten}</td>
+                        <td>${nv.ho} ${nv.tenDem} ${nv.ten}</td>
                         <td>${nv.gioiTinh}</td>
 
                         <td>
-                            <fmt:formatDate value="${nv.ngaySinh}" pattern="dd/MM/yyyy" var="formattedDate" />
-                            <c:out value="${formattedDate}" />
+                            <fmt:formatDate value="${nv.ngaySinh}" pattern="dd/MM/yyyy" var="formattedDate"/>
+                            <c:out value="${formattedDate}"/>
                         </td>
                         <td>${nv.diaChi}</td>
                         <td>${nv.sdt}</td>
-                        <td>${kh.matKhau}</td>
-                        <td>${kh.cuaHang.ten}</td>
-                        <td>${kh.cv.ten}</td>
-                        <td>${kh.trangThai}</td>
+                        <td>${nv.matKhau}</td>
+                        <td>${nv.cuaHang.ten}</td>
+                        <td>${nv.cv.ten}</td>
+                        <td>${nv.trangThai == 1 ? "Đang Đi Làm" : "Nghỉ Làm"}</td>
 
                         <td>
-                            <a href="/employee/update?id=${kh.id}" class="edit" data-toggle="modal"><i
+                            <a href="/employee/detail?id=${nv.id}" class="edit" data-toggle="modal"><i
                                     class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                            <a href="/employee/delete?id=${kh.id}" class="delete" data-toggle="modal"><i
+                            <a href="/employee/delete?id=${nv.id}" class="delete" data-toggle="modal"><i
                                     class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
                         </td>
                     </tr>

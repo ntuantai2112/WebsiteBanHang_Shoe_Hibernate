@@ -13,7 +13,7 @@ public class ChiTietSPService {
 
     public List<ChiTietSanPham> getAll(){
 
-        return chiTietSPRepository.getAll();
+        return chiTietSPRepository.getList();
     };
 
     public void insert(ChiTietSanPham sp){

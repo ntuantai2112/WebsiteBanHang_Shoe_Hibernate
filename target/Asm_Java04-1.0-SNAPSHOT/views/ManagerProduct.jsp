@@ -354,12 +354,12 @@
             <form action="/product/add" method="post">
                 <div class="form-group">
                     <%--@declare id=""--%><label for="">Mã sản phẩm</label>
-                    <input type="text" class="form-control" name="ma" placeholder="Mã sản phẩm">
+                    <input type="text" required class="form-control" name="ma" placeholder="Mã sản phẩm">
                 </div>
 
                 <div class="form-group">
                     <label for="">Tên sản phẩm</label>
-                    <input type="text" class="form-control" name="ten" placeholder="Tên sản phẩm">
+                    <input type="text" required class="form-control" name="ten" placeholder="Tên sản phẩm">
                 </div>
 
                 <div class="form-group">
@@ -410,9 +410,9 @@
                         </td>
                         <td>${product.ma}</td>
                         <td>${product.ten}</td>
-                        <td><img src="" alt="" style="width: 100px; height: 100px"></td>
+                        <td><img src="${product.hinhAnh}" alt="" style="width: 100px; height: 100px"></td>
                         <td>
-                            <a href="/product/update?id=${product.id}" class="edit" data-toggle="modal"><i
+                            <a href="/product/detail?id=${product.id}" class="edit" data-toggle="modal"><i
                                     class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
                             <a href="/product/delete?id=${product.id}" class="delete" data-toggle="modal"><i
                                     class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>

@@ -2,6 +2,7 @@ package com.example.Asm_Java04.controller;
 
 import com.example.Asm_Java04.model.DongSP;
 import com.example.Asm_Java04.model.MauSac;
+import com.example.Asm_Java04.model.SanPham;
 import com.example.Asm_Java04.services.DongSanPhamService;
 import com.example.Asm_Java04.services.MauSacService;
 import jakarta.servlet.ServletException;
@@ -15,7 +16,7 @@ import java.util.ArrayList;
 import java.util.UUID;
 
 @WebServlet(name = "/ManagerCategory", value = {"/manager-category"
-        , "/category/add", "/category/update", "/category/delete"
+        , "/category/add", "/category/update", "/category/delete","/category/detail"
 })
 public class ManagerCategory extends HttpServlet {
     DongSanPhamService dongSanPhamService = new DongSanPhamService();
@@ -42,11 +43,19 @@ public class ManagerCategory extends HttpServlet {
                 }
             }
             response.sendRedirect("/manager-category");
-        } else if (uri.contains("/add")) {
-//            List<Category> listC = categoryService.getAllCategory();
-//            request.setAttribute("listC", listC);
-//            request.getRequestDispatcher("/views/AddProduct.jsp").forward(request, response);
+        }  else if (uri.contains("/detail")) {
+            String categoryID = request.getParameter("id");
+            if (categoryID != null && !categoryID.isEmpty()) {
+                try {
+                    UUID uuid = UUID.fromString(categoryID);
+                    DongSP category = dongSanPhamService.findCategorytByID(uuid);
+                    request.setAttribute("dongSPDetail", category);
+                    request.getRequestDispatcher("/views/DetailCategory.jsp").forward(request, response);
 
+                } catch (IllegalArgumentException e) {
+                    e.printStackTrace();
+                }
+            }
         }
 
 
@@ -63,6 +72,18 @@ public class ManagerCategory extends HttpServlet {
             System.out.println(ten);
             DongSP dongSP = new DongSP(ma,ten);
             dongSanPhamService.insert(dongSP);
+            response.sendRedirect("/manager-category");
+        }
+
+        else if(uri.contains("/update")){
+            String ma = request.getParameter("ma");
+            String ten = request.getParameter("ten");
+            String id = request.getParameter("id");
+            UUID categoryID = UUID.fromString(id);
+            System.out.println(ma);
+            System.out.println(ten);
+            DongSP dongSP = new DongSP(categoryID,ma,ten);
+            dongSanPhamService.update(dongSP);
             response.sendRedirect("/manager-category");
         }
 

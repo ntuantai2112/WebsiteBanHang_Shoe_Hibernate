@@ -26,7 +26,6 @@ public class KhachHang {
             strategy = "org.hibernate.id.UUIDGenerator"
     )
     private UUID id;
-
     @Column(name = "Ma")
     private String ma;
 

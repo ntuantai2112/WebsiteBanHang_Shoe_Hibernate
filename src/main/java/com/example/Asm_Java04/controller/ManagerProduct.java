@@ -1,6 +1,7 @@
 package com.example.Asm_Java04.controller;
 
 import com.example.Asm_Java04.model.MauSac;
+import com.example.Asm_Java04.model.NSX;
 import com.example.Asm_Java04.model.SanPham;
 import com.example.Asm_Java04.services.DongSanPhamService;
 import com.example.Asm_Java04.services.SanPhamService;
@@ -14,7 +15,7 @@ import java.util.List;
 import java.util.UUID;
 
 @WebServlet(name = "/ManagerProduct", value = {"/manager-product"
-        , "/product/add", "/product/update", "/product/delete"
+        , "/product/add", "/product/update", "/product/delete", "/product/detail"
 })
 
 public class ManagerProduct extends HttpServlet {
@@ -41,11 +42,19 @@ public class ManagerProduct extends HttpServlet {
                 }
             }
             response.sendRedirect("/manager-product");
-        } else if (uri.contains("/add")) {
-//            List<Category> listC = categoryService.getAllCategory();
-//            request.setAttribute("listC", listC);
-//            request.getRequestDispatcher("/views/AddProduct.jsp").forward(request, response);
+        } else if (uri.contains("/detail")) {
+            String productID = request.getParameter("id");
+            if (productID != null && !productID.isEmpty()) {
+                try {
+                    UUID uuid = UUID.fromString(productID);
+                    SanPham sp = sanPhamService.findSanPhamByID(uuid);
+                    request.setAttribute("spDetail", sp);
+                    request.getRequestDispatcher("/views/DetailProduct.jsp").forward(request, response);
 
+                } catch (IllegalArgumentException e) {
+                    e.printStackTrace();
+                }
+            }
         }
 
 

@@ -351,19 +351,19 @@
     <div class="card mt-5">
         <div class="card-header">Chi tiết danh mục</div>
         <div class="card-body">
-            <form action="/category/update" method="post">
+            <form action="/category/update?id=${dongSPDetail.id}" method="post">
                 <div class="form-group">
                     <%--@declare id=""--%><label for="">ID</label>
-                    <input disabled value="" type="text" class="form-control" name="ma" placeholder="ID danh mục">
+                    <input disabled value="${dongSPDetail.id}" type="text" class="form-control" name="id" placeholder="ID danh mục">
                 </div>
                 <div class="form-group">
                     <%--@declare id=""--%><label for="">Mã danh mục</label>
-                    <input type="text" value="" class="form-control" name="ma" placeholder="Mã danh mục">
+                    <input type="text" value="${dongSPDetail.ma}" class="form-control" name="ma" placeholder="Mã danh mục">
                 </div>
 
                 <div class="form-group">
                     <label for="">Tên danh mục</label>
-                    <input type="text" value="" class="form-control" name="ten" placeholder="Tên danh mục">
+                    <input type="text" value="${dongSPDetail.ten}" class="form-control" name="ten" placeholder="Tên danh mục">
                 </div>
 
 

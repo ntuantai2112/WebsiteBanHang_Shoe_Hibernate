@@ -19,24 +19,25 @@ import java.util.UUID;
 @AllArgsConstructor
 public class NhanVien {
     @Id
-    @Column(name = "Id")
+    @GeneratedValue(generator = "UUID")
     @GenericGenerator(
             name = "UUID",
             strategy = "org.hibernate.id.UUIDGenerator"
     )
+    @Column(name = "Id", updatable = false, nullable = false)
     private UUID id;
 
     @Column(name = "Ma")
     private String ma;
 
-    @Column(name = "Ten")
-    private String ten;
+    @Column(name = "Ho")
+    private String ho;
 
     @Column(name = "TenDem")
     private String tenDem;
 
-    @Column(name = "Ho")
-    private String ho;
+    @Column(name = "Ten")
+    private String ten;
 
     @Column(name = "GioiTinh")
     private String gioiTinh;
@@ -73,11 +74,11 @@ public class NhanVien {
     )
     private ChucVu cv;
 
-    public NhanVien(String ma, String ten, String tenDem, String ho, String gioiTinh, Date ngaySinh, String diaChi, String sdt, String matKhau, Integer trangThai, CuaHang cuaHang, ChucVu cv) {
+    public NhanVien(String ma,String ho,String tenDem,String ten ,String gioiTinh, Date ngaySinh, String diaChi, String sdt, String matKhau, Integer trangThai, CuaHang cuaHang, ChucVu cv) {
         this.ma = ma;
-        this.ten = ten;
-        this.tenDem = tenDem;
         this.ho = ho;
+        this.tenDem = tenDem;
+        this.ten = ten;
         this.gioiTinh = gioiTinh;
         this.ngaySinh = ngaySinh;
         this.diaChi = diaChi;

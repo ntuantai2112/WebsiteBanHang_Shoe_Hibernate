@@ -354,32 +354,32 @@
             <form action="/shop/add" method="post">
                 <div class="form-group">
                     <label for="">Mã cửa hàng</label>
-                    <input type="text" class="form-control" name="ma" placeholder="Mã cửa hàng">
+                    <input type="text" required class="form-control" name="ma" placeholder="Mã cửa hàng">
                 </div>
 
                 <div class="form-group">
                     <label for="">Tên cửa hàng</label>
-                    <input type="text" class="form-control" name="ten" placeholder="Tên cửa hàng">
+                    <input type="text" required class="form-control" name="ten" placeholder="Tên cửa hàng">
                 </div>
 
                 <div class="form-group">
                     <label for="">Địa Chỉ</label>
-                    <input type="text" class="form-control" name="diaChi" placeholder="Địa Chỉ">
+                    <input type="text" required class="form-control" name="diaChi" placeholder="Địa Chỉ">
                 </div>
 
                 <div class="form-group">
                     <label for="">Thành Phố</label>
-                    <input type="text" class="form-control" name="thanhPho" placeholder="Thành Phố">
+                    <input type="text" required class="form-control" name="thanhPho" placeholder="Thành Phố">
                 </div>
 
                 <div class="form-group">
                     <%--@declare id=""--%><label for="">Quốc gia</label>
-                    <input type="text" class="form-control" name="quocGia" placeholder="Quốc gia">
+                    <input type="text" required  class="form-control" name="quocGia" placeholder="Quốc gia">
                 </div>
 
                 <div class="text-center mt-3">
                     <button type="reset" class="btn  btn-outline-secondary">Reset</button>
-                    <button type="submit" class="btn btn-success">Thêm</button>
+                    <button type="submit" required class="btn btn-success">Thêm</button>
                 </div>
 
             </form>
@@ -426,7 +426,7 @@
                         <td>${cuaHang.thanhPho}</td>
                         <td>${cuaHang.quocGia}</td>
                         <td>
-                            <a href="/shop/update?id=${cuaHang.id}" class="edit" data-toggle="modal"><i
+                            <a href="/shop/detail?id=${cuaHang.id}" class="edit" data-toggle="modal"><i
                                     class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
                             <a href="/shop/delete?id=${cuaHang.id}" class="delete" data-toggle="modal"><i
                                     class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>

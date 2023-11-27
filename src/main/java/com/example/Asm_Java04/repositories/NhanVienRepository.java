@@ -79,7 +79,7 @@ public class NhanVienRepository {
     public NhanVien findNhanVientByID(UUID id){
         Transaction transaction = null;
         try(Session session  = HibernateUtil.getFACTORY().openSession()) {
-            String jpql = "Select o from ChucVu o where o.id = :id";
+            String jpql = "Select o from NhanVien o where o.id = :id";
             TypedQuery<NhanVien> query = session.createQuery(jpql, NhanVien.class);
             query.setParameter("id", id);
             return query.getSingleResult();

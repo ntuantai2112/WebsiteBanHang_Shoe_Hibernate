@@ -354,12 +354,12 @@
             <form action="/category/add" method="post">
                 <div class="form-group">
                     <%--@declare id=""--%><label for="">Mã danh mục</label>
-                    <input type="text" class="form-control" name="ma" placeholder="Mã danh mục">
+                    <input type="text" required class="form-control" name="ma" placeholder="Mã danh mục">
                 </div>
 
                 <div class="form-group">
                     <label for="">Tên danh mục</label>
-                    <input type="text" class="form-control" name="ten" placeholder="Tên danh mục">
+                    <input type="text" required class="form-control" name="ten" placeholder="Tên danh mục">
                 </div>
 
 
@@ -406,7 +406,7 @@
                         <td>${c.ma}</td>
                         <td>${c.ten}</td>
                         <td>
-                            <a href="/category/update?id=${c.id}" class="edit" data-toggle="modal"><i
+                            <a href="/category/detail?id=${c.id}" class="edit" data-toggle="modal"><i
                                     class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
                             <a href="/category/delete?id=${c.id}" class="delete" data-toggle="modal"><i
                                     class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>

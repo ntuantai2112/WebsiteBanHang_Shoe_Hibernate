@@ -27,6 +27,6 @@ public class DongSanPhamService {
     };
 
     public DongSP findCategorytByID(UUID id){
-        return findCategorytByID(id);
+        return dongSanPhamRepository.findCategorytByID(id);
     }
 }

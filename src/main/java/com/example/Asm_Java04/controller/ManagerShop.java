@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.UUID;
 
 @WebServlet(name = "/ManagerShop", value = {"/manager-shop"
-        , "/shop/add", "/shop/update", "/shop/delete"
+        , "/shop/add", "/shop/update", "/shop/delete", "/shop/detail"
 })
 
 public class ManagerShop extends HttpServlet {
@@ -42,13 +42,21 @@ public class ManagerShop extends HttpServlet {
                 }
             }
             response.sendRedirect("/manager-shop");
-        } else if (uri.contains("/add")) {
-//            List<Category> listC = categoryService.getAllCategory();
-//            request.setAttribute("listC", listC);
-//            request.getRequestDispatcher("/views/AddProduct.jsp").forward(request, response);
-
         }
+        else if (uri.contains("/detail")) {
+            String shopID = request.getParameter("id");
+            if (shopID != null && !shopID.isEmpty()) {
+                try {
+                    UUID uuid = UUID.fromString(shopID);
+                    CuaHang cuaHang = cuaHangService.findCuaHangByID(uuid);
+                    request.setAttribute("cuaHangDetail", cuaHang);
+                    request.getRequestDispatcher("/views/DetailShop.jsp").forward(request, response);
 
+                } catch (IllegalArgumentException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
 
     }
 
@@ -62,14 +70,21 @@ public class ManagerShop extends HttpServlet {
             String thanhPho = request.getParameter("thanhPho");
             String quocGia = request.getParameter("quocGia");
 
-            System.out.println(ma);
-            System.out.println(ten);
-            System.out.println(diaChi);
-            System.out.println(thanhPho);
-            System.out.println(quocGia);
-
             CuaHang cuaHang = new CuaHang(ma,ten,diaChi,thanhPho, quocGia);
             cuaHangService.insert(cuaHang);
+            response.sendRedirect("/manager-shop");
+        }
+        else  if(uri.contains("/update")){
+            String id = request.getParameter("id");
+            UUID shopID = UUID.fromString(id);
+            String ma = request.getParameter("ma");
+            String ten = request.getParameter("ten");
+            String diaChi = request.getParameter("diaChi");
+            String thanhPho = request.getParameter("thanhPho");
+            String quocGia = request.getParameter("quocGia");
+
+            CuaHang cuaHang = new CuaHang(shopID,ma,ten,diaChi,thanhPho, quocGia);
+            cuaHangService.update(cuaHang);
             response.sendRedirect("/manager-shop");
         }
     }

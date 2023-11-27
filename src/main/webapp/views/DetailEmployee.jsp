@@ -343,24 +343,24 @@
 <!-- Header -->
 <jsp:include page="Header.jsp"></jsp:include>
 
-<div class="container  ">
-
-
-
-
+<div class="  ">
 
     <div class="card mt-5">
-        <div class="card-header">Thêm mới nhân viên</div>
+        <div class="card-header">Chi tiết nhân viên</div>
         <div class="card-body">
-            <form action="/employee/add" method="post">
+            <form action="/employee/update?id=${nvDetail.id}" method="post">
+                <div class="form-group">
+                    <label for="">ID nhân viên</label>
+                    <input type="text" value="${nvDetail.id}" class="form-control" name="id" placeholder="ID nhân viên">
+                </div>
                 <div class="form-group">
                     <label for="">Mã nhân viên</label>
-                    <input type="text" class="form-control" name="ma" placeholder="Mã nhân viên">
+                    <input type="text" value="${nvDetail.ma}" class="form-control" name="ma" placeholder="Mã nhân viên">
                 </div>
 
                 <div class="form-group">
-                    <label for="">Họ tên khách hàng</label>
-                    <input type="text" class="form-control" name="ten" placeholder="Họ tên nhân viên">
+                    <label for="">Họ tên nhân viên</label>
+                    <input type="text" value="${nvDetail.ho} ${nvDetail.tenDem} ${nvDetail.ten}"  class="form-control" name="ten" placeholder="Họ tên nhân viên">
                 </div>
 
 
@@ -369,16 +369,18 @@
                     <div class="row">
                         <div class="col-auto">
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="gioiTinh" id="flexRadioDefault1" checked>
-                                <label class="form-check-label" for="flexRadioDefault1">
+                                <input value="Nam" class="form-check-input" type="radio" name="gioiTinh"
+                                <c:if test="${nvDetail.gioiTinh == 'Nam'}">checked</c:if>  >
+                                <label class="form-check-label" for="">
                                    Nam
                                 </label>
                             </div>
                         </div>
                         <div class="col-auto">
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="gioiTinh" id="flexRadioDefault2" >
-                                <label class="form-check-label" for="flexRadioDefault2">
+                                <input value="Nữ" class="form-check-input" type="radio" name="gioiTinh"
+                                       <c:if test="${nvDetail.gioiTinh == 'Nữ'}">checked</c:if>  >
+                                <label class="form-check-label" for="">
                                    Nữ
                                 </label>
                             </div>
@@ -386,51 +388,74 @@
                     </div>
                 </div>
 
+                <fmt:formatDate pattern="yyyy-MM-dd" value="${nvDetail.ngaySinh}" var="formattedDate" />
                 <div class="form-group">
                     <label for="">Ngày sinh</label>
-                    <input type="date" class="form-control" name="ngaySinh" placeholder="Ngày sinh">
+                    <input type="date" value="${formattedDate}" class="form-control" name="ngaySinh" placeholder="Ngày sinh">
                 </div>
 
                 <div class="form-group">
                     <%--@declare id=""--%><label for="">Địa Chỉ</label>
-                    <input type="text" class="form-control" name="diaChi" placeholder="Địa Chỉ">
+                    <input type="text" value="${nvDetail.diaChi}" class="form-control" name="diaChi" placeholder="Địa Chỉ">
                 </div>
 
                 <div class="form-group">
                     <label for="">Số điện thoại</label>
-                    <input type="number" class="form-control" name="sdt" placeholder="Số điện thoại">
+                    <input type="text" value="${nvDetail.sdt}" class="form-control" name="sdt" placeholder="Số điện thoại">
                 </div>
 
                 <div class="form-group">
                     <%--@declare id=""--%><label for="">Mật Khẩu</label>
-                    <input type="password" class="form-control" name="matKhau" placeholder="Mật Khẩu">
+                    <input type="password" value="${nvDetail.matKhau}" class="form-control" name="matKhau" placeholder="Mật Khẩu">
                 </div>
 
                 <div class="form-group">
                     <%--@declare id=""--%><label for="">Cửa Hàng</label>
                         <select class="form-select" aria-label="Default select example" name="cuaHang">
-                            <option selected>Open this select menu</option>
+                            <c:forEach items="${listCH}" var="ch">
+                            <option value="${ch.id}"
+                                    <c:if test="${nvDetail.cuaHang.ten == ch.ten}">selected</c:if>  >${ch.ten}</option>
+                            </c:forEach>
                         </select>
                 </div>
 
                 <div class="form-group">
                     <%--@declare id=""--%><label for="">Chức Vụ</label>
-                        <select class="form-select" aria-label="Default select example" name="chucVu">
-                            <option selected>Open this select menu</option>
+                        <select class="form-select" aria-label="Default select example" name="cv">
+                            <c:forEach items="${listCV}" var="cv">
+                                <option value="${cv.id}"  <c:if test="${nvDetail.cv.ten == cv.ten}">selected</c:if>  >${cv.ten}</option>
+                            </c:forEach>
                         </select>
                 </div>
 
                 <div class="form-group">
-                    <%--@declare id=""--%><label for="">Trạng Thái</label>
-                        <select class="form-select" aria-label="Default select example" name="chucVu">
-                            <option selected>Open this select menu</option>
-                        </select>
+                    <label for="">Trạng Thái</label>
+                    <div class="row">
+                        <div class="col-auto">
+                            <div class="form-check">
+                                <input value="1" class="form-check-input" type="radio" name="trangThai"
+                                       <c:if test="${nvDetail.trangThai == 1}">checked</c:if>  >
+                                <label class="form-check-label" for="">
+                                    Đang Đi Làm
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <div class="form-check">
+                                <input value="0" class="form-check-input" type="radio" name="trangThai"
+                                       <c:if test="${nvDetail.trangThai == 0}">checked</c:if>  >
+                                <label class="form-check-label" for="">
+                                    Nghỉ Làm
+                                </label>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
 
                 <div class="text-center mt-3">
                     <button type="reset" class="btn  btn-outline-secondary">Reset</button>
-                    <button type="submit" class="btn btn-success">Thêm</button>
+                    <button type="submit" class="btn btn-warning">Sửa</button>
                 </div>
 
             </form>
@@ -438,165 +463,8 @@
         </div>
     </div>
 
-    <div class="">
-        <div class="">
-            <div class="table-title ">
-                <div class="row text-center mt-4 mb-1">
-                    <h2>Danh Sách Nhân Viên</h2>
-                </div>
-            </div>
-            <table class="table bg-light ">
-                <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Mã Nhân Viên</th>
-                    <th>Họ Tên Nhân Viên</th>
-                    <th>Giới Tính</th>
-                    <th>Ngày Sinh</th>
-                    <th>Địa Chỉ</th>
-                    <th>Số Điện Thoại</th>
-                    <th>Mật Khẩu</th>
-                    <th>Cửa Hàng</th>
-                    <th>Chức Vụ</th>
-                    <th>Trạng Thái</th>
-                    <th>Actions</th>
-                </tr>
-                </thead>
-                <tbody>
-                <c:forEach items="${listNV}" var="nv">
-                    <tr>
-                        <td>${nv.id}</td>
-                        <td>${nv.ma}</td>
-                        <td>${nvkh.ho} ${kh.nv} ${nv.ten}</td>
-                        <td>${nv.gioiTinh}</td>
+</div>
 
-                        <td>
-                            <fmt:formatDate value="${nv.ngaySinh}" pattern="dd/MM/yyyy" var="formattedDate" />
-                            <c:out value="${formattedDate}" />
-                        </td>
-                        <td>${nv.diaChi}</td>
-                        <td>${nv.sdt}</td>
-                        <td>${kh.matKhau}</td>
-                        <td>${kh.cuaHang.ten}</td>
-                        <td>${kh.cv.ten}</td>
-                        <td>${kh.trangThai}</td>
-
-                        <td>
-                            <a href="/employee/update?id=${kh.id}" class="edit" data-toggle="modal"><i
-                                    class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                            <a href="/employee/delete?id=${kh.id}" class="delete" data-toggle="modal"><i
-                                    class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-                        </td>
-                    </tr>
-                </c:forEach>
-                </tbody>
-            </table>
-            <%--            <div class="clearfix">--%>
-            <%--                <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>--%>
-            <%--                <ul class="pagination">--%>
-            <%--                    <li class="page-item disabled"><a href="#">Previous</a></li>--%>
-            <%--                    <li class="page-item"><a href="#" class="page-link">1</a></li>--%>
-            <%--                    <li class="page-item"><a href="#" class="page-link">2</a></li>--%>
-            <%--                    <li class="page-item active"><a href="#" class="page-link">3</a></li>--%>
-            <%--                    <li class="page-item"><a href="#" class="page-link">4</a></li>--%>
-            <%--                    <li class="page-item"><a href="#" class="page-link">5</a></li>--%>
-            <%--                    <li class="page-item"><a href="#" class="page-link">Next</a></li>--%>
-            <%--                </ul>--%>
-            <%--            </div>--%>
-        </div>
-    </div>
-</div>
-<!-- Edit Modal HTML -->
-<div id="addEmployeeModal" class="modal fade">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <form>
-                <div class="modal-header">
-                    <h4 class="modal-title">Add Employee</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                </div>
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label>Name</label>s
-                        <input type="text" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Email</label>
-                        <input type="email" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Address</label>
-                        <textarea class="form-control" required></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label>Phone</label>
-                        <input type="text" class="form-control" required>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                    <input type="submit" class="btn btn-success" value="Add">
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-<!-- Edit Modal HTML -->
-<div id="editEmployeeModal" class="modal fade">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <form>
-                <div class="modal-header">
-                    <h4 class="modal-title">Edit Employee</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                </div>
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label>Name</label>
-                        <input type="text" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Email</label>
-                        <input type="email" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Address</label>
-                        <textarea class="form-control" required></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label>Phone</label>
-                        <input type="text" class="form-control" required>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                    <input type="submit" class="btn btn-info" value="Save">
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-<!-- Delete Modal HTML -->
-<div id="deleteEmployeeModal" class="modal fade">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <form>
-                <div class="modal-header">
-                    <h4 class="modal-title">Delete Employee</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                </div>
-                <div class="modal-body">
-                    <p>Are you sure you want to delete these Records?</p>
-                    <p class="text-warning"><small>This action cannot be undone.</small></p>
-                </div>
-                <div class="modal-footer">
-                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                    <input type="submit" class="btn btn-danger" value="Delete">
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
 
 <!-- Start Footer -->
 <jsp:include page="Footer.jsp"></jsp:include>

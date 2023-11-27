@@ -2,6 +2,7 @@ package com.example.Asm_Java04.repositories;
 
 import com.example.Asm_Java04.model.ChucVu;
 import com.example.Asm_Java04.model.KhachHang;
+import com.example.Asm_Java04.model.MauSac;
 import com.example.Asm_Java04.model.SanPham;
 import com.example.Asm_Java04.util.HibernateUtil;
 import jakarta.persistence.TypedQuery;
@@ -79,7 +80,7 @@ public class KhachHangRepository {
     public KhachHang findKhachHangtByID(UUID id){
         Transaction transaction = null;
         try(Session session  = HibernateUtil.getFACTORY().openSession()) {
-            String jpql = "Select o from ChucVu o where o.id = :id";
+            String jpql = "Select o from KhachHang o where o.id = :id";
             TypedQuery<KhachHang> query = session.createQuery(jpql, KhachHang.class);
             query.setParameter("id", id);
             return query.getSingleResult();

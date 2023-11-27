@@ -349,37 +349,41 @@
 
 
     <div class="card mt-5">
-        <div class="card-header">Thêm mới cửa hàng</div>
+        <div class="card-header">Chi tiết cửa hàng</div>
         <div class="card-body">
-            <form action="/shop/add" method="post">
+            <form action="/shop/update?id=${cuaHangDetail.id}" method="post">
+                <div class="form-group">
+                    <label for="">Id cửa hàng</label>
+                    <input type="text" value="${cuaHangDetail.id}" class="form-control" name="id" placeholder="ID cửa hàng">
+                </div>
                 <div class="form-group">
                     <label for="">Mã cửa hàng</label>
-                    <input type="text" class="form-control" name="ma" placeholder="Mã cửa hàng">
+                    <input type="text" value="${cuaHangDetail.ma}" class="form-control" name="ma" placeholder="Mã cửa hàng">
                 </div>
 
                 <div class="form-group">
                     <label for="">Tên cửa hàng</label>
-                    <input type="text" class="form-control" name="ten" placeholder="Tên cửa hàng">
+                    <input type="text" value="${cuaHangDetail.ten}" class="form-control" name="ten" placeholder="Tên cửa hàng">
                 </div>
 
                 <div class="form-group">
                     <label for="">Địa Chỉ</label>
-                    <input type="text" class="form-control" name="diaChi" placeholder="Địa Chỉ">
+                    <input type="text" value="${cuaHangDetail.diaChi}" class="form-control" name="diaChi" placeholder="Địa Chỉ">
                 </div>
 
                 <div class="form-group">
                     <label for="">Thành Phố</label>
-                    <input type="text" class="form-control" name="thanhPho" placeholder="Thành Phố">
+                    <input type="text" class="form-control" value="${cuaHangDetail.thanhPho}" name="thanhPho" placeholder="Thành Phố">
                 </div>
 
                 <div class="form-group">
                     <%--@declare id=""--%><label for="">Quốc gia</label>
-                    <input type="text" class="form-control" name="quocGia" placeholder="Quốc gia">
+                    <input type="text" value="${cuaHangDetail.quocGia}" class="form-control" name="quocGia" placeholder="Quốc gia">
                 </div>
 
                 <div class="text-center mt-3">
                     <button type="reset" class="btn  btn-outline-secondary">Reset</button>
-                    <button type="submit" class="btn btn-success">Thêm</button>
+                    <button type="submit" class="btn btn-warning">Sửa</button>
                 </div>
 
             </form>
@@ -387,161 +391,8 @@
         </div>
     </div>
 
-    <div class="">
-        <div class="">
-            <div class="table-title ">
-                <div class="row text-center mt-4 mb-1">
-<%--                    <div class="col-sm-6 ">--%>
-                        <h2>Danh Sách Cửa Hàng</h2>
-<%--                    </div>--%>
-<%--                    <div class="col-sm-6">--%>
-<%--                        <a href="/product/add" class="btn btn-success text-center" data-toggle="modal"><i--%>
-<%--                                class="material-icons">&#xE147;</i> <span>Add New Product </span></a>--%>
-<%--                        &lt;%&ndash;                        <a href="#deleteEmployeeModal" class="btn btn-danger  text-center" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Delete</span></a>&ndash;%&gt;--%>
-<%--                    </div>--%>
-                </div>
-            </div>
-            <table class="table bg-light ">
-                <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Mã Cửa Hàng</th>
-                    <th>Tên Cửa Hàng</th>
-                    <th>Địa Chỉ</th>
-                    <th>Thành Phố</th>
-                    <th>Quốc Gia</th>
-                    <th>Actions</th>
-                </tr>
-                </thead>
-                <tbody>
-                <c:forEach items="${listCH}" var="cuaHang">
-                    <tr>
+</div>
 
-                        <td>
-                                ${cuaHang.id}
-                        </td>
-                        <td>${cuaHang.ma}</td>
-                        <td>${cuaHang.ten}</td>
-                        <td>${cuaHang.diaChi}</td>
-                        <td>${cuaHang.thanhPho}</td>
-                        <td>${cuaHang.quocGia}</td>
-                        <td>
-                            <a href="/shop/update?id=${cuaHang.id}" class="edit" data-toggle="modal"><i
-                                    class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                            <a href="/shop/delete?id=${cuaHang.id}" class="delete" data-toggle="modal"><i
-                                    class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-                        </td>
-                    </tr>
-
-                </c:forEach>
-                </tbody>
-            </table>
-<%--            <div class="clearfix">--%>
-<%--                <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>--%>
-<%--                <ul class="pagination">--%>
-<%--                    <li class="page-item disabled"><a href="#">Previous</a></li>--%>
-<%--                    <li class="page-item"><a href="#" class="page-link">1</a></li>--%>
-<%--                    <li class="page-item"><a href="#" class="page-link">2</a></li>--%>
-<%--                    <li class="page-item active"><a href="#" class="page-link">3</a></li>--%>
-<%--                    <li class="page-item"><a href="#" class="page-link">4</a></li>--%>
-<%--                    <li class="page-item"><a href="#" class="page-link">5</a></li>--%>
-<%--                    <li class="page-item"><a href="#" class="page-link">Next</a></li>--%>
-<%--                </ul>--%>
-<%--            </div>--%>
-        </div>
-    </div>
-</div>
-<!-- Edit Modal HTML -->
-<div id="addEmployeeModal" class="modal fade">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <form>
-                <div class="modal-header">
-                    <h4 class="modal-title">Add Employee</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                </div>
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label>Name</label>s
-                        <input type="text" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Email</label>
-                        <input type="email" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Address</label>
-                        <textarea class="form-control" required></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label>Phone</label>
-                        <input type="text" class="form-control" required>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                    <input type="submit" class="btn btn-success" value="Add">
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-<!-- Edit Modal HTML -->
-<div id="editEmployeeModal" class="modal fade">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <form>
-                <div class="modal-header">
-                    <h4 class="modal-title">Edit Employee</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                </div>
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label>Name</label>
-                        <input type="text" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Email</label>
-                        <input type="email" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Address</label>
-                        <textarea class="form-control" required></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label>Phone</label>
-                        <input type="text" class="form-control" required>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                    <input type="submit" class="btn btn-info" value="Save">
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-<!-- Delete Modal HTML -->
-<div id="deleteEmployeeModal" class="modal fade">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <form>
-                <div class="modal-header">
-                    <h4 class="modal-title">Delete Employee</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                </div>
-                <div class="modal-body">
-                    <p>Are you sure you want to delete these Records?</p>
-                    <p class="text-warning"><small>This action cannot be undone.</small></p>
-                </div>
-                <div class="modal-footer">
-                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                    <input type="submit" class="btn btn-danger" value="Delete">
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
 
 <!-- Start Footer -->
 <jsp:include page="Footer.jsp"></jsp:include>

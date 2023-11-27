@@ -1,5 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
@@ -345,53 +345,59 @@
 
 <div class="mx-2">
     <div class="card mt-5">
-        <div class="card-header">Thêm mới khách hàng</div>
+        <div class="card-header">Chi tiết khách hàng</div>
         <div class="card-body">
-            <form action="/customer/add" method="post">
+            <form action="/customer/update?id=${khDetail.id}" method="post">
+                <div class="form-group">
+                    <label for="">Id khách hàng</label>
+                    <input type="text" value="${khDetail.id}" class="form-control" name="id" placeholder="Id khách hàng">
+                </div>
                 <div class="form-group">
                     <label for="">Mã khách hàng</label>
-                    <input type="text" class="form-control" name="ma" placeholder="Mã khách hàng">
+                    <input type="text" value="${khDetail.ma}" class="form-control" name="ma" placeholder="Mã khách hàng">
                 </div>
 
                 <div class="form-group">
                     <label for="">Họ tên khách hàng</label>
-                    <input type="text" class="form-control" name="ten" placeholder="Họ tên khách hàng">
+                    <input type="text" value="${khDetail.ho} ${khDetail.tenDem} ${khDetail.ten}" class="form-control" name="ten" placeholder="Họ tên khách hàng">
                 </div>
+
+                <fmt:formatDate pattern="yyyy-MM-dd" value="${khDetail.ngaySinh}" var="formattedDate" />
 
                 <div class="form-group">
                     <label for="">Ngày sinh</label>
-                    <input type="date" class="form-control" name="ngaySinh" placeholder="Ngày sinh">
+                    <input type="date" value="${formattedDate}" class="form-control" name="ngaySinh" placeholder="Ngày sinh">
                 </div>
 
                 <div class="form-group">
                     <label for="">Số điện thoại</label>
-                    <input type="number" class="form-control" name="sdt" placeholder="Số điện thoại">
+                    <input type="number" value="${khDetail.sdt}" class="form-control" name="sdt" placeholder="Số điện thoại">
                 </div>
 
                 <div class="form-group">
                     <%--@declare id=""--%><label for="">Địa Chỉ</label>
-                    <input type="text" class="form-control" name="diaChi" placeholder="Địa Chỉ">
+                    <input type="text"  value="${khDetail.diaChi}" class="form-control" name="diaChi" placeholder="Địa Chỉ">
                 </div>
 
                 <div class="form-group">
                     <%--@declare id=""--%><label for="">Thành Phố</label>
-                    <input type="text" class="form-control" name="thanhPho" placeholder="Thành Phố">
+                    <input type="text" value="${khDetail.thanhPho}" class="form-control" name="thanhPho" placeholder="Thành Phố">
                 </div>
 
                 <div class="form-group">
                     <%--@declare id=""--%><label for="">Quốc gia</label>
-                    <input type="text" class="form-control" name="quocGia" placeholder="Quốc gia">
+                    <input type="text" value="${khDetail.quocGia}" class="form-control" name="quocGia" placeholder="Quốc gia">
                 </div>
 
                 <div class="form-group">
                     <%--@declare id=""--%><label for="">Mật Khẩu</label>
-                    <input type="password" class="form-control" name="matKhau" placeholder="Mật Khẩu">
+                    <input type="password" value="${khDetail.matKhau}" class="form-control" name="matKhau" placeholder="Mật Khẩu">
                 </div>
 
 
                 <div class="text-center mt-3">
                     <button type="reset" class="btn  btn-outline-secondary">Reset</button>
-                    <button type="submit" class="btn btn-success">Thêm</button>
+                    <button type="submit" class="btn btn-warning">Sửa</button>
                 </div>
 
             </form>
@@ -399,165 +405,7 @@
         </div>
     </div>
 
-    <div class="">
-        <div class="">
-            <div class="table-title ">
-                <div class="row text-center mt-4 mb-1">
-                    <%--                    <div class="col-sm-6 ">--%>
-                    <h2>Danh Sách Cửa Hàng</h2>
-                    <%--                    </div>--%>
-                    <%--                    <div class="col-sm-6">--%>
-                    <%--                        <a href="/product/add" class="btn btn-success text-center" data-toggle="modal"><i--%>
-                    <%--                                class="material-icons">&#xE147;</i> <span>Add New Product </span></a>--%>
-                    <%--                        &lt;%&ndash;                        <a href="#deleteEmployeeModal" class="btn btn-danger  text-center" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Delete</span></a>&ndash;%&gt;--%>
-                    <%--                    </div>--%>
-                </div>
-            </div>
-            <table class="table bg-light ">
-                <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Mã Khách Hàng</th>
-                    <th>Họ Tên Khách Hàng</th>
-                    <th>Ngày Sinh</th>
-                    <th>Số Điện Thoại</th>
-                    <th>Địa Chỉ</th>
-                    <th>Thành Phố</th>
-                    <th>Quốc Gia</th>
-                    <th>Mật Khẩu</th>
-                    <th>Actions</th>
-                </tr>
-                </thead>
-                <tbody>
-                <c:forEach items="${listKH}" var="kh">
-                    <tr>
-                        <td>${kh.id}</td>
-                        <td>${kh.ma}</td>
-                        <td>${kh.ho} ${kh.tenDem} ${kh.ten}</td>
-                        <td>
-                            <fmt:formatDate value="${kh.ngaySinh}" pattern="dd/MM/yyyy" var="formattedDate" />
-                            <c:out value="${formattedDate}" />
-                        </td>
-                        <td>${kh.sdt}</td>
-                        <td>${kh.diaChi}</td>
-                        <td>${kh.thanhPho}</td>
-                        <td>${kh.quocGia}</td>
-                        <td>${kh.matKhau}</td>
-                        <td>
-                            <a href="/customer/update?id=${kh.id}" class="edit" data-toggle="modal"><i
-                                    class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                            <a href="/customer/delete?id=${kh.id}" class="delete" data-toggle="modal"><i
-                                    class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-                        </td>
-                    </tr>
-                </c:forEach>
-                </tbody>
-            </table>
-            <%--            <div class="clearfix">--%>
-            <%--                <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>--%>
-            <%--                <ul class="pagination">--%>
-            <%--                    <li class="page-item disabled"><a href="#">Previous</a></li>--%>
-            <%--                    <li class="page-item"><a href="#" class="page-link">1</a></li>--%>
-            <%--                    <li class="page-item"><a href="#" class="page-link">2</a></li>--%>
-            <%--                    <li class="page-item active"><a href="#" class="page-link">3</a></li>--%>
-            <%--                    <li class="page-item"><a href="#" class="page-link">4</a></li>--%>
-            <%--                    <li class="page-item"><a href="#" class="page-link">5</a></li>--%>
-            <%--                    <li class="page-item"><a href="#" class="page-link">Next</a></li>--%>
-            <%--                </ul>--%>
-            <%--            </div>--%>
-        </div>
-    </div>
-</div>
-<!-- Edit Modal HTML -->
-<div id="addEmployeeModal" class="modal fade">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <form>
-                <div class="modal-header">
-                    <h4 class="modal-title">Add Employee</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                </div>
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label>Name</label>s
-                        <input type="text" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Email</label>
-                        <input type="email" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Address</label>
-                        <textarea class="form-control" required></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label>Phone</label>
-                        <input type="text" class="form-control" required>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                    <input type="submit" class="btn btn-success" value="Add">
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-<!-- Edit Modal HTML -->
-<div id="editEmployeeModal" class="modal fade">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <form>
-                <div class="modal-header">
-                    <h4 class="modal-title">Edit Employee</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                </div>
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label>Name</label>
-                        <input type="text" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Email</label>
-                        <input type="email" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Address</label>
-                        <textarea class="form-control" required></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label>Phone</label>
-                        <input type="text" class="form-control" required>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                    <input type="submit" class="btn btn-info" value="Save">
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-<!-- Delete Modal HTML -->
-<div id="deleteEmployeeModal" class="modal fade">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <form>
-                <div class="modal-header">
-                    <h4 class="modal-title">Delete Employee</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                </div>
-                <div class="modal-body">
-                    <p>Are you sure you want to delete these Records?</p>
-                    <p class="text-warning"><small>This action cannot be undone.</small></p>
-                </div>
-                <div class="modal-footer">
-                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                    <input type="submit" class="btn btn-danger" value="Delete">
-                </div>
-            </form>
-        </div>
-    </div>
+
 </div>
 
 <!-- Start Footer -->

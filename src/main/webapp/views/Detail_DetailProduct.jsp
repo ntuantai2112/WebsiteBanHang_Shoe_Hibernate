@@ -343,55 +343,80 @@
 <!-- Header -->
 <jsp:include page="Header.jsp"></jsp:include>
 
-<div class="mx-2">
+<div class="  ">
+
     <div class="card mt-5">
-        <div class="card-header">Thêm mới khách hàng</div>
+        <div class="card-header">Chi tiết nhân viên</div>
         <div class="card-body">
-            <form action="/customer/add" method="post">
+            <form action="/detail-product/update?id=${spDetail.id}" method="post">
                 <div class="form-group">
-                    <label for="">Mã khách hàng</label>
-                    <input type="text" required class="form-control" name="ma" placeholder="Mã khách hàng">
+                    <label for="">Sản Phẩm</label>
+                    <select class="form-select" aria-label="Default select example" name="sanPham">
+                        <c:forEach items="${listSP}" var="sp">
+                            <option value="${sp.id}" <c:if test="${sp.ten == spDetail.sanPham.ten}">selected</c:if>
+                            >${sp.ten}</option>
+                        </c:forEach>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="">Nhà Sản Xuất</label>
+                    <select class="form-select" aria-label="Default select example" name="nhaSanXuat">
+                        <c:forEach items="${listNSX}" var="nsx">
+                            <option value="${nsx.id}" <c:if test="${nsx.ten == spDetail.nhaSanXuat.ten}">selected</c:if> >${nsx.ten}</option>
+                        </c:forEach>
+                    </select>
                 </div>
 
                 <div class="form-group">
-                    <label for="">Họ tên khách hàng</label>
-                    <input type="text" required class="form-control" name="ten" placeholder="Họ tên khách hàng">
+                    <label for="">Màu Sắc</label>
+                    <select class="form-select" aria-label="Default select example" name="mauSac">
+                        <c:forEach items="${listMS}" var="ms">
+                            <option value="${ms.id}"  <c:if test="${ms.ten == spDetail.mauSac.ten}">selected</c:if> >${ms.ten}</option>
+                        </c:forEach>
+                    </select>
                 </div>
 
                 <div class="form-group">
-                    <label for="">Ngày sinh</label>
-                    <input type="date" required class="form-control" name="ngaySinh" placeholder="Ngày sinh">
+                    <label for="">Đồng Sản Phẩm</label>
+                    <select class="form-select" aria-label="Default select example" name="dongSanPham">
+                        <c:forEach items="${listDongSP}" var="dongSP">
+                            <option value="${dongSP.id}"  <c:if test="${dongSP.ten == spDetail.dongSanPham.ten}">selected</c:if> >${dongSP.ten}</option>
+                        </c:forEach>
+                    </select>
+                </div>
+
+
+
+                <div class="form-group">
+                    <label for="">Năm Bảo Hành</label>
+                    <input type="number" value="${spDetail.namBH}" class="form-control" name="namBH" placeholder="Năm Bảo Hành">
                 </div>
 
                 <div class="form-group">
-                    <label for="">Số điện thoại</label>
-                    <input type="number" required class="form-control" name="sdt" placeholder="Số điện thoại">
+                    <%--@declare id=""--%><label for="">Mô Tả</label>
+                    <input type="text" value="${spDetail.moTa}" class="form-control" name="moTa" placeholder="Mô Tả">
                 </div>
 
                 <div class="form-group">
-                    <%--@declare id=""--%><label for="">Địa Chỉ</label>
-                    <input type="text" required class="form-control" name="diaChi" placeholder="Địa Chỉ">
+                    <label for="">Số Lượng Tồn</label>
+                    <input type="number" value="${spDetail.soLuongTon}" class="form-control" name="soLuongTon" placeholder="Số Lượng Tồn">
                 </div>
 
                 <div class="form-group">
-                    <%--@declare id=""--%><label for="">Thành Phố</label>
-                    <input type="text" class="form-control" name="thanhPho" placeholder="Thành Phố">
+                    <label for="">Giá Nhập</label>
+                    <input type="number" value="${spDetail.giaNhap}" class="form-control" name="giaNhap" placeholder="Giá Nhập">
                 </div>
 
                 <div class="form-group">
-                    <%--@declare id=""--%><label for="">Quốc gia</label>
-                    <input type="text" required class="form-control" name="quocGia" placeholder="Quốc gia">
+                    <label for="">Giá Bán</label>
+                    <input type="number" value="${spDetail.giaBan}" class="form-control" name="giaBan" placeholder="Giá Bán">
                 </div>
 
-                <div class="form-group">
-                    <%--@declare id=""--%><label for="">Mật Khẩu</label>
-                    <input type="password" required class="form-control" name="matKhau" placeholder="Mật Khẩu">
-                </div>
 
 
                 <div class="text-center mt-3">
                     <button type="reset" class="btn  btn-outline-secondary">Reset</button>
-                    <button type="submit" class="btn btn-success">Thêm</button>
+                    <button type="submit" class="btn btn-warning">Sửa</button>
                 </div>
 
             </form>
@@ -399,166 +424,8 @@
         </div>
     </div>
 
-    <div class="">
-        <div class="">
-            <div class="table-title ">
-                <div class="row text-center mt-4 mb-1">
-                    <%--                    <div class="col-sm-6 ">--%>
-                    <h2>Danh Sách Khách Hàng</h2>
-                    <%--                    </div>--%>
-                    <%--                    <div class="col-sm-6">--%>
-                    <%--                        <a href="/product/add" class="btn btn-success text-center" data-toggle="modal"><i--%>
-                    <%--                                class="material-icons">&#xE147;</i> <span>Add New Product </span></a>--%>
-                    <%--                        &lt;%&ndash;                        <a href="#deleteEmployeeModal" class="btn btn-danger  text-center" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Delete</span></a>&ndash;%&gt;--%>
-                    <%--                    </div>--%>
-                </div>
-            </div>
-            <table class="table bg-light ">
-                <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Mã Khách Hàng</th>
-                    <th>Họ Tên Khách Hàng</th>
-                    <th>Ngày Sinh</th>
-                    <th>Số Điện Thoại</th>
-                    <th>Địa Chỉ</th>
-                    <th>Thành Phố</th>
-                    <th>Quốc Gia</th>
-                    <th>Mật Khẩu</th>
-                    <th>Actions</th>
-                </tr>
-                </thead>
-                <tbody>
-                <c:forEach items="${listKH}" var="kh">
-                    <tr>
-                        <td>${kh.id}</td>
-                        <td>${kh.ma}</td>
-                        <td>${kh.ho} ${kh.tenDem} ${kh.ten}</td>
-                        <td>
-                            <fmt:formatDate value="${kh.ngaySinh}" pattern="dd/MM/yyyy" var="formattedDate" />
-                            <c:out value="${formattedDate}" />
-                        </td>
-                        <td>${kh.sdt}</td>
-                        <td>${kh.diaChi}</td>
-                        <td>${kh.thanhPho}</td>
-                        <td>${kh.quocGia}</td>
-                        <td>${kh.matKhau}</td>
-                        <td>
-                            <a href="/customer/detail?id=${kh.id}" class="edit" data-toggle="modal"><i
-                                    class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                            <a href="/customer/delete?id=${kh.id}" class="delete" data-toggle="modal"><i
-                                    class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-                        </td>
-                    </tr>
-                </c:forEach>
-                </tbody>
-            </table>
-            <%--            <div class="clearfix">--%>
-            <%--                <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>--%>
-            <%--                <ul class="pagination">--%>
-            <%--                    <li class="page-item disabled"><a href="#">Previous</a></li>--%>
-            <%--                    <li class="page-item"><a href="#" class="page-link">1</a></li>--%>
-            <%--                    <li class="page-item"><a href="#" class="page-link">2</a></li>--%>
-            <%--                    <li class="page-item active"><a href="#" class="page-link">3</a></li>--%>
-            <%--                    <li class="page-item"><a href="#" class="page-link">4</a></li>--%>
-            <%--                    <li class="page-item"><a href="#" class="page-link">5</a></li>--%>
-            <%--                    <li class="page-item"><a href="#" class="page-link">Next</a></li>--%>
-            <%--                </ul>--%>
-            <%--            </div>--%>
-        </div>
-    </div>
 </div>
-<!-- Edit Modal HTML -->
-<div id="addEmployeeModal" class="modal fade">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <form>
-                <div class="modal-header">
-                    <h4 class="modal-title">Add Employee</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                </div>
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label>Name</label>s
-                        <input type="text" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Email</label>
-                        <input type="email" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Address</label>
-                        <textarea class="form-control" required></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label>Phone</label>
-                        <input type="text" class="form-control" required>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                    <input type="submit" class="btn btn-success" value="Add">
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-<!-- Edit Modal HTML -->
-<div id="editEmployeeModal" class="modal fade">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <form>
-                <div class="modal-header">
-                    <h4 class="modal-title">Edit Employee</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                </div>
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label>Name</label>
-                        <input type="text" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Email</label>
-                        <input type="email" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Address</label>
-                        <textarea class="form-control" required></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label>Phone</label>
-                        <input type="text" class="form-control" required>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                    <input type="submit" class="btn btn-info" value="Save">
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-<!-- Delete Modal HTML -->
-<div id="deleteEmployeeModal" class="modal fade">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <form>
-                <div class="modal-header">
-                    <h4 class="modal-title">Delete Employee</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                </div>
-                <div class="modal-body">
-                    <p>Are you sure you want to delete these Records?</p>
-                    <p class="text-warning"><small>This action cannot be undone.</small></p>
-                </div>
-                <div class="modal-footer">
-                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                    <input type="submit" class="btn btn-danger" value="Delete">
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
+
 
 <!-- Start Footer -->
 <jsp:include page="Footer.jsp"></jsp:include>
