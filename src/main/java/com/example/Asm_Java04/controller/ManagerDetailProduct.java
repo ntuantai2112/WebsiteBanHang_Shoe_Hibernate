@@ -26,7 +26,6 @@ public class ManagerDetailProduct extends HttpServlet {
     DongSanPhamService dongSanPhamService = new DongSanPhamService();
 
 
-
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String uri = request.getRequestURI();
@@ -41,6 +40,8 @@ public class ManagerDetailProduct extends HttpServlet {
             request.setAttribute("listNSX", listNSX);
             request.setAttribute("listMS", listMS);
             request.setAttribute("listDongSP", listDongSP);
+
+
             request.getRequestDispatcher("/views/ManagerDetailProduct.jsp").forward(request, response);
         } else if (uri.contains("/delete")) {
             String mauSacID = request.getParameter("id");
@@ -83,7 +84,7 @@ public class ManagerDetailProduct extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String uri = request.getRequestURI();
-        if(uri.contains("/add")){
+        if (uri.contains("/add")) {
             String sanPhamStr = request.getParameter("sanPham");
             UUID idSP = UUID.fromString(sanPhamStr);
             String nhaSanXuat = request.getParameter("nhaSanXuat");
@@ -115,12 +116,10 @@ public class ManagerDetailProduct extends HttpServlet {
 //            BigDecimal giaBan = BigDecimal.valueOf();
 //            BigDecimal giaNhap = BigDecimal.valueOf();
 
-            ChiTietSanPham chiTietSanPham = new ChiTietSanPham(sanPham,nsx,mauSac,dongSP,Integer.parseInt(namBH),moTa, Integer.parseInt(soLuongTon),Double.parseDouble(giaNhapStr),Double.parseDouble(giaBanStr));
+            ChiTietSanPham chiTietSanPham = new ChiTietSanPham(sanPham, nsx, mauSac, dongSP, Integer.parseInt(namBH), moTa, Integer.parseInt(soLuongTon), Double.parseDouble(giaNhapStr), Double.parseDouble(giaBanStr));
             chiTietSPService.insert(chiTietSanPham);
             response.sendRedirect("/manager-detail-product");
-        }
-
-        else  if(uri.contains("/update")){
+        } else if (uri.contains("/update")) {
 
             String idChiTietSPSrt = request.getParameter("id");
             UUID idChiTietSP = UUID.fromString(idChiTietSPSrt);
@@ -156,7 +155,7 @@ public class ManagerDetailProduct extends HttpServlet {
 //            BigDecimal giaBan = BigDecimal.valueOf();
 //            BigDecimal giaNhap = BigDecimal.valueOf();
 
-            ChiTietSanPham chiTietSanPham = new ChiTietSanPham(idChiTietSP,sanPham,nsx,mauSac,dongSP,Integer.parseInt(namBH),moTa, Integer.parseInt(soLuongTon),Double.parseDouble(giaNhapStr),Double.parseDouble(giaBanStr));
+            ChiTietSanPham chiTietSanPham = new ChiTietSanPham(idChiTietSP, sanPham, nsx, mauSac, dongSP, Integer.parseInt(namBH), moTa, Integer.parseInt(soLuongTon), Double.parseDouble(giaNhapStr), Double.parseDouble(giaBanStr));
             chiTietSPService.update(chiTietSanPham);
             response.sendRedirect("/manager-detail-product");
         }

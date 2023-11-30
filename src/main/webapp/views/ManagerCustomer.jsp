@@ -435,8 +435,8 @@
                         <td>${kh.ma}</td>
                         <td>${kh.ho} ${kh.tenDem} ${kh.ten}</td>
                         <td>
-                            <fmt:formatDate value="${kh.ngaySinh}" pattern="dd/MM/yyyy" var="formattedDate" />
-                            <c:out value="${formattedDate}" />
+                            <fmt:formatDate value="${kh.ngaySinh}" pattern="dd/MM/yyyy" var="formattedDate"/>
+                            <c:out value="${formattedDate}"/>
                         </td>
                         <td>${kh.sdt}</td>
                         <td>${kh.diaChi}</td>

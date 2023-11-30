@@ -345,40 +345,43 @@
 <div class="container  ">
 
 
-
-
-
     <div class="card mt-5">
         <div class="card-header">Chi tiết cửa hàng</div>
         <div class="card-body">
             <form action="/shop/update?id=${cuaHangDetail.id}" method="post">
                 <div class="form-group">
                     <label for="">Id cửa hàng</label>
-                    <input type="text" value="${cuaHangDetail.id}" class="form-control" name="id" placeholder="ID cửa hàng">
+                    <input type="text" value="${cuaHangDetail.id}" class="form-control" name="id"
+                           placeholder="ID cửa hàng">
                 </div>
                 <div class="form-group">
                     <label for="">Mã cửa hàng</label>
-                    <input type="text" value="${cuaHangDetail.ma}" class="form-control" name="ma" placeholder="Mã cửa hàng">
+                    <input type="text" value="${cuaHangDetail.ma}" class="form-control" name="ma"
+                           placeholder="Mã cửa hàng">
                 </div>
 
                 <div class="form-group">
                     <label for="">Tên cửa hàng</label>
-                    <input type="text" value="${cuaHangDetail.ten}" class="form-control" name="ten" placeholder="Tên cửa hàng">
+                    <input type="text" value="${cuaHangDetail.ten}" class="form-control" name="ten"
+                           placeholder="Tên cửa hàng">
                 </div>
 
                 <div class="form-group">
                     <label for="">Địa Chỉ</label>
-                    <input type="text" value="${cuaHangDetail.diaChi}" class="form-control" name="diaChi" placeholder="Địa Chỉ">
+                    <input type="text" value="${cuaHangDetail.diaChi}" class="form-control" name="diaChi"
+                           placeholder="Địa Chỉ">
                 </div>
 
                 <div class="form-group">
                     <label for="">Thành Phố</label>
-                    <input type="text" class="form-control" value="${cuaHangDetail.thanhPho}" name="thanhPho" placeholder="Thành Phố">
+                    <input type="text" class="form-control" value="${cuaHangDetail.thanhPho}" name="thanhPho"
+                           placeholder="Thành Phố">
                 </div>
 
                 <div class="form-group">
                     <%--@declare id=""--%><label for="">Quốc gia</label>
-                    <input type="text" value="${cuaHangDetail.quocGia}" class="form-control" name="quocGia" placeholder="Quốc gia">
+                    <input type="text" value="${cuaHangDetail.quocGia}" class="form-control" name="quocGia"
+                           placeholder="Quốc gia">
                 </div>
 
                 <div class="text-center mt-3">

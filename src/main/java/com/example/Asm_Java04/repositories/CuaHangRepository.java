@@ -1,21 +1,17 @@
 package com.example.Asm_Java04.repositories;
 
-import com.example.Asm_Java04.model.ChucVu;
-import com.example.Asm_Java04.model.CuaHang;
 import com.example.Asm_Java04.model.SanPham;
-import com.example.Asm_Java04.util.HibernateUtil;
 import jakarta.persistence.TypedQuery;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.UUID;
 
 public class CuaHangRepository {
     public ArrayList<CuaHang> getList() {
         ArrayList<CuaHang> ketQua = new ArrayList<>();
-        try (Session session  = HibernateUtil.getFACTORY().openSession();)  {
+        try (Session session = HibernateUtil.getFACTORY().openSession();) {
             ketQua = (ArrayList<CuaHang>) session.createQuery("from CuaHang ").list();
         } catch (Exception e) {
             e.printStackTrace();
@@ -24,9 +20,9 @@ public class CuaHangRepository {
     }
 
 
-    public void createCuaHang(CuaHang cuaHang){
+    public void createCuaHang(CuaHang cuaHang) {
         Transaction transaction = null;
-        try (Session session  = HibernateUtil.getFACTORY().openSession()) {
+        try (Session session = HibernateUtil.getFACTORY().openSession()) {
             //Tạo ra Transaction
             transaction = session.beginTransaction();
             session.save(cuaHang);
@@ -40,9 +36,9 @@ public class CuaHangRepository {
 //        }
     }
 
-    public void updateCuaHang(CuaHang ch){
+    public void updateCuaHang(CuaHang ch) {
         Transaction transaction = null;
-        try(Session session  = HibernateUtil.getFACTORY().openSession()) {
+        try (Session session = HibernateUtil.getFACTORY().openSession()) {
             //Tạo ra Transaction
             transaction = session.beginTransaction();
             session.update(ch);
@@ -57,15 +53,15 @@ public class CuaHangRepository {
 //        }
     }
 
-    public void deleteCuaHang(UUID id){
+    public void deleteCuaHang(UUID id) {
         Transaction transaction = null;
-        try(Session session  = HibernateUtil.getFACTORY().openSession()) {
+        try (Session session = HibernateUtil.getFACTORY().openSession()) {
             //Tạo ra Transaction
             transaction = session.beginTransaction();
             CuaHang cv = session.get(CuaHang.class, id);
-            if(cv != null) {
+            if (cv != null) {
                 session.delete(cv);
-            }else{
+            } else {
 //                throw  new Exception("Student này không tồn tại!");
             }
             transaction.commit();
@@ -76,14 +72,14 @@ public class CuaHangRepository {
         }
     }
 
-    public CuaHang findCuaHangByID(UUID id){
+    public CuaHang findCuaHangByID(UUID id) {
         Transaction transaction = null;
-        try(Session session  = HibernateUtil.getFACTORY().openSession()) {
+        try (Session session = HibernateUtil.getFACTORY().openSession()) {
             String jpql = "Select o from CuaHang o where o.id = :id";
             TypedQuery<CuaHang> query = session.createQuery(jpql, CuaHang.class);
             query.setParameter("id", id);
             return query.getSingleResult();
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             transaction.rollback();
         }

@@ -345,9 +345,6 @@
 <div class="container  ">
 
 
-
-
-
     <div class="card mt-5">
         <div class="card-header">Thêm mới Chức vụ</div>
         <div class="card-body">
@@ -377,7 +374,7 @@
         <div class="">
             <div class="table-title ">
                 <div class="row text-center mt-4 mb-1">
-                        <h2>Danh Sách Chức vụ</h2>
+                    <h2>Danh Sách Chức vụ</h2>
                 </div>
             </div>
             <table class="table bg-light ">
@@ -394,9 +391,9 @@
                     <tr>
 
                         <td>
-                               ${cv.id}
+                                ${cv.id}
                         </td>
-                        <td>  ${cv.ma}</td>
+                        <td> ${cv.ma}</td>
                         <td>${cv.ten}</td>
                         <td>
                             <a href="/position/detail?id=${cv.id}" class="edit" data-toggle="modal"><i

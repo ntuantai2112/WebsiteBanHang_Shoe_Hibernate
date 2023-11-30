@@ -372,7 +372,7 @@
         <div class="">
             <div class="table-title ">
                 <div class="row text-center mt-4 mb-1">
-                        <h2>Danh Sách Màu Sắc</h2>
+                    <h2>Danh Sách Màu Sắc</h2>
                 </div>
             </div>
             <table class="table bg-light ">

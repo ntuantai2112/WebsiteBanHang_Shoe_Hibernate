@@ -1,6 +1,5 @@
 package com.example.Asm_Java04.controller;
 
-import com.example.Asm_Java04.model.CuaHang;
 import com.example.Asm_Java04.model.SanPham;
 import com.example.Asm_Java04.services.CuaHangService;
 import com.example.Asm_Java04.services.SanPhamService;
@@ -23,7 +22,6 @@ public class ManagerShop extends HttpServlet {
     CuaHangService cuaHangService = new CuaHangService();
 
 
-
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String uri = request.getRequestURI();
@@ -42,8 +40,7 @@ public class ManagerShop extends HttpServlet {
                 }
             }
             response.sendRedirect("/manager-shop");
-        }
-        else if (uri.contains("/detail")) {
+        } else if (uri.contains("/detail")) {
             String shopID = request.getParameter("id");
             if (shopID != null && !shopID.isEmpty()) {
                 try {
@@ -63,18 +60,17 @@ public class ManagerShop extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String uri = request.getRequestURI();
-        if(uri.contains("/add")){
+        if (uri.contains("/add")) {
             String ma = request.getParameter("ma");
             String ten = request.getParameter("ten");
             String diaChi = request.getParameter("diaChi");
             String thanhPho = request.getParameter("thanhPho");
             String quocGia = request.getParameter("quocGia");
 
-            CuaHang cuaHang = new CuaHang(ma,ten,diaChi,thanhPho, quocGia);
+            CuaHang cuaHang = new CuaHang(ma, ten, diaChi, thanhPho, quocGia);
             cuaHangService.insert(cuaHang);
             response.sendRedirect("/manager-shop");
-        }
-        else  if(uri.contains("/update")){
+        } else if (uri.contains("/update")) {
             String id = request.getParameter("id");
             UUID shopID = UUID.fromString(id);
             String ma = request.getParameter("ma");
@@ -83,7 +79,7 @@ public class ManagerShop extends HttpServlet {
             String thanhPho = request.getParameter("thanhPho");
             String quocGia = request.getParameter("quocGia");
 
-            CuaHang cuaHang = new CuaHang(shopID,ma,ten,diaChi,thanhPho, quocGia);
+            CuaHang cuaHang = new CuaHang(shopID, ma, ten, diaChi, thanhPho, quocGia);
             cuaHangService.update(cuaHang);
             response.sendRedirect("/manager-shop");
         }

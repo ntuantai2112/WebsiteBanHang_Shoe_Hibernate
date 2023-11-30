@@ -345,9 +345,6 @@
 <div class="container  ">
 
 
-
-
-
     <div class="card mt-5">
         <div class="card-header">Thêm mới cửa hàng</div>
         <div class="card-body">
@@ -374,7 +371,7 @@
 
                 <div class="form-group">
                     <%--@declare id=""--%><label for="">Quốc gia</label>
-                    <input type="text" required  class="form-control" name="quocGia" placeholder="Quốc gia">
+                    <input type="text" required class="form-control" name="quocGia" placeholder="Quốc gia">
                 </div>
 
                 <div class="text-center mt-3">
@@ -391,14 +388,14 @@
         <div class="">
             <div class="table-title ">
                 <div class="row text-center mt-4 mb-1">
-<%--                    <div class="col-sm-6 ">--%>
-                        <h2>Danh Sách Cửa Hàng</h2>
-<%--                    </div>--%>
-<%--                    <div class="col-sm-6">--%>
-<%--                        <a href="/product/add" class="btn btn-success text-center" data-toggle="modal"><i--%>
-<%--                                class="material-icons">&#xE147;</i> <span>Add New Product </span></a>--%>
-<%--                        &lt;%&ndash;                        <a href="#deleteEmployeeModal" class="btn btn-danger  text-center" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Delete</span></a>&ndash;%&gt;--%>
-<%--                    </div>--%>
+                    <%--                    <div class="col-sm-6 ">--%>
+                    <h2>Danh Sách Cửa Hàng</h2>
+                    <%--                    </div>--%>
+                    <%--                    <div class="col-sm-6">--%>
+                    <%--                        <a href="/product/add" class="btn btn-success text-center" data-toggle="modal"><i--%>
+                    <%--                                class="material-icons">&#xE147;</i> <span>Add New Product </span></a>--%>
+                    <%--                        &lt;%&ndash;                        <a href="#deleteEmployeeModal" class="btn btn-danger  text-center" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Delete</span></a>&ndash;%&gt;--%>
+                    <%--                    </div>--%>
                 </div>
             </div>
             <table class="table bg-light ">
@@ -436,18 +433,18 @@
                 </c:forEach>
                 </tbody>
             </table>
-<%--            <div class="clearfix">--%>
-<%--                <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>--%>
-<%--                <ul class="pagination">--%>
-<%--                    <li class="page-item disabled"><a href="#">Previous</a></li>--%>
-<%--                    <li class="page-item"><a href="#" class="page-link">1</a></li>--%>
-<%--                    <li class="page-item"><a href="#" class="page-link">2</a></li>--%>
-<%--                    <li class="page-item active"><a href="#" class="page-link">3</a></li>--%>
-<%--                    <li class="page-item"><a href="#" class="page-link">4</a></li>--%>
-<%--                    <li class="page-item"><a href="#" class="page-link">5</a></li>--%>
-<%--                    <li class="page-item"><a href="#" class="page-link">Next</a></li>--%>
-<%--                </ul>--%>
-<%--            </div>--%>
+            <%--            <div class="clearfix">--%>
+            <%--                <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>--%>
+            <%--                <ul class="pagination">--%>
+            <%--                    <li class="page-item disabled"><a href="#">Previous</a></li>--%>
+            <%--                    <li class="page-item"><a href="#" class="page-link">1</a></li>--%>
+            <%--                    <li class="page-item"><a href="#" class="page-link">2</a></li>--%>
+            <%--                    <li class="page-item active"><a href="#" class="page-link">3</a></li>--%>
+            <%--                    <li class="page-item"><a href="#" class="page-link">4</a></li>--%>
+            <%--                    <li class="page-item"><a href="#" class="page-link">5</a></li>--%>
+            <%--                    <li class="page-item"><a href="#" class="page-link">Next</a></li>--%>
+            <%--                </ul>--%>
+            <%--            </div>--%>
         </div>
     </div>
 </div>

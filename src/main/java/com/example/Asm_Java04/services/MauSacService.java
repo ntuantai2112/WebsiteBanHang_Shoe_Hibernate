@@ -11,21 +11,32 @@ import java.util.UUID;
 public class MauSacService {
 
     MauSacRepository mauSacRepository = new MauSacRepository();
-    public ArrayList<MauSac> getAll(){
+
+    public ArrayList<MauSac> getAll() {
         return mauSacRepository.getList();
-    };
+    }
 
-    public void insertMauSac(MauSac ms){
+    ;
+
+    public void insertMauSac(MauSac ms) {
         mauSacRepository.createMauSac(ms);
-    };
-    public void update(MauSac sp){
-        mauSacRepository.updateMauSac(sp);
-    };
-    public void delete( UUID sp){
-        mauSacRepository.deleteMauSac(sp);
-    };
+    }
 
-    public MauSac findMauSactByID(UUID id){
+    ;
+
+    public void update(MauSac sp) {
+        mauSacRepository.updateMauSac(sp);
+    }
+
+    ;
+
+    public void delete(UUID sp) {
+        mauSacRepository.deleteMauSac(sp);
+    }
+
+    ;
+
+    public MauSac findMauSactByID(UUID id) {
         return mauSacRepository.findMauSactByID(id);
     }
 }

@@ -352,7 +352,7 @@
                     <label for="">Sản Phẩm</label>
                     <select class="form-select" aria-label="Default select example" name="sanPham">
                         <c:forEach items="${listSP}" var="sp">
-                            <option value="${sp.id}" >${sp.ten}</option>
+                            <option value="${sp.id}">${sp.ten}</option>
                         </c:forEach>
                     </select>
                 </div>
@@ -360,7 +360,7 @@
                     <label for="">Nhà Sản Xuất</label>
                     <select class="form-select" aria-label="Default select example" name="nhaSanXuat">
                         <c:forEach items="${listNSX}" var="nsx">
-                            <option value="${nsx.id}" >${nsx.ten}</option>
+                            <option value="${nsx.id}">${nsx.ten}</option>
                         </c:forEach>
                     </select>
                 </div>
@@ -369,7 +369,7 @@
                     <label for="">Màu Sắc</label>
                     <select class="form-select" aria-label="Default select example" name="mauSac">
                         <c:forEach items="${listMS}" var="ms">
-                            <option value="${ms.id}" >${ms.ten}</option>
+                            <option value="${ms.id}">${ms.ten}</option>
                         </c:forEach>
                     </select>
                 </div>
@@ -378,38 +378,36 @@
                     <label for="">Đồng Sản Phẩm</label>
                     <select class="form-select" aria-label="Default select example" name="dongSanPham">
                         <c:forEach items="${listDongSP}" var="dongSP">
-                            <option value="${dongSP.id}" >${dongSP.ten}</option>
+                            <option value="${dongSP.id}">${dongSP.ten}</option>
                         </c:forEach>
                     </select>
                 </div>
 
 
-
                 <div class="form-group">
                     <label for="">Năm Bảo Hành</label>
-                    <input type="number"  class="form-control" name="namBH" placeholder="Năm Bảo Hành">
+                    <input type="number" class="form-control" name="namBH" placeholder="Năm Bảo Hành">
                 </div>
 
                 <div class="form-group">
                     <%--@declare id=""--%><label for="">Mô Tả</label>
-                    <input type="text"  class="form-control" name="moTa" placeholder="Mô Tả">
+                    <input type="text" class="form-control" name="moTa" placeholder="Mô Tả">
                 </div>
 
                 <div class="form-group">
                     <label for="">Số Lượng Tồn</label>
-                    <input type="number"  class="form-control" name="soLuongTon" placeholder="Số Lượng Tồn">
+                    <input type="number" class="form-control" name="soLuongTon" placeholder="Số Lượng Tồn">
                 </div>
 
                 <div class="form-group">
                     <label for="">Giá Nhập</label>
-                    <input type="number"  class="form-control" name="giaNhap" placeholder="Gía Nhập">
+                    <input type="number" class="form-control" name="giaNhap" placeholder="Gía Nhập">
                 </div>
 
                 <div class="form-group">
                     <label for="">Giá Bán</label>
-                    <input type="number"  class="form-control" name="giaBan" placeholder="Giá Bán">
+                    <input type="number" class="form-control" name="giaBan" placeholder="Giá Bán">
                 </div>
-
 
 
                 <div class="text-center mt-3">

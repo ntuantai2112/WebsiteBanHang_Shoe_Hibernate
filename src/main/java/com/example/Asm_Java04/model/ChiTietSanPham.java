@@ -1,7 +1,6 @@
 package com.example.Asm_Java04.model;
 
 
-
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -26,6 +25,7 @@ public class ChiTietSanPham {
             strategy = "org.hibernate.id.UUIDGenerator"
     )
     private UUID id;
+
     @ManyToOne
     @JoinColumn(name = "IdSP")
     private SanPham sanPham;

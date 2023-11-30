@@ -2,13 +2,11 @@ package com.example.Asm_Java04.repositories;
 
 import com.example.Asm_Java04.model.MauSac;
 import com.example.Asm_Java04.model.SanPham;
-import com.example.Asm_Java04.util.HibernateUtil;
 import jakarta.persistence.TypedQuery;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.UUID;
 
 public class MauSacRepository {
@@ -16,7 +14,7 @@ public class MauSacRepository {
 
     public ArrayList<MauSac> getList() {
         ArrayList<MauSac> ketQua = new ArrayList<>();
-        try (Session session  = HibernateUtil.getFACTORY().openSession();)  {
+        try (Session session = HibernateUtil.getFACTORY().openSession();) {
             ketQua = (ArrayList<MauSac>) session.createQuery("from MauSac").list();
         } catch (Exception e) {
             e.printStackTrace();
@@ -25,9 +23,9 @@ public class MauSacRepository {
     }
 
 
-    public void createMauSac(MauSac ms){
+    public void createMauSac(MauSac ms) {
         Transaction transaction = null;
-        try (Session session  = HibernateUtil.getFACTORY().openSession()) {
+        try (Session session = HibernateUtil.getFACTORY().openSession()) {
             //Tạo ra Transaction
             transaction = session.beginTransaction();
             session.save(ms);
@@ -39,9 +37,9 @@ public class MauSacRepository {
 //
     }
 
-    public void updateMauSac(MauSac ms){
+    public void updateMauSac(MauSac ms) {
         Transaction transaction = null;
-        try(Session session  = HibernateUtil.getFACTORY().openSession()) {
+        try (Session session = HibernateUtil.getFACTORY().openSession()) {
             //Tạo ra Transaction
             transaction = session.beginTransaction();
             session.saveOrUpdate(ms);
@@ -52,15 +50,15 @@ public class MauSacRepository {
         }
     }
 
-    public void deleteMauSac(UUID id){
+    public void deleteMauSac(UUID id) {
         Transaction transaction = null;
-        try(Session session  = HibernateUtil.getFACTORY().openSession()) {
+        try (Session session = HibernateUtil.getFACTORY().openSession()) {
             //Tạo ra Transaction
             transaction = session.beginTransaction();
             MauSac ms = session.get(MauSac.class, id);
-            if(ms != null) {
+            if (ms != null) {
                 session.delete(ms);
-            }else{
+            } else {
 //                throw  new Exception("Student này không tồn tại!");
             }
             transaction.commit();
@@ -71,14 +69,14 @@ public class MauSacRepository {
         }
     }
 
-    public MauSac findMauSactByID(UUID id){
+    public MauSac findMauSactByID(UUID id) {
         Transaction transaction = null;
-        try(Session session  = HibernateUtil.getFACTORY().openSession()) {
+        try (Session session = HibernateUtil.getFACTORY().openSession()) {
             String jpql = "Select o from MauSac o where o.id = :id";
             TypedQuery<MauSac> query = session.createQuery(jpql, MauSac.class);
             query.setParameter("id", id);
             return query.getSingleResult();
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             transaction.rollback();
         }

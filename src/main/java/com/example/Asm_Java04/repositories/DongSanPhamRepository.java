@@ -1,22 +1,17 @@
 package com.example.Asm_Java04.repositories;
 
-import com.example.Asm_Java04.model.ChucVu;
-import com.example.Asm_Java04.model.CuaHang;
-import com.example.Asm_Java04.model.DongSP;
 import com.example.Asm_Java04.model.SanPham;
-import com.example.Asm_Java04.util.HibernateUtil;
 import jakarta.persistence.TypedQuery;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.UUID;
 
 public class DongSanPhamRepository {
     public ArrayList<DongSP> getList() {
         ArrayList<DongSP> ketQua = new ArrayList<>();
-        try (Session session  = HibernateUtil.getFACTORY().openSession();)  {
+        try (Session session = HibernateUtil.getFACTORY().openSession();) {
             ketQua = (ArrayList<DongSP>) session.createQuery("from DongSP ").list();
         } catch (Exception e) {
             e.printStackTrace();
@@ -25,9 +20,9 @@ public class DongSanPhamRepository {
     }
 
 
-    public void createDongSP(DongSP dongSP){
+    public void createDongSP(DongSP dongSP) {
         Transaction transaction = null;
-        try (Session session  = HibernateUtil.getFACTORY().openSession()) {
+        try (Session session = HibernateUtil.getFACTORY().openSession()) {
             //Tạo ra Transaction
             transaction = session.beginTransaction();
             session.save(dongSP);
@@ -41,9 +36,9 @@ public class DongSanPhamRepository {
 //        }
     }
 
-    public void updateDongSP(DongSP dongSP){
+    public void updateDongSP(DongSP dongSP) {
         Transaction transaction = null;
-        try(Session session  = HibernateUtil.getFACTORY().openSession()) {
+        try (Session session = HibernateUtil.getFACTORY().openSession()) {
             //Tạo ra Transaction
             transaction = session.beginTransaction();
             session.update(dongSP);
@@ -58,15 +53,15 @@ public class DongSanPhamRepository {
 //        }
     }
 
-    public void deleteDongSP(UUID id){
+    public void deleteDongSP(UUID id) {
         Transaction transaction = null;
-        try(Session session  = HibernateUtil.getFACTORY().openSession()) {
+        try (Session session = HibernateUtil.getFACTORY().openSession()) {
             //Tạo ra Transaction
             transaction = session.beginTransaction();
             DongSP dongSP = session.get(DongSP.class, id);
-            if(dongSP != null) {
+            if (dongSP != null) {
                 session.delete(dongSP);
-            }else{
+            } else {
 //                throw  new Exception("Student này không tồn tại!");
             }
             transaction.commit();
@@ -77,14 +72,14 @@ public class DongSanPhamRepository {
         }
     }
 
-    public DongSP findCategorytByID(UUID id){
+    public DongSP findCategorytByID(UUID id) {
         Transaction transaction = null;
-        try(Session session  = HibernateUtil.getFACTORY().openSession()) {
+        try (Session session = HibernateUtil.getFACTORY().openSession()) {
             String jpql = "Select o from DongSP o where o.id = :id";
             TypedQuery<DongSP> query = session.createQuery(jpql, DongSP.class);
             query.setParameter("id", id);
             return query.getSingleResult();
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             transaction.rollback();
         }

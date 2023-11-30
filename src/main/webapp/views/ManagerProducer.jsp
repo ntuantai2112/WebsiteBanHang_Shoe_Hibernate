@@ -345,9 +345,6 @@
 <div class="container  ">
 
 
-
-
-
     <div class="card mt-5">
         <div class="card-header">Thêm mới nhà sản xuất</div>
         <div class="card-body">
@@ -377,7 +374,7 @@
         <div class="">
             <div class="table-title ">
                 <div class="row text-center mt-4 mb-1">
-                        <h2>Danh Sách Nhà Sản Xuất</h2>
+                    <h2>Danh Sách Nhà Sản Xuất</h2>
                 </div>
             </div>
             <table class="table bg-light ">
@@ -409,18 +406,18 @@
                 </c:forEach>
                 </tbody>
             </table>
-<%--            <div class="clearfix">--%>
-<%--                <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>--%>
-<%--                <ul class="pagination">--%>
-<%--                    <li class="page-item disabled"><a href="#">Previous</a></li>--%>
-<%--                    <li class="page-item"><a href="#" class="page-link">1</a></li>--%>
-<%--                    <li class="page-item"><a href="#" class="page-link">2</a></li>--%>
-<%--                    <li class="page-item active"><a href="#" class="page-link">3</a></li>--%>
-<%--                    <li class="page-item"><a href="#" class="page-link">4</a></li>--%>
-<%--                    <li class="page-item"><a href="#" class="page-link">5</a></li>--%>
-<%--                    <li class="page-item"><a href="#" class="page-link">Next</a></li>--%>
-<%--                </ul>--%>
-<%--            </div>--%>
+            <%--            <div class="clearfix">--%>
+            <%--                <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>--%>
+            <%--                <ul class="pagination">--%>
+            <%--                    <li class="page-item disabled"><a href="#">Previous</a></li>--%>
+            <%--                    <li class="page-item"><a href="#" class="page-link">1</a></li>--%>
+            <%--                    <li class="page-item"><a href="#" class="page-link">2</a></li>--%>
+            <%--                    <li class="page-item active"><a href="#" class="page-link">3</a></li>--%>
+            <%--                    <li class="page-item"><a href="#" class="page-link">4</a></li>--%>
+            <%--                    <li class="page-item"><a href="#" class="page-link">5</a></li>--%>
+            <%--                    <li class="page-item"><a href="#" class="page-link">Next</a></li>--%>
+            <%--                </ul>--%>
+            <%--            </div>--%>
         </div>
     </div>
 </div>

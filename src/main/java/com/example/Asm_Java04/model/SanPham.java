@@ -19,11 +19,12 @@ import java.util.UUID;
 public class SanPham {
     @Id
     @Column(name = "Id")
+    @GeneratedValue(generator = "UUID")
     @GenericGenerator(
             name = "UUID",
             strategy = "org.hibernate.id.UUIDGenerator"
     )
-    private UUID Id;
+    private UUID id;
     @Column(name = "Ma")
     private String ma;
     @Column(name = "Ten")
@@ -39,6 +40,6 @@ public class SanPham {
     public SanPham(String ma, String ten, String hinhAnh) {
         this.ma = ma;
         this.ten = ten;
-        this.hinhAnh= hinhAnh;
+        this.hinhAnh = hinhAnh;
     }
 }

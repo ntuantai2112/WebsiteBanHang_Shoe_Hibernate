@@ -7,20 +7,30 @@ import com.example.Asm_Java04.model.SanPham;
 import java.util.List;
 
 public class HoaDonChiTietRepository {
-    public List<HoaDonChiTiet> getAll(){
+    public List<HoaDonChiTiet> getAll() {
 
         return null;
-    };
+    }
 
-    public void insert(HoaDonChiTiet sp){
+    ;
 
-    };
-    public void update(HoaDonChiTiet sp){
+    public void insert(HoaDonChiTiet sp) {
 
-    };
-    public void delete( HoaDonChiTiet sp){
+    }
 
-    };
+    ;
+
+    public void update(HoaDonChiTiet sp) {
+
+    }
+
+    ;
+
+    public void delete(HoaDonChiTiet sp) {
+
+    }
+
+    ;
 
 
 }

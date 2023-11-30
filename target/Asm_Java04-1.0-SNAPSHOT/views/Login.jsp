@@ -41,7 +41,7 @@
 
 
                             <div class="form-outline mb-4">
-                                <input type="text" id="typeEmailX-2" name="username"
+                                <input type="text" id="typeEmailX-2" name="userName"
                                        value="" class="form-control form-control-lg"
                                        placeholder="Username"/>
                                 <%--                                <label class="text-danger">${messUserName}</label>--%>

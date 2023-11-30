@@ -364,7 +364,8 @@
                     <div class="row">
                         <div class="col-auto">
                             <div class="form-check">
-                                <input value="Nam" class="form-check-input" type="radio" name="gioiTinh" id="flexRadioDefault1"
+                                <input value="Nam" class="form-check-input" type="radio" name="gioiTinh"
+                                       id="flexRadioDefault1"
                                        checked>
                                 <label class="form-check-label" for="flexRadioDefault1">
                                     Nam
@@ -373,7 +374,8 @@
                         </div>
                         <div class="col-auto">
                             <div class="form-check">
-                                <input value="Nữ" class="form-check-input" type="radio" name="gioiTinh" id="flexRadioDefault2">
+                                <input value="Nữ" class="form-check-input" type="radio" name="gioiTinh"
+                                       id="flexRadioDefault2">
                                 <label class="form-check-label" for="flexRadioDefault2">
                                     Nữ
                                 </label>
@@ -405,9 +407,9 @@
                 <div class="form-group">
                     <%--@declare id=""--%><label for="">Cửa Hàng</label>
                     <select class="form-select" aria-label="Default select example" name="cuaHang">
-                       <c:forEach items="${listCH}" var="ch">
-                        <option value="${ch.id}">${ch.ten}</option>
-                       </c:forEach>
+                        <c:forEach items="${listCH}" var="ch">
+                            <option value="${ch.id}">${ch.ten}</option>
+                        </c:forEach>
                     </select>
                 </div>
 
@@ -425,7 +427,7 @@
                     <div class="row">
                         <div class="col-auto">
                             <div class="form-check">
-                                <input  class="form-check-input" value="1" type="radio" name="trangThai" checked>
+                                <input class="form-check-input" value="1" type="radio" name="trangThai" checked>
                                 <label class="form-check-label" for="flexRadioDefault1">
                                     Đang Đi Làm
                                 </label>

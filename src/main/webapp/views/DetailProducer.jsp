@@ -350,16 +350,19 @@
             <form action="/producer/update?id=${nsxDetail.id}" method="post">
                 <div class="form-group">
                     <label disabled="" for="">ID nhà sản xuất</label>
-                    <input value="${nsxDetail.id}" type="text" class="form-control" name="id" placeholder="Mã nhà sản xuất">
+                    <input value="${nsxDetail.id}" type="text" class="form-control" name="id"
+                           placeholder="Mã nhà sản xuất">
                 </div>
                 <div class="form-group">
                     <label for="">Mã nhà sản xuất</label>
-                    <input value="${nsxDetail.ma}" type="text" class="form-control" name="ma" placeholder="Mã nhà sản xuất">
+                    <input value="${nsxDetail.ma}" type="text" class="form-control" name="ma"
+                           placeholder="Mã nhà sản xuất">
                 </div>
 
                 <div class="form-group">
                     <%--@declare id=""--%><label for="">Tên nhà sản xuất</label>
-                    <input type="text" value="${nsxDetail.ten}" class="form-control" name="ten" placeholder="Tên nhà sản xuất">
+                    <input type="text" value="${nsxDetail.ten}" class="form-control" name="ten"
+                           placeholder="Tên nhà sản xuất">
                 </div>
 
 

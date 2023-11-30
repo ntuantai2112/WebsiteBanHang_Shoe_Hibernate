@@ -57,6 +57,9 @@ public class NhanVien {
     @Column(name = "TrangThai")
     private Integer trangThai;
 
+    @Column(name = "UserName")
+    private String userName;
+
     @ManyToOne()
     @JoinColumn(
             name = "IdCH",
@@ -74,7 +77,23 @@ public class NhanVien {
     )
     private ChucVu cv;
 
-    public NhanVien(String ma,String ho,String tenDem,String ten ,String gioiTinh, Date ngaySinh, String diaChi, String sdt, String matKhau, Integer trangThai, CuaHang cuaHang, ChucVu cv) {
+    public NhanVien(String ma, String ho, String tenDem, String ten, String gioiTinh, Date ngaySinh, String diaChi, String sdt, String matKhau, Integer trangThai, CuaHang cuaHang, ChucVu cv) {
+        this.ma = ma;
+        this.ho = ho;
+        this.tenDem = tenDem;
+        this.ten = ten;
+        this.gioiTinh = gioiTinh;
+        this.ngaySinh = ngaySinh;
+        this.diaChi = diaChi;
+        this.sdt = sdt;
+        this.matKhau = matKhau;
+        this.trangThai = trangThai;
+        this.cuaHang = cuaHang;
+        this.cv = cv;
+    }
+
+    public NhanVien(UUID id, String ma, String ho, String tenDem, String ten, String gioiTinh, Date ngaySinh, String diaChi, String sdt, String matKhau, Integer trangThai, CuaHang cuaHang, ChucVu cv) {
+        this.id = id;
         this.ma = ma;
         this.ho = ho;
         this.tenDem = tenDem;

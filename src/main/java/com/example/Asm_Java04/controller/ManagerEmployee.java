@@ -1,7 +1,5 @@
 package com.example.Asm_Java04.controller;
 
-import com.example.Asm_Java04.model.ChucVu;
-import com.example.Asm_Java04.model.CuaHang;
 import com.example.Asm_Java04.model.KhachHang;
 import com.example.Asm_Java04.model.NhanVien;
 import com.example.Asm_Java04.services.ChucVuService;
@@ -55,7 +53,7 @@ public class ManagerEmployee extends HttpServlet {
                 }
             }
             response.sendRedirect("/manager-employee");
-        }  else if (uri.contains("/detail")) {
+        } else if (uri.contains("/detail")) {
             String empID = request.getParameter("id");
             ArrayList<NhanVien> list = (ArrayList<NhanVien>) nhanVienService.getAll();
             ArrayList<CuaHang> listCH = (ArrayList<CuaHang>) cuaHangService.getAll();
@@ -81,7 +79,7 @@ public class ManagerEmployee extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String uri = request.getRequestURI();
-        if(uri.contains("/add")){
+        if (uri.contains("/add")) {
 
             String fullName = request.getParameter("ten");
             String[] nameParts = fullName.split("\\s+");
@@ -127,11 +125,10 @@ public class ManagerEmployee extends HttpServlet {
 
 
 //            UUID nhanVienId = UUID.randomUUID();
-            NhanVien nhanVien = new NhanVien(ma,ho,tenDem,ten,gioiTinh, ngaySinh,diaChi,sdt,matKhau,Integer.parseInt(trangThai),cuaHang,chucVu);
+            NhanVien nhanVien = new NhanVien(ma, ho, tenDem, ten, gioiTinh, ngaySinh, diaChi, sdt, matKhau, Integer.parseInt(trangThai), cuaHang, chucVu);
             nhanVienService.insert(nhanVien);
             response.sendRedirect("/manager-employee");
-        }
-        else  if(uri.contains("/update")){
+        } else if (uri.contains("/update")) {
             String id = request.getParameter("id");
             UUID empID = UUID.fromString(id);
             String fullName = request.getParameter("ten");
@@ -181,7 +178,7 @@ public class ManagerEmployee extends HttpServlet {
             System.out.println(tenDem);
             System.out.println(ten);
 
-            NhanVien nhanVien = new NhanVien(empID,ma,ho,tenDem,ten,gioiTinh, ngaySinh,diaChi,sdt,matKhau,Integer.parseInt(trangThai),cuaHang,chucVu);
+            NhanVien nhanVien = new NhanVien(empID, ma, ho, tenDem, ten, gioiTinh, ngaySinh, diaChi, sdt, matKhau, Integer.parseInt(trangThai), cuaHang, chucVu);
             nhanVienService.update(nhanVien);
             response.sendRedirect("/manager-employee");
         }

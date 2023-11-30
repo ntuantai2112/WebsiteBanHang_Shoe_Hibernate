@@ -345,9 +345,6 @@
 <div class="container  ">
 
 
-
-
-
     <div class="card mt-5">
         <div class="card-header">Chi tiết chức vụ</div>
         <div class="card-body">
@@ -355,17 +352,20 @@
 
                 <div class="form-group">
                     <label for="">ID chức vụ</label>
-                    <input disabled value="${chucVuDetail.id}" type="text" class="form-control" name="ma" placeholder="Mã chức vụ">
+                    <input disabled value="${chucVuDetail.id}" type="text" class="form-control" name="ma"
+                           placeholder="Mã chức vụ">
                 </div>
 
                 <div class="form-group">
                     <label for="">Mã chức vụ</label>
-                    <input value="${chucVuDetail.ma}" type="text" class="form-control" name="ma" placeholder="Mã chức vụ">
+                    <input value="${chucVuDetail.ma}" type="text" class="form-control" name="ma"
+                           placeholder="Mã chức vụ">
                 </div>
 
                 <div class="form-group">
                     <%--@declare id=""--%><label for="">Tên chức vụ</label>
-                    <input type="text" value="${chucVuDetail.ten}" class="form-control" name="ten" placeholder="Tên chức vụ">
+                    <input type="text" value="${chucVuDetail.ten}" class="form-control" name="ten"
+                           placeholder="Tên chức vụ">
                 </div>
 
 

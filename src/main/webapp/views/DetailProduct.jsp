@@ -345,13 +345,10 @@
 <div class="container  ">
 
 
-
-
-
     <div class="card mt-5">
         <div class="card-header">Chi tiết sản phẩm sản phẩm</div>
         <div class="card-body">
-            <form action="/product/update?id=${spDetail.id}" method="post">
+            <form action="/product/update?id=${spDetail.id}" method="post" enctype="multipart/form-data">
                 <div class="form-group">
                     <%--@declare id=""--%><label for="">ID sản phẩm</label>
                     <input type="text" value="${spDetail.id}" class="form-control" name="id" placeholder="Mã sản phẩm">
@@ -364,12 +361,13 @@
 
                 <div class="form-group">
                     <label for="">Tên sản phẩm</label>
-                    <input type="text" value="${spDetail.ten}" class="form-control" name="ten" placeholder="Tên sản phẩm">
+                    <input type="text" value="${spDetail.ten}" class="form-control" name="ten"
+                           placeholder="Tên sản phẩm">
                 </div>
 
                 <div class="form-group">
                     <label for="">Image</label>
-                    <input type="file" value="${spDetail.hinhAnh}" class="form-control" name="image" placeholder="image">
+                    <input type="file" class="form-control" name="image" placeholder="image">
                 </div>
 
                 <div class="text-center mt-3">

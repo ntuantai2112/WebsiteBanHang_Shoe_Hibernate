@@ -15,6 +15,7 @@ public class NhanVienService {
 
         return nhanVienRepository.getList();
     }
+
     public void insert(NhanVien nv) {
         nhanVienRepository.createNhanVien(nv);
     }
@@ -27,8 +28,12 @@ public class NhanVienService {
         nhanVienRepository.deleteNhanVien(id);
     }
 
-    public NhanVien findNhanVientByID(UUID id){
+    public NhanVien findNhanVientByID(UUID id) {
         return nhanVienRepository.findNhanVientByID(id);
+    }
+
+    public NhanVien getNhanVien(String userName, String matKhau) {
+        return nhanVienRepository.getNhanVien(userName, matKhau);
     }
 
 }

@@ -350,48 +350,57 @@
             <form action="/customer/update?id=${khDetail.id}" method="post">
                 <div class="form-group">
                     <label for="">Id khách hàng</label>
-                    <input type="text" value="${khDetail.id}" class="form-control" name="id" placeholder="Id khách hàng">
+                    <input type="text" value="${khDetail.id}" class="form-control" name="id"
+                           placeholder="Id khách hàng">
                 </div>
                 <div class="form-group">
                     <label for="">Mã khách hàng</label>
-                    <input type="text" value="${khDetail.ma}" class="form-control" name="ma" placeholder="Mã khách hàng">
+                    <input type="text" value="${khDetail.ma}" class="form-control" name="ma"
+                           placeholder="Mã khách hàng">
                 </div>
 
                 <div class="form-group">
                     <label for="">Họ tên khách hàng</label>
-                    <input type="text" value="${khDetail.ho} ${khDetail.tenDem} ${khDetail.ten}" class="form-control" name="ten" placeholder="Họ tên khách hàng">
+                    <input type="text" value="${khDetail.ho} ${khDetail.tenDem} ${khDetail.ten}" class="form-control"
+                           name="ten" placeholder="Họ tên khách hàng">
                 </div>
 
-                <fmt:formatDate pattern="yyyy-MM-dd" value="${khDetail.ngaySinh}" var="formattedDate" />
+                <fmt:formatDate pattern="yyyy-MM-dd" value="${khDetail.ngaySinh}" var="formattedDate"/>
 
                 <div class="form-group">
                     <label for="">Ngày sinh</label>
-                    <input type="date" value="${formattedDate}" class="form-control" name="ngaySinh" placeholder="Ngày sinh">
+                    <input type="date" value="${formattedDate}" class="form-control" name="ngaySinh"
+                           placeholder="Ngày sinh">
                 </div>
 
                 <div class="form-group">
                     <label for="">Số điện thoại</label>
-                    <input type="number" value="${khDetail.sdt}" class="form-control" name="sdt" placeholder="Số điện thoại">
+                    <input type="number" value="${khDetail.sdt}" class="form-control" name="sdt"
+                           placeholder="Số điện thoại">
                 </div>
 
                 <div class="form-group">
                     <%--@declare id=""--%><label for="">Địa Chỉ</label>
-                    <input type="text"  value="${khDetail.diaChi}" class="form-control" name="diaChi" placeholder="Địa Chỉ">
+                    <input type="text" value="${khDetail.diaChi}" class="form-control" name="diaChi"
+                           placeholder="Địa Chỉ">
                 </div>
 
                 <div class="form-group">
                     <%--@declare id=""--%><label for="">Thành Phố</label>
-                    <input type="text" value="${khDetail.thanhPho}" class="form-control" name="thanhPho" placeholder="Thành Phố">
+                    <input type="text" value="${khDetail.thanhPho}" class="form-control" name="thanhPho"
+                           placeholder="Thành Phố">
                 </div>
 
                 <div class="form-group">
                     <%--@declare id=""--%><label for="">Quốc gia</label>
-                    <input type="text" value="${khDetail.quocGia}" class="form-control" name="quocGia" placeholder="Quốc gia">
+                    <input type="text" value="${khDetail.quocGia}" class="form-control" name="quocGia"
+                           placeholder="Quốc gia">
                 </div>
 
                 <div class="form-group">
                     <%--@declare id=""--%><label for="">Mật Khẩu</label>
-                    <input type="password" value="${khDetail.matKhau}" class="form-control" name="matKhau" placeholder="Mật Khẩu">
+                    <input type="password" value="${khDetail.matKhau}" class="form-control" name="matKhau"
+                           placeholder="Mật Khẩu">
                 </div>
 
 

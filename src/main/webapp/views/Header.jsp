@@ -50,7 +50,7 @@
                         <a class="nav-link" href="/views/about.jsp">About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/store">Shop</a>
+                        <a class="nav-link" href="/store/hien-thi">Shop</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/views/contact.jsp">Contact</a>
@@ -58,25 +58,28 @@
 
 
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                           data-bs-toggle="dropdown" aria-expanded="false">
                             Manager
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="/manager-product">Manager Product</a></li>
                             <li><a class="dropdown-item" href="/manager-color">Manager Color</a></li>
                             <li><a class="dropdown-item" href="/manager-producer">Manager Produce</a></li>
-                            <li><hr class="dropdown-divider"></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
                             <li><a class="dropdown-item" href="/manager-employee">Manager Employee</a></li>
                             <li><a class="dropdown-item" href="/manager-customer">Manager Customer</a></li>
                             <li><a class="dropdown-item" href="/manager-category">Manager Category</a></li>
-                            <li><hr class="dropdown-divider"></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
                             <li><a class="dropdown-item" href="/manager-detail-product">Manager Detail Product</a></li>
                             <li><a class="dropdown-item" href="/manager-shop">Manager Shop</a></li>
                             <li><a class="dropdown-item" href="/manager-position">Manager Position</a></li>
                         </ul>
                     </li>
-
-
 
 
                     <c:if test="${sessionScope.acc != null} ">

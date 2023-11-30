@@ -80,7 +80,7 @@
         <%-- Tìm kiếm sản phẩm        --%>
         <form action="search" method="post" class="modal-content modal-body border-0 p-0">
             <div class="input-group mb-2">
-                <input type="text" value="" class="form-control" id="inputModalSearch" name="keyword"
+                <input type="text" value="${keyword}" class="form-control" id="inputModalSearch" name="keyword"
                        placeholder="Search ...">
                 <button type="submit" class="input-group-text bg-success text-light">
                     <i class="fa fa-fw fa-search text-white"></i>
@@ -190,17 +190,17 @@
         <div class="col-12 col-md-4 p-5 mt-3">
             <a href="#"><img src="assets/img/Giay_Bitis02.jpg" class="rounded-circle img-fluid border"></a>
             <h5 class="text-center mt-3 mb-3">Bitis</h5>
-            <p class="text-center"><a class="btn btn-success" href="/store">Go Shop</a></p>
+            <p class="text-center"><a class="btn btn-success" href="/store/hien-thi">Go Shop</a></p>
         </div>
         <div class="col-12 col-md-4 p-5 mt-3">
             <a href="#"><img src="./assets/img/category_img_02.jpg" class="rounded-circle img-fluid border"></a>
             <h2 class="h5 text-center mt-3 mb-3">Nike</h2>
-            <p class="text-center"><a class="btn btn-success" href="/store">Go Shop</a></p>
+            <p class="text-center"><a class="btn btn-success" href="/store/hien-thi">Go Shop</a></p>
         </div>
         <div class="col-12 col-md-4 p-5 mt-3">
             <a href="#"><img src="./assets/img/giay_conver01.jpg" class="rounded-circle img-fluid border"></a>
             <h2 class="h5 text-center mt-3 mb-3">Converse</h2>
-            <p class="text-center"><a class="btn btn-success" href="/store">Go Shop</a></p>
+            <p class="text-center"><a class="btn btn-success" href="/store/hien-thi">Go Shop</a></p>
         </div>
     </div>
 </section>
@@ -220,14 +220,16 @@
             </div>
         </div>
         <div id="content" class=" row">
-            <c:forEach items="${listProduct}" var="p">
+            <c:forEach items="${listDetailProduct}" var="p">
                 <div class="product col-12 col-md-4 mb-4">
                     <div class="card h-100 card_title">
-                        <a href="/detail?pid=${p.id}" class="">
-                            <img src="${p.hinhAnh}" class="card-img-top image_link" alt="...">
+                        <a href="/store/detail?pid=${p.sanPham.id}" class="">
+                            <img src="${p.sanPham.hinhAnh}" class="card-img-top image_link" alt="...">
                         </a>
                         <div class="card-body">
-                            <h2>${p.ten}</h2>
+                            <a href="/store/detail?pid=${p.sanPham.id}" class="product_name">
+                                <h4 class="">${p.sanPham.ten}</h4>
+                            </a>
                             <ul class="list-unstyled d-flex justify-content-between">
                                 <li>
                                     <i class="text-warning fa fa-star"></i>
@@ -236,7 +238,7 @@
                                     <i class="text-muted fa fa-star"></i>
                                     <i class="text-muted fa fa-star"></i>
                                 </li>
-                                <li class="text-muted text-right fw-bold text-danger">  $</li>
+                                <li class="text-muted text-right fw-bold text-danger"> ${p.giaBan} $</li>
                             </ul>
                             <a href="/detail?pid=" class="product_name  fs-3  "></a>
                             <div class="row d-flex justify-content-between align-items-center">
@@ -259,7 +261,7 @@
             </c:forEach>
         </div>
 
-         Thêm sản phẩm
+        <%--         Thêm sản phẩm--%>
         <div class="">
             <button type="submit" onclick="loadMore()" class="btn btn-primary ">Load More</button>
         </div>

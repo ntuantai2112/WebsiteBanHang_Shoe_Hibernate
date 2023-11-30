@@ -1,9 +1,6 @@
 package com.example.Asm_Java04.controller;
 
-import com.example.Asm_Java04.model.ChucVu;
-import com.example.Asm_Java04.model.DongSP;
 import com.example.Asm_Java04.model.NSX;
-import com.example.Asm_Java04.services.DongSanPhamService;
 import com.example.Asm_Java04.services.NSXService;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -16,7 +13,7 @@ import java.util.ArrayList;
 import java.util.UUID;
 
 @WebServlet(name = "/ManagerProducer", value = {"/manager-producer"
-        , "/producer/add", "/producer/update", "/producer/delete","/producer/detail"
+        , "/producer/add", "/producer/update", "/producer/delete", "/producer/detail"
 })
 public class ManagerProducer extends HttpServlet {
     NSXService nsxService = new NSXService();
@@ -59,23 +56,21 @@ public class ManagerProducer extends HttpServlet {
         }
 
 
-
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         String uri = request.getRequestURI();
-        if(uri.contains("/add")){
+        if (uri.contains("/add")) {
             String ma = request.getParameter("ma");
             String ten = request.getParameter("ten");
             System.out.println(ma);
             System.out.println(ten);
-            NSX nsx = new NSX(ma,ten);
+            NSX nsx = new NSX(ma, ten);
             nsxService.insert(nsx);
             response.sendRedirect("/manager-producer");
-        }
-         else if(uri.contains("/update")){
+        } else if (uri.contains("/update")) {
             String id = request.getParameter("id");
             UUID nsxID = UUID.fromString(id);
             String ma = request.getParameter("ma");
@@ -83,7 +78,7 @@ public class ManagerProducer extends HttpServlet {
             System.out.println(id);
             System.out.println(ma);
             System.out.println(ten);
-            NSX nsx = new NSX(nsxID,ma,ten);
+            NSX nsx = new NSX(nsxID, ma, ten);
             nsxService.update(nsx);
             response.sendRedirect("/manager-producer");
         }

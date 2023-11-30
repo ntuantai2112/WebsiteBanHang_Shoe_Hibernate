@@ -1,6 +1,9 @@
 package com.example.Asm_Java04.util;
 
-import com.example.Asm_Java04.model.*;
+import com.example.Asm_Java04.model.ChiTietSanPham;
+import com.example.Asm_Java04.model.ChucVu;
+import com.example.Asm_Java04.model.DongSP;
+import com.example.Asm_Java04.model.GioHang;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
@@ -8,6 +11,7 @@ import org.hibernate.cfg.Environment;
 import org.hibernate.service.ServiceRegistry;
 
 import java.util.Properties;
+
 public class HibernateUtil {
     private static final SessionFactory FACTORY;
 

@@ -360,7 +360,8 @@
 
                 <div class="form-group">
                     <label for="">Họ tên nhân viên</label>
-                    <input type="text" value="${nvDetail.ho} ${nvDetail.tenDem} ${nvDetail.ten}"  class="form-control" name="ten" placeholder="Họ tên nhân viên">
+                    <input type="text" value="${nvDetail.ho} ${nvDetail.tenDem} ${nvDetail.ten}" class="form-control"
+                           name="ten" placeholder="Họ tên nhân viên">
                 </div>
 
 
@@ -370,9 +371,9 @@
                         <div class="col-auto">
                             <div class="form-check">
                                 <input value="Nam" class="form-check-input" type="radio" name="gioiTinh"
-                                <c:if test="${nvDetail.gioiTinh == 'Nam'}">checked</c:if>  >
+                                       <c:if test="${nvDetail.gioiTinh == 'Nam'}">checked</c:if>  >
                                 <label class="form-check-label" for="">
-                                   Nam
+                                    Nam
                                 </label>
                             </div>
                         </div>
@@ -381,51 +382,56 @@
                                 <input value="Nữ" class="form-check-input" type="radio" name="gioiTinh"
                                        <c:if test="${nvDetail.gioiTinh == 'Nữ'}">checked</c:if>  >
                                 <label class="form-check-label" for="">
-                                   Nữ
+                                    Nữ
                                 </label>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <fmt:formatDate pattern="yyyy-MM-dd" value="${nvDetail.ngaySinh}" var="formattedDate" />
+                <fmt:formatDate pattern="yyyy-MM-dd" value="${nvDetail.ngaySinh}" var="formattedDate"/>
                 <div class="form-group">
                     <label for="">Ngày sinh</label>
-                    <input type="date" value="${formattedDate}" class="form-control" name="ngaySinh" placeholder="Ngày sinh">
+                    <input type="date" value="${formattedDate}" class="form-control" name="ngaySinh"
+                           placeholder="Ngày sinh">
                 </div>
 
                 <div class="form-group">
                     <%--@declare id=""--%><label for="">Địa Chỉ</label>
-                    <input type="text" value="${nvDetail.diaChi}" class="form-control" name="diaChi" placeholder="Địa Chỉ">
+                    <input type="text" value="${nvDetail.diaChi}" class="form-control" name="diaChi"
+                           placeholder="Địa Chỉ">
                 </div>
 
                 <div class="form-group">
                     <label for="">Số điện thoại</label>
-                    <input type="text" value="${nvDetail.sdt}" class="form-control" name="sdt" placeholder="Số điện thoại">
+                    <input type="text" value="${nvDetail.sdt}" class="form-control" name="sdt"
+                           placeholder="Số điện thoại">
                 </div>
 
                 <div class="form-group">
                     <%--@declare id=""--%><label for="">Mật Khẩu</label>
-                    <input type="password" value="${nvDetail.matKhau}" class="form-control" name="matKhau" placeholder="Mật Khẩu">
+                    <input type="password" value="${nvDetail.matKhau}" class="form-control" name="matKhau"
+                           placeholder="Mật Khẩu">
                 </div>
 
                 <div class="form-group">
                     <%--@declare id=""--%><label for="">Cửa Hàng</label>
-                        <select class="form-select" aria-label="Default select example" name="cuaHang">
-                            <c:forEach items="${listCH}" var="ch">
+                    <select class="form-select" aria-label="Default select example" name="cuaHang">
+                        <c:forEach items="${listCH}" var="ch">
                             <option value="${ch.id}"
                                     <c:if test="${nvDetail.cuaHang.ten == ch.ten}">selected</c:if>  >${ch.ten}</option>
-                            </c:forEach>
-                        </select>
+                        </c:forEach>
+                    </select>
                 </div>
 
                 <div class="form-group">
                     <%--@declare id=""--%><label for="">Chức Vụ</label>
-                        <select class="form-select" aria-label="Default select example" name="cv">
-                            <c:forEach items="${listCV}" var="cv">
-                                <option value="${cv.id}"  <c:if test="${nvDetail.cv.ten == cv.ten}">selected</c:if>  >${cv.ten}</option>
-                            </c:forEach>
-                        </select>
+                    <select class="form-select" aria-label="Default select example" name="cv">
+                        <c:forEach items="${listCV}" var="cv">
+                            <option value="${cv.id}"
+                                    <c:if test="${nvDetail.cv.ten == cv.ten}">selected</c:if>  >${cv.ten}</option>
+                        </c:forEach>
+                    </select>
                 </div>
 
                 <div class="form-group">

@@ -1,6 +1,5 @@
 package com.example.Asm_Java04.controller;
 
-import com.example.Asm_Java04.model.ChucVu;
 import com.example.Asm_Java04.model.MauSac;
 import com.example.Asm_Java04.services.ChucVuService;
 import com.example.Asm_Java04.services.DongSanPhamService;
@@ -17,7 +16,7 @@ import java.util.ArrayList;
 import java.util.UUID;
 
 @WebServlet(name = "/ManagerPosition", value = {"/manager-position"
-        , "/position/add", "/position/update", "/position/delete","/position/detail"
+        , "/position/add", "/position/update", "/position/delete", "/position/detail"
 })
 public class ManagerPosition extends HttpServlet {
     ChucVuService chucVuService = new ChucVuService();
@@ -30,7 +29,7 @@ public class ManagerPosition extends HttpServlet {
         if (uri.contains("/manager-position")) {
             HttpSession session = request.getSession();
             ArrayList<ChucVu> listCV = (ArrayList<ChucVu>) chucVuService.getAll();
-            request.setAttribute("listCV",listCV);
+            request.setAttribute("listCV", listCV);
 
             request.getRequestDispatcher("/views/ManagerPosition.jsp").forward(request, response);
         } else if (uri.contains("/delete")) {
@@ -44,8 +43,7 @@ public class ManagerPosition extends HttpServlet {
                 }
             }
             response.sendRedirect("/manager-position");
-        }
-        else if (uri.contains("/detail")) {
+        } else if (uri.contains("/detail")) {
             String mauSacID = request.getParameter("id");
             if (mauSacID != null && !mauSacID.isEmpty()) {
                 try {
@@ -67,19 +65,18 @@ public class ManagerPosition extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         String uri = request.getRequestURI();
-        if(uri.contains("/add")){
+        if (uri.contains("/add")) {
             String ma = request.getParameter("ma");
             String ten = request.getParameter("ten");
-            ChucVu chucVu = new ChucVu(ma,ten);
+            ChucVu chucVu = new ChucVu(ma, ten);
             chucVuService.insert(chucVu);
             response.sendRedirect("/manager-position");
-        }
-        else if(uri.contains("/update")){
+        } else if (uri.contains("/update")) {
             String id = request.getParameter("id");
             UUID chucVuID = UUID.fromString(id);
             String ma = request.getParameter("ma");
             String ten = request.getParameter("ten");
-            ChucVu chucVu = new ChucVu(chucVuID,ma,ten);
+            ChucVu chucVu = new ChucVu(chucVuID, ma, ten);
             chucVuService.update(chucVu);
             response.sendRedirect("/manager-position");
         }

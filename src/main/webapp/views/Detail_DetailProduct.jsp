@@ -353,7 +353,8 @@
                     <label for="">Sản Phẩm</label>
                     <select class="form-select" aria-label="Default select example" name="sanPham">
                         <c:forEach items="${listSP}" var="sp">
-                            <option value="${sp.id}" <c:if test="${sp.ten == spDetail.sanPham.ten}">selected</c:if>
+                            <option value="${sp.id}"
+                                    <c:if test="${sp.ten == spDetail.sanPham.ten}">selected</c:if>
                             >${sp.ten}</option>
                         </c:forEach>
                     </select>
@@ -362,7 +363,8 @@
                     <label for="">Nhà Sản Xuất</label>
                     <select class="form-select" aria-label="Default select example" name="nhaSanXuat">
                         <c:forEach items="${listNSX}" var="nsx">
-                            <option value="${nsx.id}" <c:if test="${nsx.ten == spDetail.nhaSanXuat.ten}">selected</c:if> >${nsx.ten}</option>
+                            <option value="${nsx.id}"
+                                    <c:if test="${nsx.ten == spDetail.nhaSanXuat.ten}">selected</c:if> >${nsx.ten}</option>
                         </c:forEach>
                     </select>
                 </div>
@@ -371,7 +373,8 @@
                     <label for="">Màu Sắc</label>
                     <select class="form-select" aria-label="Default select example" name="mauSac">
                         <c:forEach items="${listMS}" var="ms">
-                            <option value="${ms.id}"  <c:if test="${ms.ten == spDetail.mauSac.ten}">selected</c:if> >${ms.ten}</option>
+                            <option value="${ms.id}"
+                                    <c:if test="${ms.ten == spDetail.mauSac.ten}">selected</c:if> >${ms.ten}</option>
                         </c:forEach>
                     </select>
                 </div>
@@ -380,16 +383,17 @@
                     <label for="">Đồng Sản Phẩm</label>
                     <select class="form-select" aria-label="Default select example" name="dongSanPham">
                         <c:forEach items="${listDongSP}" var="dongSP">
-                            <option value="${dongSP.id}"  <c:if test="${dongSP.ten == spDetail.dongSanPham.ten}">selected</c:if> >${dongSP.ten}</option>
+                            <option value="${dongSP.id}"
+                                    <c:if test="${dongSP.ten == spDetail.dongSanPham.ten}">selected</c:if> >${dongSP.ten}</option>
                         </c:forEach>
                     </select>
                 </div>
 
 
-
                 <div class="form-group">
                     <label for="">Năm Bảo Hành</label>
-                    <input type="number" value="${spDetail.namBH}" class="form-control" name="namBH" placeholder="Năm Bảo Hành">
+                    <input type="number" value="${spDetail.namBH}" class="form-control" name="namBH"
+                           placeholder="Năm Bảo Hành">
                 </div>
 
                 <div class="form-group">
@@ -399,19 +403,21 @@
 
                 <div class="form-group">
                     <label for="">Số Lượng Tồn</label>
-                    <input type="number" value="${spDetail.soLuongTon}" class="form-control" name="soLuongTon" placeholder="Số Lượng Tồn">
+                    <input type="number" value="${spDetail.soLuongTon}" class="form-control" name="soLuongTon"
+                           placeholder="Số Lượng Tồn">
                 </div>
 
                 <div class="form-group">
                     <label for="">Giá Nhập</label>
-                    <input type="number" value="${spDetail.giaNhap}" class="form-control" name="giaNhap" placeholder="Giá Nhập">
+                    <input type="number" value="${spDetail.giaNhap}" class="form-control" name="giaNhap"
+                           placeholder="Giá Nhập">
                 </div>
 
                 <div class="form-group">
                     <label for="">Giá Bán</label>
-                    <input type="number" value="${spDetail.giaBan}" class="form-control" name="giaBan" placeholder="Giá Bán">
+                    <input type="number" value="${spDetail.giaBan}" class="form-control" name="giaBan"
+                           placeholder="Giá Bán">
                 </div>
-
 
 
                 <div class="text-center mt-3">

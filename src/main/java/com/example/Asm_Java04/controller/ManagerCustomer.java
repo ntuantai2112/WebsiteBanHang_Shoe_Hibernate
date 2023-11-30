@@ -1,9 +1,6 @@
 package com.example.Asm_Java04.controller;
 
-import com.example.Asm_Java04.model.CuaHang;
-import com.example.Asm_Java04.model.DongSP;
 import com.example.Asm_Java04.model.KhachHang;
-import com.example.Asm_Java04.services.CuaHangService;
 import com.example.Asm_Java04.services.KhachHangService;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -19,13 +16,12 @@ import java.util.Date;
 import java.util.UUID;
 
 @WebServlet(name = "/ManagerCustomer", value = {"/manager-customer"
-        , "/customer/add", "/customer/update", "/customer/delete","/customer/detail"
+        , "/customer/add", "/customer/update", "/customer/delete", "/customer/detail"
 })
 
 public class ManagerCustomer extends HttpServlet {
 
     KhachHangService khachHangService = new KhachHangService();
-
 
 
     @Override
@@ -47,7 +43,7 @@ public class ManagerCustomer extends HttpServlet {
                 }
             }
             response.sendRedirect("/manager-customer");
-        }  else if (uri.contains("/detail")) {
+        } else if (uri.contains("/detail")) {
             String customerID = request.getParameter("id");
             if (customerID != null && !customerID.isEmpty()) {
                 try {
@@ -68,7 +64,7 @@ public class ManagerCustomer extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String uri = request.getRequestURI();
-        if(uri.contains("/add")){
+        if (uri.contains("/add")) {
 
             String fullName = request.getParameter("ten");
             String[] nameParts = fullName.split("\\s+");
@@ -103,12 +99,10 @@ public class ManagerCustomer extends HttpServlet {
             String thanhPho = request.getParameter("thanhPho");
             String quocGia = request.getParameter("quocGia");
             String matKhau = request.getParameter("matKhau");
-            KhachHang khachHang = new KhachHang(ma,ten,tenDem,ho, ngaySinh,sdt,diaChi,thanhPho,quocGia,matKhau);
+            KhachHang khachHang = new KhachHang(ma, ten, tenDem, ho, ngaySinh, sdt, diaChi, thanhPho, quocGia, matKhau);
             khachHangService.insert(khachHang);
             response.sendRedirect("/manager-customer");
-        }
-
-        else  if(uri.contains("/update")){
+        } else if (uri.contains("/update")) {
             String id = request.getParameter("id");
             UUID customerID = UUID.fromString(id);
             String fullName = request.getParameter("ten");
@@ -144,7 +138,7 @@ public class ManagerCustomer extends HttpServlet {
             String thanhPho = request.getParameter("thanhPho");
             String quocGia = request.getParameter("quocGia");
             String matKhau = request.getParameter("matKhau");
-            KhachHang khachHang = new KhachHang(customerID,ma,ten,tenDem,ho, ngaySinh,sdt,diaChi,thanhPho,quocGia,matKhau);
+            KhachHang khachHang = new KhachHang(customerID, ma, ten, tenDem, ho, ngaySinh, sdt, diaChi, thanhPho, quocGia, matKhau);
             khachHangService.update(khachHang);
             response.sendRedirect("/manager-customer");
         }

@@ -17,6 +17,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 public class MauSac {
+
     @Id
     @Column(name = "Id")
     @GenericGenerator(
@@ -24,7 +25,6 @@ public class MauSac {
             strategy = "org.hibernate.id.UUIDGenerator"
     )
     private UUID id;
-
     @Column(name = "Ma")
     private String ma;
     @Column(name = "Ten")
@@ -34,7 +34,6 @@ public class MauSac {
         this.ma = ma;
         this.ten = ten;
     }
-
 
 
 }

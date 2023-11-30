@@ -1,22 +1,19 @@
 package com.example.Asm_Java04.repositories;
 
-import com.example.Asm_Java04.model.ChucVu;
 import com.example.Asm_Java04.model.KhachHang;
 import com.example.Asm_Java04.model.MauSac;
 import com.example.Asm_Java04.model.SanPham;
-import com.example.Asm_Java04.util.HibernateUtil;
 import jakarta.persistence.TypedQuery;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.UUID;
 
 public class KhachHangRepository {
     public ArrayList<KhachHang> getList() {
         ArrayList<KhachHang> ketQua = new ArrayList<>();
-        try (Session session  = HibernateUtil.getFACTORY().openSession();)  {
+        try (Session session = HibernateUtil.getFACTORY().openSession();) {
             ketQua = (ArrayList<KhachHang>) session.createQuery("from KhachHang ").list();
         } catch (Exception e) {
             e.printStackTrace();
@@ -25,9 +22,9 @@ public class KhachHangRepository {
     }
 
 
-    public void createKhachHang(KhachHang khachHang){
+    public void createKhachHang(KhachHang khachHang) {
         Transaction transaction = null;
-        try (Session session  = HibernateUtil.getFACTORY().openSession()) {
+        try (Session session = HibernateUtil.getFACTORY().openSession()) {
             //Tạo ra Transaction
             transaction = session.beginTransaction();
             session.save(khachHang);
@@ -41,9 +38,9 @@ public class KhachHangRepository {
 //        }
     }
 
-    public void updateKhachHang(KhachHang khachHang){
+    public void updateKhachHang(KhachHang khachHang) {
         Transaction transaction = null;
-        try(Session session  = HibernateUtil.getFACTORY().openSession()) {
+        try (Session session = HibernateUtil.getFACTORY().openSession()) {
             //Tạo ra Transaction
             transaction = session.beginTransaction();
             session.update(khachHang);
@@ -58,15 +55,15 @@ public class KhachHangRepository {
 //        }
     }
 
-    public void deleteKhachHang(UUID id){
+    public void deleteKhachHang(UUID id) {
         Transaction transaction = null;
-        try(Session session  = HibernateUtil.getFACTORY().openSession()) {
+        try (Session session = HibernateUtil.getFACTORY().openSession()) {
             //Tạo ra Transaction
             transaction = session.beginTransaction();
             KhachHang kh = session.get(KhachHang.class, id);
-            if(kh != null) {
+            if (kh != null) {
                 session.delete(kh);
-            }else{
+            } else {
 //                throw  new Exception("Student này không tồn tại!");
             }
             transaction.commit();
@@ -77,14 +74,14 @@ public class KhachHangRepository {
         }
     }
 
-    public KhachHang findKhachHangtByID(UUID id){
+    public KhachHang findKhachHangtByID(UUID id) {
         Transaction transaction = null;
-        try(Session session  = HibernateUtil.getFACTORY().openSession()) {
+        try (Session session = HibernateUtil.getFACTORY().openSession()) {
             String jpql = "Select o from KhachHang o where o.id = :id";
             TypedQuery<KhachHang> query = session.createQuery(jpql, KhachHang.class);
             query.setParameter("id", id);
             return query.getSingleResult();
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             transaction.rollback();
         }

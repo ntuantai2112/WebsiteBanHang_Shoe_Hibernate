@@ -12,22 +12,32 @@ public class NSXService {
     NSXRepository nsxRepository = new NSXRepository();
 
 
-    public List<NSX> getAll(){
+    public List<NSX> getAll() {
 
         return nsxRepository.getList();
-    };
+    }
 
-    public void insert(NSX nsx){
+    ;
+
+    public void insert(NSX nsx) {
         nsxRepository.createNSX(nsx);
-    };
-    public void update(NSX nsx){
-        nsxRepository.updateNSX(nsx);
-    };
-    public void delete( UUID id){
-        nsxRepository.deleteNSX(id);
-    };
+    }
 
-    public NSX findNSXtByID(UUID id){
+    ;
+
+    public void update(NSX nsx) {
+        nsxRepository.updateNSX(nsx);
+    }
+
+    ;
+
+    public void delete(UUID id) {
+        nsxRepository.deleteNSX(id);
+    }
+
+    ;
+
+    public NSX findNSXtByID(UUID id) {
         return nsxRepository.findNSXtByID(id);
     }
 }

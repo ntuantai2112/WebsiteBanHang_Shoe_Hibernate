@@ -57,5 +57,4 @@ public class GioHang {
     private Integer tinhTrang;
 
 
-
 }

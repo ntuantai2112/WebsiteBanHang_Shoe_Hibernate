@@ -1,7 +1,7 @@
 package com.example.Asm_Java04.controller;
 
-import com.example.Asm_Java04.model.MauSac;
-import com.example.Asm_Java04.services.MauSacService;
+import com.example.Asm_Java04.model.NSX;
+import com.example.Asm_Java04.services.NSXService;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -12,47 +12,49 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.UUID;
 
-@WebServlet(name = "/ManagerColor", value = {"/manager-color"
-        , "/color/add", "/color/update", "/color/delete", "/color/detail"
+@WebServlet(name = "/ManagerCart", value = {"/manager-cart"
+        , "/cart/add", "/cart/update", "/cart/delete", "/cart/detail"
 })
-public class ManagerColor extends HttpServlet {
-    MauSacService mauSacService = new MauSacService();
+public class ManagerCart extends HttpServlet {
+    NSXService nsxService = new NSXService();
 
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String uri = request.getRequestURI();
 
-        if (uri.contains("/manager-color")) {
-            ArrayList<MauSac> listMS = mauSacService.getAll();
-            request.setAttribute("listMS", listMS);
+        if (uri.contains("/manager-cart")) {
+//            HttpSession session = request.getSession();
+            ArrayList<NSX> listNSX = (ArrayList<NSX>) nsxService.getAll();
+            request.setAttribute("listNSX", listNSX);
 
-            request.getRequestDispatcher("/views/ManagerColor.jsp").forward(request, response);
+            request.getRequestDispatcher("/views/ManagerProducer.jsp").forward(request, response);
         } else if (uri.contains("/delete")) {
-            String mauSacID = request.getParameter("id");
-            if (mauSacID != null && !mauSacID.isEmpty()) {
+            String dongSPID = request.getParameter("id");
+            if (dongSPID != null && !dongSPID.isEmpty()) {
                 try {
-                    UUID uuid = UUID.fromString(mauSacID);
-                    mauSacService.delete(uuid);
+                    UUID uuid = UUID.fromString(dongSPID);
+                    nsxService.delete(uuid);
                 } catch (IllegalArgumentException e) {
                     e.printStackTrace();
                 }
             }
-            response.sendRedirect("/manager-color");
+            response.sendRedirect("/manager-producer");
         } else if (uri.contains("/detail")) {
             String mauSacID = request.getParameter("id");
             if (mauSacID != null && !mauSacID.isEmpty()) {
                 try {
                     UUID uuid = UUID.fromString(mauSacID);
-                    MauSac mauSacDetail = mauSacService.findMauSactByID(uuid);
-                    request.setAttribute("MSDetial", mauSacDetail);
-                    request.getRequestDispatcher("/views/DetailColor.jsp").forward(request, response);
+                    NSX nsx = nsxService.findNSXtByID(uuid);
+                    request.setAttribute("nsxDetail", nsx);
+                    request.getRequestDispatcher("/views/DetailProducer.jsp").forward(request, response);
 
                 } catch (IllegalArgumentException e) {
                     e.printStackTrace();
                 }
             }
         }
+
 
     }
 
@@ -63,19 +65,23 @@ public class ManagerColor extends HttpServlet {
         if (uri.contains("/add")) {
             String ma = request.getParameter("ma");
             String ten = request.getParameter("ten");
-            MauSac mauSac = new MauSac(ma, ten);
-            mauSacService.insertMauSac(mauSac);
-            response.sendRedirect("/manager-color");
+            System.out.println(ma);
+            System.out.println(ten);
+            NSX nsx = new NSX(ma, ten);
+            nsxService.insert(nsx);
+            response.sendRedirect("/manager-producer");
         } else if (uri.contains("/update")) {
             String id = request.getParameter("id");
-            UUID mauSacID = UUID.fromString(id);
+            UUID nsxID = UUID.fromString(id);
             String ma = request.getParameter("ma");
             String ten = request.getParameter("ten");
-            MauSac mauSac = new MauSac(mauSacID, ma, ten);
-            mauSacService.update(mauSac);
-            response.sendRedirect("/manager-color");
+            System.out.println(id);
+            System.out.println(ma);
+            System.out.println(ten);
+            NSX nsx = new NSX(nsxID, ma, ten);
+            nsxService.update(nsx);
+            response.sendRedirect("/manager-producer");
         }
 
     }
-
 }

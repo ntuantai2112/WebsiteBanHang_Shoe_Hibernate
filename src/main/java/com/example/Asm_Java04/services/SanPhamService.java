@@ -11,22 +11,40 @@ public class SanPhamService {
 
     SanPhamRepository sanPhamRepository = new SanPhamRepository();
 
-    public ArrayList<SanPham> getAll(){
+    public ArrayList<SanPham> getAll() {
 
         return sanPhamRepository.getList();
-    };
+    }
 
-    public void insert(SanPham sp){
+    ;
+
+    public void insert(SanPham sp) {
         sanPhamRepository.createSanPham(sp);
-    };
-    public void update(SanPham sp){
-        sanPhamRepository.updateSanPham(sp);
-    };
-    public void delete( UUID id){
-        sanPhamRepository.deleteSanPham(id);
-    };
+    }
 
-    public SanPham findSanPhamByID(UUID id){
+    ;
+
+    public void update(SanPham sp) {
+        sanPhamRepository.updateSanPham(sp);
+    }
+
+    ;
+
+    public void delete(UUID id) {
+        sanPhamRepository.deleteSanPham(id);
+    }
+
+    ;
+
+    public SanPham findSanPhamByID(UUID id) {
         return sanPhamRepository.findSanPhamByID(id);
+    }
+
+    public ArrayList<SanPham> getPaging(int offset) {
+        return sanPhamRepository.getPaging(offset);
+    }
+
+    public ArrayList<SanPham> searchSanPhamByName(String keyword) {
+        return sanPhamRepository.searchSanPhamByName(keyword);
     }
 }
