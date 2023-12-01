@@ -424,7 +424,7 @@
         <div class="">
             <div class="table-title ">
                 <div class="row text-center mt-4 mb-1">
-                    <h2>Danh Sách Nhân Viên</h2>
+                    <h2>Danh Sách Chi Tiết Sản Phẩm</h2>
                 </div>
             </div>
             <table class="table bg-light ">
@@ -472,18 +472,16 @@
                 </c:forEach>
                 </tbody>
             </table>
-            <%--            <div class="clearfix">--%>
-            <%--                <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>--%>
-            <%--                <ul class="pagination">--%>
-            <%--                    <li class="page-item disabled"><a href="#">Previous</a></li>--%>
-            <%--                    <li class="page-item"><a href="#" class="page-link">1</a></li>--%>
-            <%--                    <li class="page-item"><a href="#" class="page-link">2</a></li>--%>
-            <%--                    <li class="page-item active"><a href="#" class="page-link">3</a></li>--%>
-            <%--                    <li class="page-item"><a href="#" class="page-link">4</a></li>--%>
-            <%--                    <li class="page-item"><a href="#" class="page-link">5</a></li>--%>
-            <%--                    <li class="page-item"><a href="#" class="page-link">Next</a></li>--%>
-            <%--                </ul>--%>
-            <%--            </div>--%>
+                        <div class="clearfix">
+                            <ul class="pagination">
+                                <c:forEach begin="1" end="${countPage}" var="i">
+                                    <li class="page-item ">
+                                        <a class="page-link <c:if test="${i == index }">active</c:if>   rounded-0 mr-3 shadow-sm border-top-0 border-left-0"
+                                           href="/manager-detail-product?index=${i}" tabindex="-1" style="color: black">${i}</a>
+                                    </li>
+                                </c:forEach>
+                            </ul>
+                        </div>
         </div>
     </div>
 </div>

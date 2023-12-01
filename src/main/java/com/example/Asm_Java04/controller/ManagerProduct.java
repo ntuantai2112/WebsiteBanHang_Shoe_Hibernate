@@ -1,6 +1,8 @@
 package com.example.Asm_Java04.controller;
 
+import com.example.Asm_Java04.model.ChiTietSanPham;
 import com.example.Asm_Java04.model.SanPham;
+import com.example.Asm_Java04.services.ChiTietSPService;
 import com.example.Asm_Java04.services.SanPhamService;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
@@ -19,14 +21,26 @@ import java.util.UUID;
 public class ManagerProduct extends HttpServlet {
 
     SanPhamService sanPhamService = new SanPhamService();
-
-
+    ChiTietSPService chiTietSPService = new ChiTietSPService();
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String uri = request.getRequestURI();
         if (uri.contains("/manager-product")) {
             ArrayList<SanPham> list = sanPhamService.getAll();
-            request.setAttribute("listP", list);
+            int countPage = chiTietSPService.getCountPageOfChiTietSP();
+            request.setAttribute("countPage", countPage);
+
+            String indexStr = request.getParameter("index");
+            if (indexStr == null) {
+                indexStr = "1";
+            }
+            Integer index = Integer.parseInt(indexStr);
+            if (index == null) {
+                index = 1;
+            }
+            ArrayList<SanPham> listP = sanPhamService.getPaging(index);
+            request.setAttribute("listP", listP);
+            request.setAttribute("index", index);
             request.getRequestDispatcher("/views/ManagerProduct.jsp").forward(request, response);
         } else if (uri.contains("/delete")) {
             String mauSacID = request.getParameter("id");

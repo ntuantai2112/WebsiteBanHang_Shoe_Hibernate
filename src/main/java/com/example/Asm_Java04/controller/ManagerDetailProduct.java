@@ -35,11 +35,27 @@ public class ManagerDetailProduct extends HttpServlet {
             ArrayList<NSX> listNSX = (ArrayList<NSX>) nsxService.getAll();
             ArrayList<MauSac> listMS = (ArrayList<MauSac>) mauSacService.getAll();
             ArrayList<DongSP> listDongSP = (ArrayList<DongSP>) dongSanPhamService.getAll();
-            request.setAttribute("listDetailProduct", listDetailProduct);
+
+            int countPage = chiTietSPService.getCountPageOfChiTietSP();
+            request.setAttribute("countPage", countPage);
             request.setAttribute("listSP", listSP);
             request.setAttribute("listNSX", listNSX);
             request.setAttribute("listMS", listMS);
             request.setAttribute("listDongSP", listDongSP);
+
+
+            String indexStr = request.getParameter("index");
+            if (indexStr == null) {
+                indexStr = "1";
+            }
+            Integer index = Integer.parseInt(indexStr);
+            if (index == null) {
+                index = 1;
+            }
+            ArrayList<ChiTietSanPham> listP = chiTietSPService.getPaging(index);
+            request.setAttribute("listDetailProduct", listP);
+            request.setAttribute("index", index);
+
 
 
             request.getRequestDispatcher("/views/ManagerDetailProduct.jsp").forward(request, response);
