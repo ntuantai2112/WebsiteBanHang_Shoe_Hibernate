@@ -1,4 +1,4 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <nav class="navbar navbar-expand-lg bg-dark navbar-light d-none d-lg-block" id="templatemo_nav_top">
     <div class="container text-light">
@@ -82,19 +82,26 @@
                     </li>
 
 
-                    <c:if test="${sessionScope.acc != null} ">
-                        <li class="nav-item">
-                            <a class="nav-link" href="/logout">Logout</a>
-                        </li>
-                    </c:if>
+<%--                    <c:if test="${sessionScope.acc != null} ">--%>
+<%--                        <li class="nav-item">--%>
+<%--                            <a class="nav-link" href="/logout">Logout</a>--%>
+<%--                        </li>--%>
+<%--                    </c:if>--%>
 
-                    <c:if test="${sessionScope.acc == null} ">
-                        <li class="nav-item">
-                            <a class="nav-link" href="/login">Login</a>
-                        </li>
-                    </c:if>
+<%--                    <c:if test="${sessionScope.acc == null} ">--%>
+<%--                        <li class="nav-item">--%>
+<%--                            <a class="nav-link" href="/login">Login</a>--%>
+<%--                        </li>--%>
+<%--                    </c:if>--%>
+                <c:if test="${sessionScope.acc.userName != null}">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/home">Hello ${sessionScope.acc.userName}</a>
+                    </li>
 
-
+                    <li class="nav-item">
+                        <a class="nav-link" href="/logout">Logout</a>
+                    </li>
+                </c:if>
                 </ul>
             </div>
             <div class="navbar align-self-center d-flex">
@@ -113,9 +120,20 @@
                 <a class="nav-icon position-relative text-decoration-none" href="/views/GioHang.jsp">
                     <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
                 </a>
+
+<%--            <c:if test="${sessionScope.acc == null} ">--%>
                 <a class="nav-icon position-relative text-decoration-none" href="/login">
                     <i class="fa fa-fw fa-user text-dark mr-3"></i>
                 </a>
+
+<%--            </c:if>--%>
+
+<%--                <c:if test="${sessionScope.acc != null}">--%>
+<%--                    <a class="nav-icon position-relative text-decoration-none" href="/logout">--%>
+<%--                        <i class="fa fa-fw fa-user text-dark mr-3"></i>--%>
+<%--                    </a>--%>
+<%--                </c:if>--%>
+
             </div>
         </div>
 

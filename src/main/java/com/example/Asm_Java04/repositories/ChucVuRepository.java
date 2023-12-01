@@ -1,5 +1,7 @@
 package com.example.Asm_Java04.repositories;
 
+import com.example.Asm_Java04.model.ChucVu;
+import com.example.Asm_Java04.util.HibernateUtil;
 import jakarta.persistence.TypedQuery;
 import org.hibernate.Session;
 import org.hibernate.Transaction;

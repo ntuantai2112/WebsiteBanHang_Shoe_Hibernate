@@ -1,7 +1,6 @@
 package com.example.Asm_Java04.services;
 
 import com.example.Asm_Java04.model.NSX;
-import com.example.Asm_Java04.model.SanPham;
 import com.example.Asm_Java04.repositories.NSXRepository;
 
 import java.util.List;

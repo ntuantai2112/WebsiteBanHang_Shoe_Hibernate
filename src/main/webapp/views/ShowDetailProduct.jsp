@@ -61,7 +61,7 @@
             <div class="col-lg-5 mt-5">
                 <div class="card mb-3">
                     <%--Hình ảnh--%>
-                    <img class="card-img img-fluid" src="${detail.image}" alt="Card image cap" id="product-detail">
+                    <img class="card-img img-fluid" src="${detailProduct.sanPham.hinhAnh}" alt="Card image cap" id="product-detail">
                 </div>
                 <div class="row">
                     <!--Start Controls-->
@@ -84,17 +84,17 @@
                                 <div class="row">
                                     <div class="col-4">
                                         <a href="#">
-                                            <img class="card-img img-fluid" src="${detail.image}" alt="Product Image 1">
+                                            <img class="card-img img-fluid" src="${detailProduct.sanPham.hinhAnh}" alt="Product Image 1">
                                         </a>
                                     </div>
                                     <div class="col-4">
                                         <a href="#">
-                                            <img class="card-img img-fluid" src="${detail.image}" alt="Product Image 2">
+                                            <img class="card-img img-fluid" src="${detailProduct.sanPham.hinhAnh}" alt="Product Image 2">
                                         </a>
                                     </div>
                                     <div class="col-4">
                                         <a href="#">
-                                            <img class="card-img img-fluid" src="${detail.image}" alt="Product Image 3">
+                                            <img class="card-img img-fluid" src="${detailProduct.sanPham.hinhAnh}" alt="Product Image 3">
                                         </a>
                                     </div>
                                 </div>
@@ -106,17 +106,17 @@
                                 <div class="row">
                                     <div class="col-4">
                                         <a href="#">
-                                            <img class="card-img img-fluid" src="${detail.image}" alt="Product Image 4">
+                                            <img class="card-img img-fluid" src="${detailProduct.sanPham.hinhAnh}" alt="Product Image 4">
                                         </a>
                                     </div>
                                     <div class="col-4">
                                         <a href="#">
-                                            <img class="card-img img-fluid" src="${detail.image}" alt="Product Image 5">
+                                            <img class="card-img img-fluid" src="${detailProduct.sanPham.hinhAnh}" alt="Product Image 5">
                                         </a>
                                     </div>
                                     <div class="col-4">
                                         <a href="#">
-                                            <img class="card-img img-fluid" src="${detail.image}" alt="Product Image 6">
+                                            <img class="card-img img-fluid" src="${detailProduct.sanPham.hinhAnh}" alt="Product Image 6">
                                         </a>
                                     </div>
                                 </div>
@@ -143,8 +143,8 @@
                 <div class="card">
                     <div class="card-body">
 
-                        <h1 class="h2">${detail.name}</h1>
-                        <p class="h3 py-2">$ ${detail.price}</p>
+                        <h1 class="h2">${detailProduct.sanPham.ten}</h1>
+                        <p class="h3 py-2">$ ${detailProduct.giaBan}</p>
                         <p class="py-2">
                             <i class="fa fa-star text-warning"></i>
                             <i class="fa fa-star text-warning"></i>
@@ -163,7 +163,7 @@
                         </ul>
 
                         <h6>Description:</h6>
-                        <p>${detail.description}</p>
+                        <p>${detailProduct.moTa}</p>
                         <ul class="list-inline">
                             <li class="list-inline-item">
                                 <h6>Avaliable Color :</h6>

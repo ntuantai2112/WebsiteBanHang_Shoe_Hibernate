@@ -1,7 +1,7 @@
 package com.example.Asm_Java04.repositories;
 
 import com.example.Asm_Java04.model.NhanVien;
-import com.example.Asm_Java04.model.SanPham;
+import com.example.Asm_Java04.util.HibernateUtil;
 import jakarta.persistence.TypedQuery;
 import org.hibernate.NonUniqueResultException;
 import org.hibernate.Session;

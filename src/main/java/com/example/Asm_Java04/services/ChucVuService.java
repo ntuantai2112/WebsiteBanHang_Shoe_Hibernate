@@ -1,8 +1,9 @@
 package com.example.Asm_Java04.services;
 
-import com.example.Asm_Java04.model.SanPham;
+import com.example.Asm_Java04.model.ChucVu;
 import com.example.Asm_Java04.repositories.ChucVuRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -10,8 +11,7 @@ public class ChucVuService {
 
     ChucVuRepository chucVuRepository = new ChucVuRepository();
 
-    public List<ChucVu> getAll() {
-
+    public ArrayList<ChucVu> getAll() {
         return chucVuRepository.getList();
     }
 

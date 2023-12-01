@@ -1,7 +1,6 @@
 package com.example.Asm_Java04.services;
 
-import com.example.Asm_Java04.model.GioHangChiTiet;
-import com.example.Asm_Java04.model.SanPham;
+import com.example.Asm_Java04.model.GioHang;
 import com.example.Asm_Java04.repositories.GioHangChiTietRepository;
 
 import java.util.ArrayList;
@@ -16,19 +15,19 @@ public class GioHangService {
 
     ;
 
-    public void insert(GioHang sp) {
+    public void insert(GioHang gioHang) {
 //        gioHangChiTietRepository.insert(sp);
     }
 
     ;
 
-    public void update(GioHang sp) {
+    public void update(GioHang gioHang) {
 
     }
 
     ;
 
-    public void delete(GioHang sp) {
+    public void delete(GioHang gioHang) {
 
     }
 

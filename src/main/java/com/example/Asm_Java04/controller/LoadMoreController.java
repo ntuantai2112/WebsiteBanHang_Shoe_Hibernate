@@ -3,6 +3,7 @@ package com.example.Asm_Java04.controller;
 //import com.example.Assignment.model.Product;
 //import com.example.Assignment.service.ProductService;
 
+import com.example.Asm_Java04.model.ChiTietSanPham;
 import com.example.Asm_Java04.services.ChiTietSPService;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
@@ -33,7 +34,7 @@ public class LoadMoreController extends HttpServlet {
         for (ChiTietSanPham p : listProduct) {
             printWriter.println("  <div class=\"product col-12 col-md-4 mb-4\">\n" +
                     "                <div class=\"card h-100 card_title\">\n" +
-                    "                    <a href=\"/detail?pid=" + p.getId() + "\" class=\"\">\n" +
+                    "                    <a href=\"/store/detail?pid=" + p.getSanPham().getId() + "\" class=\"\">\n" +
                     "                        <img src=\"" + p.getSanPham().getHinhAnh() + "\" class=\"card-img-top image_link\" alt=\"...\" >\n" +
                     "                    </a>\n" +
                     "                    <div class=\"card-body\">\n" +
@@ -47,7 +48,7 @@ public class LoadMoreController extends HttpServlet {
                     "                            </li>\n" +
                     "                            <li class=\"text-muted text-right fw-bold text-danger\"> " + p.getGiaBan() + " $</li>\n" +
                     "                        </ul>\n" +
-                    "                        <a href=\"/detail?pid=" + p.getId() + "\" class=\"product_name  fs-3  \">" + p.getSanPham().getTen() + "</a>\n" +
+                    "                        <a href=\"/store/detail?pid=" + p.getSanPham().getId() + "\" class=\"product_name  fs-3  \">" + p.getSanPham().getTen() + "</a>\n" +
                     "                        <div class=\"row d-flex justify-content-between align-items-center\">\n" +
                     "                            <div class=\"col-7\">\n" +
                     "                                <p class=\"text-muted\">Reviews (24)</p>\n" +

@@ -1,9 +1,6 @@
 package com.example.Asm_Java04.controller;
 
-import com.example.Asm_Java04.model.MauSac;
-import com.example.Asm_Java04.model.NSX;
 import com.example.Asm_Java04.model.SanPham;
-import com.example.Asm_Java04.services.DongSanPhamService;
 import com.example.Asm_Java04.services.SanPhamService;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
@@ -12,7 +9,6 @@ import jakarta.servlet.annotation.*;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.UUID;
 
 @MultipartConfig()

@@ -152,7 +152,7 @@
                 <c:forEach items="${categorys}" var="c">
                     <li class="pb-3 list-group-item text-white ${tag == c.id ? "active" : ""} ">
 
-                        <a class="category_link text-decoration-none active" href="/store/store-category?cid=${c.id}">
+                        <a class="category_link text-decoration-none active" href="/store/category?cid=${c.id}" >
                                 ${c.ten}
                                 <%--                        <i class="fa fa-fw fa-chevron-circle-down mt-1"></i>--%>
                         </a>
@@ -174,9 +174,9 @@
                                 <img class="card-img rounded-0 img-fluid" src="${p.hinhAnh}">
                                 <div class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
                                     <ul class="list-unstyled">
-                                        <li><a class="btn btn-success text-white" href="/shop/hien-thi"><i
+                                        <li><a class="btn btn-success text-white" href="/store/hien-thi"><i
                                                 class="far fa-heart"></i></a></li>
-                                        <li><a class="btn btn-success text-white mt-2" href="/detail?pid=${p.id}"><i
+                                        <li><a class="btn btn-success text-white mt-2" href="/store/detail?pid=${p.id}"><i
                                                 class="far fa-eye"></i></a></li>
                                         <li><a class="btn btn-success text-white mt-2" href="/views/GioHang.jsp"><i
                                                 class="fas fa-cart-plus"></i></a></li>
@@ -186,7 +186,7 @@
                             <div class="card-body">
                                     <%--   Title --%>
                                 <div class="row">
-                                    <h3><a href="/detail?pid=${p.id}"
+                                    <h3><a href="/store/detail?pid=${p.id}"
                                            class="h3 name_product  text-decoration-none">${p.ten}</a></h3>
 
                                         <%--                                    <p class="fw-bold mb-0">${p.price} $</p>--%>

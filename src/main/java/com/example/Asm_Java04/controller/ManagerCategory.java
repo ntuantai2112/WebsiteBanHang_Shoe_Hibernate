@@ -1,9 +1,7 @@
 package com.example.Asm_Java04.controller;
 
-import com.example.Asm_Java04.model.MauSac;
-import com.example.Asm_Java04.model.SanPham;
+import com.example.Asm_Java04.model.DongSP;
 import com.example.Asm_Java04.services.DongSanPhamService;
-import com.example.Asm_Java04.services.MauSacService;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;

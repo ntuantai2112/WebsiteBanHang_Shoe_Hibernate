@@ -1,5 +1,7 @@
 package com.example.Asm_Java04.controller;
 
+import com.example.Asm_Java04.model.ChiTietSanPham;
+import com.example.Asm_Java04.model.DongSP;
 import com.example.Asm_Java04.model.SanPham;
 import com.example.Asm_Java04.services.ChiTietSPService;
 import com.example.Asm_Java04.services.DongSanPhamService;
@@ -12,7 +14,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.UUID;
 
-@WebServlet(name = "ManagerStore", value = {"/ManagerStore", "/store/hien-thi", "/store/detail", "/store/store-category"})
+@WebServlet(name = "ManagerStore", value = {"/ManagerStore", "/store/hien-thi", "/store/detail", "/store/category"})
 public class ManagerStore extends HttpServlet {
 
     SanPhamService sanPhamService = new SanPhamService();
@@ -43,21 +45,41 @@ public class ManagerStore extends HttpServlet {
             request.setAttribute("index", index);
             request.getRequestDispatcher("/views/shop.jsp").forward(request, response);
         } else if (uri.contains("/detail")) {
+
+
             String productIDStr = request.getParameter("pid");
-            UUID productDetailID = UUID.fromString(productIDStr);
-            ChiTietSanPham chiTietSanPham = chiTietSPService.findChiTietSanPhamByID(productDetailID);
+            System.out.println(productIDStr);
+
+            UUID productDetailID = null;
+            try {
+                productDetailID = UUID.fromString(productIDStr);
+            } catch (IllegalArgumentException e) {
+                // Xử lý khi chuỗi không hợp lệ thành UUID
+                e.printStackTrace();
+            }
+            ChiTietSanPham chiTietSanPham = chiTietSPService.getChiTietSanPhamByIDSP(productDetailID);
             request.setAttribute("detailProduct", chiTietSanPham);
             request.getRequestDispatcher("/views/ShowDetailProduct.jsp").forward(request, response);
-        } else if (uri.contains("/store-category")) {
+
+
+        } else if (uri.contains("/category")) {
+
+            //9ea2b1b2-c106-7f40-9811-2f76b788d12c
             String categoryIDStr = request.getParameter("cid");
             System.out.println(categoryIDStr);
             UUID categoryID = UUID.fromString(categoryIDStr);
             System.out.println(categoryID);
             ArrayList<ChiTietSanPham> listChiTietSP = chiTietSPService.getChiTietSanPhamByCategoryID(categoryID);
             ArrayList<DongSP> listC = (ArrayList<DongSP>) dongSanPhamService.getAll();
+
+            int countPage = chiTietSPService.getCountPageOfChiTietSP();
+            request.setAttribute("countPage", countPage);
+
+
+//            request.setAttribute("countPage", countPage);
             request.setAttribute("categorys", listC);
-            request.setAttribute("products", listChiTietSP);
             request.setAttribute("tag", categoryID);
+//            request.setAttribute("products", listChiTietSP);
             request.getRequestDispatcher("/views/shop.jsp").forward(request, response);
         }
     }
@@ -66,4 +88,60 @@ public class ManagerStore extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
+
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

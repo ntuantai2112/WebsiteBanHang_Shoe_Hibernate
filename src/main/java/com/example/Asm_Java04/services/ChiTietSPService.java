@@ -1,7 +1,6 @@
 package com.example.Asm_Java04.services;
 
 import com.example.Asm_Java04.model.ChiTietSanPham;
-import com.example.Asm_Java04.model.SanPham;
 import com.example.Asm_Java04.repositories.ChiTietSPRepository;
 
 import java.util.ArrayList;
@@ -17,7 +16,8 @@ public class ChiTietSPService {
         return chiTietSPRepository.getList();
     }
 
-    ;
+
+
 
     public ArrayList<ChiTietSanPham> searchChiTietSanPhamByName(String keyword) {
         return chiTietSPRepository.searchChiTietSanPhamByName(keyword);
@@ -41,33 +41,44 @@ public class ChiTietSPService {
     }
 
     ;
-
+    //Láy ra chi tiết sản phẩm theo ID Chi Tiết sản phẩm
     public ChiTietSanPham findChiTietSanPhamByID(UUID id) {
         return chiTietSPRepository.findChiTietSanPhamByID(id);
     }
 
-
+    // Lấy ra chi tiết sản phẩm theo ID sản phẩm
     public ChiTietSanPham getChiTietSanPhamByIDSP(UUID idSanPham) {
         return chiTietSPRepository.getChiTietSanPhamByIDSP(idSanPham);
     }
 
+
+
+    // Lấy ra 3 sản phẩm tiesp teo
     public ArrayList<ChiTietSanPham> getChiTietSPLimited(int amount) {
         return chiTietSPRepository.getChiTietSPLimited(amount);
     }
-
+    // Lấy ra 3 sản phẩm
     public ArrayList<ChiTietSanPham> getThreeItems() {
         return chiTietSPRepository.getThreeItems();
     }
 
+    // Số lượng trang cần hiển thị
     public int getCountPageOfChiTietSP() {
         return chiTietSPRepository.getCountPageOfChiTietSP();
     }
 
+    // Phân trang
     public ArrayList<ChiTietSanPham> getPaging(int offset) {
         return chiTietSPRepository.getPaging(offset);
     }
 
+    // Lấy chi tiết sản phẩm theo tên danh mục
     public ArrayList<ChiTietSanPham> getChiTietSanPhamByCategoryID(UUID categoryID) {
         return chiTietSPRepository.getChiTietSanPhamByCategoryID(categoryID);
     }
+    public ChiTietSanPham getChiTietSanPhamByID(UUID id){
+        return chiTietSPRepository.getChiTietSanPhamByID(id);
+    }
+
+
 }

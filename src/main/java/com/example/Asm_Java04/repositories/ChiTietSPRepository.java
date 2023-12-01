@@ -2,6 +2,8 @@ package com.example.Asm_Java04.repositories;
 
 import com.example.Asm_Java04.model.ChiTietSanPham;
 //import com.example.Asm_Java04.model.SanPham;
+import com.example.Asm_Java04.model.SanPham;
+import com.example.Asm_Java04.services.ChiTietSPService;
 import com.example.Asm_Java04.util.HibernateUtil;
 import jakarta.persistence.NoResultException;
 import jakarta.persistence.TypedQuery;
@@ -71,20 +73,7 @@ public class ChiTietSPRepository {
         }
     }
 
-    // Chức năng phân trang
-//    public List<ChiTietSanPham> getPage(int pageNumber, int pageSize) {
-//        List<ChiTietSanPham> result = new ArrayList<>();
-//        try (Session session = HibernateUtil.getFACTORY().openSession()) {
-//            Query<ChiTietSanPham> query = session.createQuery("select o from ChiTietSanPham o", ChiTietSanPham.class);
-//            query.setFirstResult((pageNumber - 1) * pageSize); // Bắt đầu từ vị trí pageNumber * pageSize
-//            query.setMaxResults(pageSize); // Lấy tối đa pageSize kết quả
-//
-//            result = query.list();
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//        return result;
-//    }
+
     // Chức năng phân trang lấy số lượng Page muốn hiển thị
     public int getCountPageOfChiTietSP() {
         try (Session session = HibernateUtil.getFACTORY().openSession()) {
@@ -106,10 +95,26 @@ public class ChiTietSPRepository {
         return 0;
     }
 
-    // Chức năng load more sản phẩm, lấy ra 6 sản phẩm tiếp theo
+
+
+
+    public ChiTietSanPham getChiTietSanPhamByID(UUID id){
+        Transaction transaction = null;
+        try (Session session = HibernateUtil.getFACTORY().openSession()) {
+            //Tạo ra Transaction
+            transaction = session.beginTransaction();
+            ChiTietSanPham chiTietSanPham = session.find(ChiTietSanPham.class,id);
+            return chiTietSanPham;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    // Chức năng load more chi tiet san phẩm sản phẩm, lấy ra 6 sản phẩm tiếp theo
     public ArrayList<ChiTietSanPham> getPaging(int offset) {
         try (Session session = HibernateUtil.getFACTORY().openSession()) {
-            Query query = session.createSQLQuery("SELECT * FROM ChiTietSP ORDER BY Id OFFSET :offset ROWS FETCH NEXT 6 ROWS ONLY")
+            Query query = session.createSQLQuery("SELECT * FROM ChiTietSanPham ORDER BY Id OFFSET :offset ROWS FETCH NEXT 6 ROWS ONLY")
                     .addEntity(ChiTietSanPham.class)
                     .setParameter("offset", (offset - 1) * 6);
 
@@ -118,8 +123,9 @@ public class ChiTietSPRepository {
             return results;
         } catch (Exception e) {
             e.printStackTrace();
-            return new ArrayList<>();
+
         }
+        return null;
     }
 
     public void insert(ChiTietSanPham sp) {
@@ -175,8 +181,6 @@ public class ChiTietSPRepository {
     public ChiTietSanPham findChiTietSanPhamByID(UUID id) {
         ChiTietSanPham chiTietSanPham = new ChiTietSanPham();
         try (Session session = HibernateUtil.getFACTORY().openSession()) {
-            String jpql = "SELECT o FROM ChiTietSanPham o WHERE o.id = :id";
-
             Query query = session.createQuery("FROM ChiTietSanPham o WHERE o.id = :id");
             query.setParameter("id", id);
             chiTietSanPham = (ChiTietSanPham) query.getSingleResult();
@@ -212,19 +216,32 @@ public class ChiTietSPRepository {
 
     // Lấy danh sách chi tiết sản phẩm theo CategoryID
     public ArrayList<ChiTietSanPham> getChiTietSanPhamByCategoryID(UUID categoryID) {
-        ArrayList<ChiTietSanPham> danhSachChiTiet = new ArrayList<>();
+        ArrayList<ChiTietSanPham> ketQua = new ArrayList<>();
         try (Session session = HibernateUtil.getFACTORY().openSession()) {
             String jpql = "SELECT c FROM ChiTietSanPham c WHERE c.dongSanPham.id = :categoryId";
             TypedQuery<ChiTietSanPham> query = session.createQuery(jpql, ChiTietSanPham.class);
             query.setParameter("categoryId", categoryID);
-            danhSachChiTiet = (ArrayList<ChiTietSanPham>) query.getResultList();
-            return danhSachChiTiet;
+            ketQua = (ArrayList<ChiTietSanPham>) query.getResultList();
+            return ketQua;
         } catch (Exception e) {
             e.printStackTrace();
             // Handle any exceptions that might occur during the query execution
         }
         return null;
     }
+
+
+//    public static void main(String[] args) {
+//        ChiTietSPRepository chiTietSPService = new ChiTietSPRepository();
+//        SanPhamRepository sanPhamRepository = new SanPhamRepository();
+//        String id = "ac5f1e88-e9dc-c842-83e5-3f4a8b056481";
+//        UUID idC = UUID.fromString(id);
+//        ArrayList<ChiTietSanPham> listP =chiTietSPService.getChiTietSanPhamByCategoryID(idC);
+//
+//        for (ChiTietSanPham sp: listP){
+//            System.out.println(sp.getSanPham().getTen());
+//        }
+//    }
 
 
 }

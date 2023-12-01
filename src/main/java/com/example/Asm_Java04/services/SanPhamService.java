@@ -4,7 +4,6 @@ import com.example.Asm_Java04.model.SanPham;
 import com.example.Asm_Java04.repositories.SanPhamRepository;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.UUID;
 
 public class SanPhamService {

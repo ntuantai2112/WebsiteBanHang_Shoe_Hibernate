@@ -1,7 +1,6 @@
 package com.example.Asm_Java04.services;
 
 import com.example.Asm_Java04.model.NhanVien;
-import com.example.Asm_Java04.model.SanPham;
 import com.example.Asm_Java04.repositories.NhanVienRepository;
 
 import java.util.List;

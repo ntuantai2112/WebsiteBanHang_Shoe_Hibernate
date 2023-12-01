@@ -246,7 +246,7 @@
                                     <p class="text-muted">Reviews (24)</p>
                                 </div>
                                 <div class="col-5">
-                                    <a href="#">
+                                    <a href="/views/GioHang.jsp">
                                         <button type="submit" class="btn btn-success btn-lg" name="submit"
                                                 value="addtocard">Add To Cart
                                         </button>

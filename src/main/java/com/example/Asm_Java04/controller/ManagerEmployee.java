@@ -1,10 +1,10 @@
 package com.example.Asm_Java04.controller;
 
-import com.example.Asm_Java04.model.KhachHang;
+import com.example.Asm_Java04.model.ChucVu;
+import com.example.Asm_Java04.model.CuaHang;
 import com.example.Asm_Java04.model.NhanVien;
 import com.example.Asm_Java04.services.ChucVuService;
 import com.example.Asm_Java04.services.CuaHangService;
-import com.example.Asm_Java04.services.KhachHangService;
 import com.example.Asm_Java04.services.NhanVienService;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;

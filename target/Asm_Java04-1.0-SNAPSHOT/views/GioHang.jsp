@@ -50,6 +50,7 @@
                 <th scope="col">Sản phẩm</th>
                 <th scope="col">Đơn giá</th>
                 <th scope="col">Số lượng</th>
+                <th scope="col">Tổng tiền</th>
                 <th scope="col">Xóa</th>
             </tr>
             </thead>
@@ -57,11 +58,18 @@
             <tr>
                 <th scope="row">1</th>
                 <td>20$</td>
+
                 <td>
-                    <div class="col-md-2">
-                        <input type="number" value="1" min="1">
-                    </div>
+                    <ul class="list-inline pb-3">
+                        <li class="list-inline-item"><span class="btn btn-success"
+                                                           id="btn-minus">-</span></li>
+                        <li class="list-inline-item"><span class="badge bg-secondary"
+                                                           id="var-value">1</span></li>
+                        <li class="list-inline-item"><span class="btn btn-success"
+                                                           id="btn-plus">+</span></li>
+                    </ul>
                 </td>
+                <td>20$</td>
                 <td>
                     <a href="">
                         <button class="btn btn-danger">Xóa</button>
@@ -74,7 +82,7 @@
     </div>
 
     <div class="row">
-        <div class="col-6">
+        <div class="col-7">
             <h1>Voucher</h1>
             <form action="">
                 <div class="col-auto">
@@ -85,14 +93,45 @@
                     </div>
                 </div>
             </form>
+
+
+
+            <form>
+                <div class="row">
+                    <div class="mb-3 col-6">
+                        <label for="exampleInputPassword1" class="form-label">Họ và tên</label>
+                        <input type="text" class="form-control" placeholder="Họ và tên" required>
+                    </div>
+
+                    <div class="mb-3 col-6">
+                        <label for="exampleInputPassword1" class="form-label">Số điện thoại</label>
+                        <input type="text" class="form-control" id="exampleInputPassword1" required placeholder="Số điện thoại">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="mb-3 col-6">
+                        <label for="exampleInputPassword1" class="form-label" >Địa chỉ</label>
+                        <input type="text" class="form-control" placeholder="Địa chỉ" required>
+                    </div>
+
+                    <div class="mb-3 col-6">
+                        <label for="exampleInputEmail1" class="form-label">Email address</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email"  required aria-describedby="emailHelp">
+                    </div>
+                </div>
+
+            </form>
+
+
         </div>
-        <div class="col-6 ">
+        <div class="col-5">
             <h1>Thành tiền</h1>
-            <div class="row ">
+            <div class="row">
                 <p>Tổng tiền hàng</p>
-                <span class="float-end">20$</span>
+                <p class="float-end">20$</p>
             </div>
-            <div class="row ">
+            <div class="row">
                 <p>Phí vận chuyển</p>
                 <span class="float-end">20$</span>
             </div>
@@ -104,8 +143,13 @@
                 <p>Tổng thanh toán</p>
                 <span class="float-end">20$</span>
             </div>
-            <div class="row">
-                <button class="btn btn-success form-control mb-5">Mua hàng</button>
+            <div class="row mt-3">
+                <div class="col-6">
+                    <a href=""><button class="btn btn-outline-success form-control mb-5">Tiếp tục mua sắm</button></a>
+                </div>
+                <div class="col-6">
+                    <button class="btn btn-success form-control mb-5" type="submit"> Mua hàng</button>
+                </div>
             </div>
         </div>
     </div>
@@ -115,7 +159,46 @@
 <jsp:include page="Footer.jsp"></jsp:include>
 
 <!-- End Footer -->
+<script src="../assets/js/jquery-1.11.0.min.js"></script>
+<script src="../assets/js/jquery-migrate-1.2.1.min.js"></script>
+<script src="../assets/js/bootstrap.bundle.min.js"></script>
+<script src="../assets/js/templatemo.js"></script>
+<script src="../assets/js/custom.js"></script>
+<!-- End Script -->
 
+<!-- Start Slider Script -->
+<script src="../assets/js/slick.min.js"></script>
+<script>
+    $('#carousel-related-product').slick({
+        infinite: true,
+        arrows: false,
+        slidesToShow: 4,
+        slidesToScroll: 3,
+        dots: true,
+        responsive: [{
+            breakpoint: 1024,
+            settings: {
+                slidesToShow: 3,
+                slidesToScroll: 3
+            }
+        },
+            {
+                breakpoint: 600,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 3
+                }
+            },
+            {
+                breakpoint: 480,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 3
+                }
+            }
+        ]
+    });
+</script>
 
 </body>
 </html>

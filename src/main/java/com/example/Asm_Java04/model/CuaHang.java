@@ -1,4 +1,4 @@
-ackage com.example.Asm_Java04.model;
+package  com.example.Asm_Java04.model;
 
 
 import jakarta.persistence.*;

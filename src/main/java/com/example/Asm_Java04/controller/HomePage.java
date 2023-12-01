@@ -1,6 +1,6 @@
 package com.example.Asm_Java04.controller;
 
-import com.example.Asm_Java04.model.SanPham;
+import com.example.Asm_Java04.model.ChiTietSanPham;
 import com.example.Asm_Java04.services.ChiTietSPService;
 import com.example.Asm_Java04.services.SanPhamService;
 import jakarta.servlet.*;
@@ -10,6 +10,7 @@ import jakarta.servlet.annotation.*;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 @WebServlet(name = "HomePage", value = {"/home", "/search"})
 public class HomePage extends HttpServlet {
@@ -27,6 +28,11 @@ public class HomePage extends HttpServlet {
 //            List<SanPham> listProduct = sanPhamService.getAll();
 //            String total = request.getParameter("exits");
 //            int amount = Integer.parseInt(total);
+//            String idSPStr = request.getParameter("pid");
+//            System.out.println(idSPStr);
+//            UUID idSP = UUID.fromString(idSPStr);
+//            System.out.println(idSP);
+
             List<ChiTietSanPham> listDetailProduct = chiTietSPService.getThreeItems();
             request.setAttribute("listDetailProduct", listDetailProduct);
             request.getRequestDispatcher("HomePage.jsp").forward(request, response);
@@ -44,6 +50,7 @@ public class HomePage extends HttpServlet {
             request.setAttribute("listDetailProduct", lispCTSP);
             request.setAttribute("keyword", keyword);
             request.getRequestDispatcher("HomePage.jsp").forward(request, response);
+            request.getRequestDispatcher("/views/shop.jsp").include(request, response);
 
         }
     }
