@@ -114,15 +114,16 @@ public class ChiTietSPRepository {
     // Chức năng load more sản phẩm, lấy ra 6 sản phẩm tiếp theo
     public ArrayList<ChiTietSanPham> getPaging(int offset) {
         try (Session session = HibernateUtil.getFACTORY().openSession()) {
-            Query query = session.createQuery("FROM ChiTietSanPham")
-                    .setFirstResult((offset - 1) * 6)
-                    .setMaxResults(6);
+            Query query = session.createSQLQuery("SELECT * FROM ChiTietSP ORDER BY Id OFFSET :offset ROWS FETCH NEXT 6 ROWS ONLY")
+                    .addEntity(ChiTietSanPham.class)
+                    .setParameter("offset", (offset - 1) * 6);
 
             ArrayList<ChiTietSanPham> results = (ArrayList<ChiTietSanPham>) query.list();
 
             return results;
         } catch (Exception e) {
             e.printStackTrace();
+
         }
         return null;
     }
@@ -235,7 +236,7 @@ public class ChiTietSPRepository {
 ////        SanPhamRepository sanPhamRepository = new SanPhamRepository();
 ////        String id = "ac5f1e88-e9dc-c842-83e5-3f4a8b056481";
 ////        UUID idC = UUID.fromString(id);
-//        ArrayList<ChiTietSanPham> listP =chiTietSPService.getPaging(1);
+//        ArrayList<ChiTietSanPham> listP =chiTietSPService.getPaging(2);
 //        for (ChiTietSanPham sp: listP){
 //            System.out.println(sp.getSanPham().getTen());
 //        }

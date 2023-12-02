@@ -346,27 +346,37 @@
 
 
     <div class="card mt-5">
-        <div class="card-header">Thêm mới sản phẩm</div>
+        <div class="card-header">Thêm mới cửa hàng</div>
         <div class="card-body">
-            <form action="/product/add" method="post" enctype="multipart/form-data">
+            <form action="/shop/add" method="post">
                 <div class="form-group">
-                    <%--@declare id=""--%><label for="">Mã sản phẩm</label>
-                    <input type="text" required class="form-control" name="ma" placeholder="Mã sản phẩm">
+                    <label for="">Mã cửa hàng</label>
+                    <input type="text" required class="form-control" name="ma" placeholder="Mã cửa hàng">
                 </div>
 
                 <div class="form-group">
-                    <label for="">Tên sản phẩm</label>
-                    <input type="text" required class="form-control" name="ten" placeholder="Tên sản phẩm">
+                    <label for="">Tên cửa hàng</label>
+                    <input type="text" required class="form-control" name="ten" placeholder="Tên cửa hàng">
                 </div>
 
                 <div class="form-group">
-                    <label for="">Image</label>
-                    <input type="file" class="form-control" name="image" placeholder="image">
+                    <label for="">Địa Chỉ</label>
+                    <input type="text" required class="form-control" name="diaChi" placeholder="Địa Chỉ">
+                </div>
+
+                <div class="form-group">
+                    <label for="">Thành Phố</label>
+                    <input type="text" required class="form-control" name="thanhPho" placeholder="Thành Phố">
+                </div>
+
+                <div class="form-group">
+                    <%--@declare id=""--%><label for="">Quốc gia</label>
+                    <input type="text" required class="form-control" name="quocGia" placeholder="Quốc gia">
                 </div>
 
                 <div class="text-center mt-3">
                     <button type="reset" class="btn  btn-outline-secondary">Reset</button>
-                    <button type="submit" class="btn btn-success">Thêm</button>
+                    <button type="submit" required class="btn btn-success">Thêm</button>
                 </div>
 
             </form>
@@ -379,7 +389,7 @@
             <div class="table-title ">
                 <div class="row text-center mt-4 mb-1">
                     <%--                    <div class="col-sm-6 ">--%>
-                    <h2>Danh Sách Sản Phẩm</h2>
+                    <h2>Danh Sách Hoa Don</h2>
                     <%--                    </div>--%>
                     <%--                    <div class="col-sm-6">--%>
                     <%--                        <a href="/product/add" class="btn btn-success text-center" data-toggle="modal"><i--%>
@@ -392,43 +402,49 @@
                 <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Mã Sản Phẩm</th>
-                    <th>Tên Sản Phẩm</th>
-                    <th>Image</th>
-                    <th></th>
+                    <th>Khách hàng </th>
+                    <th>Nhân viên</th>
+                    <th>Mã</th>
+                    <th>Ngày Tạo</th>
+<%--                    <th></th>--%>
                     <th>Actions</th>
                 </tr>
                 </thead>
                 <tbody>
-                <c:forEach items="${listP}" var="product">
+                <c:forEach items="${listHD}" var="hd">
                     <tr>
+
                         <td>
-                                ${product.id}
+                                ${hd.id}
                         </td>
-                        <td>${product.ma}</td>
-                        <td>${product.ten}</td>
-                        <td><img src="${product.hinhAnh}" alt="" style="width: 100px; height: 100px"></td>
+                        <td>${hd.khachHang.ten}</td>
+<%--                        <td>${hd.ten}</td>--%>
+<%--                        <td>${hd.diaChi}</td>--%>
+<%--                        <td>${hd.thanhPho}</td>--%>
+<%--                        <td>${hd.quocGia}</td>--%>
                         <td>
-                            <a href="/product/detail?id=${product.id}" class="edit" data-toggle="modal"><i
-                                    class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                            <a href="/product/delete?id=${product.id}" class="delete" data-toggle="modal"><i
-                                    class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+<%--                            <a href="/shop/detail?id=${cuaHang.id}" class="edit" data-toggle="modal"><i--%>
+<%--                                    class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>--%>
+<%--                            <a href="/shop/delete?id=${cuaHang.id}" class="delete" data-toggle="modal"><i--%>
+<%--                                    class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>--%>
                         </td>
                     </tr>
 
                 </c:forEach>
                 </tbody>
             </table>
-            <div class="clearfix">
-                <ul class="pagination">
-                    <c:forEach begin="1" end="${countPage}" var="i">
-                        <li class="page-item ">
-                            <a class="page-link <c:if test="${i == index }">active</c:if>   rounded-0 mr-3 shadow-sm border-top-0 border-left-0"
-                               href="/manager-product?index=${i}" tabindex="-1" style="color: black">${i}</a>
-                        </li>
-                    </c:forEach>
-                </ul>
-            </div>
+            <%--            <div class="clearfix">--%>
+            <%--                <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>--%>
+            <%--                <ul class="pagination">--%>
+            <%--                    <li class="page-item disabled"><a href="#">Previous</a></li>--%>
+            <%--                    <li class="page-item"><a href="#" class="page-link">1</a></li>--%>
+            <%--                    <li class="page-item"><a href="#" class="page-link">2</a></li>--%>
+            <%--                    <li class="page-item active"><a href="#" class="page-link">3</a></li>--%>
+            <%--                    <li class="page-item"><a href="#" class="page-link">4</a></li>--%>
+            <%--                    <li class="page-item"><a href="#" class="page-link">5</a></li>--%>
+            <%--                    <li class="page-item"><a href="#" class="page-link">Next</a></li>--%>
+            <%--                </ul>--%>
+            <%--            </div>--%>
         </div>
     </div>
 </div>
@@ -502,8 +518,27 @@
         </div>
     </div>
 </div>
-
-
+<!-- Delete Modal HTML -->
+<div id="deleteEmployeeModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form>
+                <div class="modal-header">
+                    <h4 class="modal-title">Delete Employee</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure you want to delete these Records?</p>
+                    <p class="text-warning"><small>This action cannot be undone.</small></p>
+                </div>
+                <div class="modal-footer">
+                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                    <input type="submit" class="btn btn-danger" value="Delete">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 
 <!-- Start Footer -->
 <jsp:include page="Footer.jsp"></jsp:include>

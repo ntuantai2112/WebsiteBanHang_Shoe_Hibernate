@@ -29,36 +29,38 @@ public class HoaDon {
     @Column(name = "Id")
     private UUID id;
 
-    @Column(name = "Ma")
-    private String ma;
+//    @Column(name = "Ma")
+//    private String ma;
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "NgayTao")
     private Date ngayTao;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "NgayThanhToan")
-    private Date ngayThanhToan;
+//    @Temporal(TemporalType.TIMESTAMP)
+//    @Column(name = "NgayThanhToan")
+//    private Date ngayThanhToan;
+//
+//    @Temporal(TemporalType.TIMESTAMP)
+//    @Column(name = "NgayShip")
+//    private Date ngayShip;
+//
+//    @Temporal(TemporalType.TIMESTAMP)
+//    @Column(name = "NgayNhan")
+//    private Date ngayNhan;
+//
+//    @Column(name = "TinhTrang")
+//    private String tinhTrang;
+//
+//    @Column(name = "TenNguoiNhan")
+//    private String tenNguoiNhan;
+//
+//    @Column(name = "DiaChi")
+//    private String diaChi;
+//
+//    @Column(name = "Sdt")
+//    private String sdt;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "NgayShip")
-    private Date ngayShip;
-
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "NgayNhan")
-    private Date ngayNhan;
-
-    @Column(name = "TinhTrang")
-    private String tinhTrang;
-
-    @Column(name = "TenNguoiNhan")
-    private String tenNguoiNhan;
-
-    @Column(name = "DiaChi")
-    private String diaChi;
-
-    @Column(name = "Sdt")
-    private String sdt;
+//    private Double totalPrice;
 
 
 }

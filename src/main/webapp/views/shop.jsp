@@ -178,7 +178,7 @@
                                                 class="far fa-heart"></i></a></li>
                                         <li><a class="btn btn-success text-white mt-2" href="/store/detail?pid=${p.id}"><i
                                                 class="far fa-eye"></i></a></li>
-                                        <li><a class="btn btn-success text-white mt-2" href="/views/GioHang.jsp"><i
+                                        <li><a class="btn btn-success text-white mt-2" href="/AddToCart?pid=${p.id}"><i
                                                 class="fas fa-cart-plus"></i></a></li>
                                     </ul>
                                 </div>

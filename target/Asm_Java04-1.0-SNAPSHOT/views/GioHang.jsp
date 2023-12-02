@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <header>
     <title>Zay Shop - Giỏ Hàng</title>
@@ -45,7 +46,7 @@
 <div class="container">
     <div class="row mt-4">
         <table class="table">
-            <thead>
+<%--            <thead>--%>
             <tr>
                 <th scope="col">Sản phẩm</th>
                 <th scope="col">Đơn giá</th>
@@ -53,31 +54,35 @@
                 <th scope="col">Tổng tiền</th>
                 <th scope="col">Xóa</th>
             </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <th scope="row">1</th>
-                <td>20$</td>
+<%--            </thead>--%>
+<%--            <tbody>--%>
 
-                <td>
-                    <ul class="list-inline pb-3">
-                        <li class="list-inline-item"><span class="btn btn-success"
-                                                           id="btn-minus">-</span></li>
-                        <li class="list-inline-item"><span class="badge bg-secondary"
-                                                           id="var-value">1</span></li>
-                        <li class="list-inline-item"><span class="btn btn-success"
-                                                           id="btn-plus">+</span></li>
-                    </ul>
-                </td>
-                <td>20$</td>
-                <td>
-                    <a href="">
-                        <button class="btn btn-danger">Xóa</button>
-                    </a>
-                </td>
-            </tr>
-
-            </tbody>
+            <c:forEach items="${sessionScope.cart}" var="entry">
+                <tr>
+                    <td scope="row">${entry.value.chiTietSanPham.sanPham.ten}
+                        <img src="${entry.value.chiTietSanPham.sanPham.hinhAnh}" alt="" style="width: 100px; height: 100px">
+                   </td>
+                    <td>${entry.value.donGia}</td>
+                    <td>
+                        ${entry.value.soLuong}
+    <%--                    <ul class="list-inline pb-3">--%>
+    <%--                        <li class="list-inline-item"><span class="btn btn-success"--%>
+    <%--                                                           id="btn-minus">-</span></li>--%>
+    <%--                        <li class="list-inline-item"><span class="badge bg-secondary"--%>
+    <%--                                                           id="var-value">1</span></li>--%>
+    <%--                        <li class="list-inline-item"><span class="btn btn-success"--%>
+    <%--                                                           id="btn-plus">+</span></li>--%>
+    <%--                    </ul>--%>
+                    </td>
+                    <td>${entry.value.donGia} </td>
+                    <td>
+                        <a href="">
+                            <button class="btn btn-danger">Xóa</button>
+                        </a>
+                    </td>
+                </tr>
+            </c:forEach>
+<%--            </tbody>--%>
         </table>
     </div>
 
@@ -128,27 +133,30 @@
         <div class="col-5">
             <h1>Thành tiền</h1>
             <div class="row">
-                <p>Tổng tiền hàng</p>
-                <p class="float-end">20$</p>
+                <p class="col-6">Tổng tiền hàng</p>
+                <p class="col-6 text-end">20$</p>
             </div>
+            <hr class="my-2">
             <div class="row">
-                <p>Phí vận chuyển</p>
-                <span class="float-end">20$</span>
+                <p class="col-6">Phí vận chuyển</p>
+                <span class="col-6 text-end">Free Ship</span>
             </div>
+            <hr class="my-2">
             <div class="row ">
-                <p>VAT</p>
-                <span class="float-end">20$</span>
+                <p class="col-6">VAT</p>
+                <span class="col-6 text-end">0$</span>
             </div>
+            <hr class="my-2">
             <div class="row ">
-                <p>Tổng thanh toán</p>
-                <span class="float-end">20$</span>
+                <p class="col-6">Tổng thanh toán</p>
+                <span class="col-6 text-end">20$</span>
             </div>
             <div class="row mt-3">
                 <div class="col-6">
-                    <a href=""><button class="btn btn-outline-success form-control mb-5">Tiếp tục mua sắm</button></a>
+                    <a href="/store/hien-thi"><button class="btn btn-outline-success form-control mb-5">Tiếp tục mua sắm</button></a>
                 </div>
                 <div class="col-6">
-                    <button class="btn btn-success form-control mb-5" type="submit"> Mua hàng</button>
+                    <a href="/AddOrderController"> <button class="btn btn-success form-control mb-5" type="submit"> Mua hàng</button></a>
                 </div>
             </div>
         </div>

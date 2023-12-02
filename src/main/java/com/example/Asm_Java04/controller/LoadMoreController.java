@@ -54,7 +54,7 @@ public class LoadMoreController extends HttpServlet {
                     "                                <p class=\"text-muted\">Reviews (24)</p>\n" +
                     "                            </div>\n" +
                     "                            <div class=\"col-5\">\n" +
-                    "                                <a href=\"#\">\n" +
+                    "                                <a href=\"/AddToCart?pid="+ p.getSanPham().getId() +"\">\n" +
                     "                                    <button type=\"submit\" class=\"btn btn-success btn-lg\" name=\"submit\" value=\"addtocard\">Add To Cart</button>\n" +
                     "                                </a>\n" +
                     "                            </div>\n" +
