@@ -144,7 +144,7 @@
 
         <div class="col-lg-3">
 
-            <h1 class="h2 pb-4"><a href="/shop" class="text-decoration-none" style="color: black;font-size: 30px">Categories</a>
+            <h1 class="h2 pb-4"><a href="/store/hien-thi" class="text-decoration-none" style="color: black;font-size: 30px">Categories</a>
             </h1>
 
             <ul class="list-group category_block">
@@ -171,14 +171,14 @@
                     <div class="col-md-4">
                         <div class="card mb-4 product-wap rounded-0 card_title">
                             <div class="card rounded-0">
-                                <img class="card-img rounded-0 img-fluid" src="${p.hinhAnh}">
+                                <img class="card-img rounded-0 img-fluid" src="${p.sanPham.hinhAnh}">
                                 <div class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
                                     <ul class="list-unstyled">
                                         <li><a class="btn btn-success text-white" href="/store/hien-thi"><i
                                                 class="far fa-heart"></i></a></li>
-                                        <li><a class="btn btn-success text-white mt-2" href="/store/detail?pid=${p.id}"><i
+                                        <li><a class="btn btn-success text-white mt-2" href="/store/detail?pid=${p.sanPham.id}"><i
                                                 class="far fa-eye"></i></a></li>
-                                        <li><a class="btn btn-success text-white mt-2" href="/views/GioHang.jsp"><i
+                                        <li><a class="btn btn-success text-white mt-2" href="/AddToCart?pid=${p.sanPham.id}"><i
                                                 class="fas fa-cart-plus"></i></a></li>
                                     </ul>
                                 </div>
@@ -186,8 +186,8 @@
                             <div class="card-body">
                                     <%--   Title --%>
                                 <div class="row">
-                                    <h3><a href="/store/detail?pid=${p.id}"
-                                           class="h3 name_product  text-decoration-none">${p.ten}</a></h3>
+                                    <h3><a href="/store/detail?pid=${p.sanPham.id}"
+                                           class="h3 name_product  text-decoration-none">${p.sanPham.ten}</a></h3>
 
                                         <%--                                    <p class="fw-bold mb-0">${p.price} $</p>--%>
                                 </div>

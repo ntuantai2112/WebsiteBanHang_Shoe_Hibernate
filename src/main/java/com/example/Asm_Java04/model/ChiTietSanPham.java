@@ -42,19 +42,19 @@ public class ChiTietSanPham {
     @JoinColumn(name = "IdDongSP")
     private DongSP dongSanPham;
     @Column(name = "NamBH")
-    private int namBH;
+    private Integer namBH;
 
     @Column(name = "MoTa")
     private String moTa;
 
     @Column(name = "SoLuongTon")
-    private int soLuongTon;
+    private Integer soLuongTon;
 
     @Column(name = "GiaNhap")
-    private double giaNhap;
+    private Double giaNhap;
 
     @Column(name = "GiaBan")
-    private double giaBan;
+    private Double giaBan;
 
     public ChiTietSanPham(SanPham sanPham, NSX nhaSanXuat, MauSac mauSac, DongSP dongSanPham, int namBH, String moTa, int soLuongTon, double giaNhap, double giaBan) {
         this.sanPham = sanPham;

@@ -35,7 +35,7 @@ public class ManagerStore extends HttpServlet {
             if (index == null) {
                 index = 1;
             }
-            ArrayList<SanPham> listP = sanPhamService.getPaging(index);
+            ArrayList<ChiTietSanPham> listP = chiTietSPService.getPaging(index);
 //            request.setAttribute("products", listP);
             ArrayList<DongSP> listC = (ArrayList<DongSP>) dongSanPhamService.getAll();
             request.setAttribute("products", listP);
@@ -76,10 +76,10 @@ public class ManagerStore extends HttpServlet {
             request.setAttribute("countPage", countPage);
 
 
-//            request.setAttribute("countPage", countPage);
+            request.setAttribute("countPage", countPage);
             request.setAttribute("categorys", listC);
             request.setAttribute("tag", categoryID);
-//            request.setAttribute("products", listChiTietSP);
+            request.setAttribute("products", listChiTietSP);
             request.getRequestDispatcher("/views/shop.jsp").forward(request, response);
         }
     }

@@ -9,6 +9,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -73,5 +74,16 @@ public class HoaDonRepository {
             transaction.rollback();
         }
         return null;
+    }
+
+
+    public static void main(String[] args) {
+        HoaDonRepository hoaDonRepository = new HoaDonRepository();
+        HoaDon hoaDon = new HoaDon();
+        UUID idHD = UUID.randomUUID();
+        System.out.println(idHD);
+        hoaDon.setId(idHD);
+        hoaDon.setNgayTao(new Date());
+        hoaDonRepository.insert(hoaDon);
     }
 }

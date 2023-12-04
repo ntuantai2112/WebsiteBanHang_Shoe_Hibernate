@@ -69,8 +69,8 @@ public class ChiTietSPRepository {
             return results;
         } catch (Exception e) {
             e.printStackTrace();
-            return new ArrayList<>();
         }
+        return null;
     }
 
 
@@ -231,16 +231,17 @@ public class ChiTietSPRepository {
     }
 
 
-//    public static void main(String[] args) {
-//        ChiTietSPRepository chiTietSPService = new ChiTietSPRepository();
-////        SanPhamRepository sanPhamRepository = new SanPhamRepository();
-////        String id = "ac5f1e88-e9dc-c842-83e5-3f4a8b056481";
-////        UUID idC = UUID.fromString(id);
-//        ArrayList<ChiTietSanPham> listP =chiTietSPService.getPaging(2);
-//        for (ChiTietSanPham sp: listP){
-//            System.out.println(sp.getSanPham().getTen());
-//        }
-//    }
+    public static void main(String[] args) {
+        ChiTietSPRepository chiTietSPService = new ChiTietSPRepository();
+//        SanPhamRepository sanPhamRepository = new SanPhamRepository();
+        String id = "9ea2b1b2-c106-7f40-9811-2f76b788d12c";
+
+        UUID idC = UUID.fromString(id);
+        ArrayList<ChiTietSanPham> listP =chiTietSPService.getChiTietSanPhamByCategoryID(idC);
+        for (ChiTietSanPham sp: listP){
+            System.out.println(sp.getSanPham().getTen());
+        }
+    }
 
 
 }

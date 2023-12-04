@@ -24,6 +24,7 @@ public class HibernateUtil {
         properties.put(Environment.SHOW_SQL, "true");
 
         conf.setProperties(properties);
+        conf.addAnnotatedClass(HoaDonChiTiet.class);
         conf.addAnnotatedClass(MauSac.class);
         conf.addAnnotatedClass(SanPham.class);
         conf.addAnnotatedClass(ChiTietSanPham.class);

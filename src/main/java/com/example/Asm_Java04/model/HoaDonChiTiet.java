@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 
 @Table(name = "HoaDonChiTiet")
@@ -16,22 +17,21 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 //@IdClass(HoaDonChiTietId.class)
 @Entity
-public class HoaDonChiTiet {
+public class HoaDonChiTiet implements Serializable {
 
     @Id
     @ManyToOne
-    @JoinColumn(name = "hoa_don_id")
+    @JoinColumn(name = "IdHoaDon")
     private HoaDon hoaDon;
 
     @Id
     @ManyToOne
-    @JoinColumn(name = "chi_tiet_san_pham_id")
+    @JoinColumn(name = "IdChiTietSP")
     private ChiTietSanPham chiTietSanPham;
 
     @Column(name = "SoLuong")
-    private Integer soLuong;
+    private int soLuong;
 
     @Column(name = "DonGia")
     private BigDecimal donGia;
-
 }

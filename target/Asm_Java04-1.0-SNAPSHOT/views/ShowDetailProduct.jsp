@@ -217,9 +217,11 @@
                                     </button>
                                 </div>
                                 <div class="col d-grid">
-                                    <button type="submit" class="btn btn-success btn-lg" name="submit"
+                                    <a href="/AddToCart?pid=${detailProduct.sanPham.id}">
+                                        <button type="submit" class="btn btn-success btn-lg" name="submit"
                                             value="addtocard">Add To Cart
-                                    </button>
+                                        </button>
+                                    </a>
                                 </div>
                             </div>
                         </form>

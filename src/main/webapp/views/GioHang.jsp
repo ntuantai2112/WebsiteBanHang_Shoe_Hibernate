@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <html>
 <header>
     <title>Zay Shop - Giỏ Hàng</title>
@@ -76,7 +77,7 @@
                     </td>
                     <td>${entry.value.donGia} </td>
                     <td>
-                        <a href="">
+                        <a href="/remove-cart?key=${entry.key }">
                             <button class="btn btn-danger">Xóa</button>
                         </a>
                     </td>
@@ -125,7 +126,6 @@
                         <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email"  required aria-describedby="emailHelp">
                     </div>
                 </div>
-
             </form>
 
 
@@ -134,7 +134,7 @@
             <h1>Thành tiền</h1>
             <div class="row">
                 <p class="col-6">Tổng tiền hàng</p>
-                <p class="col-6 text-end">20$</p>
+                <p class="col-6 text-end">${totalMoney}</p>
             </div>
             <hr class="my-2">
             <div class="row">
@@ -149,7 +149,7 @@
             <hr class="my-2">
             <div class="row ">
                 <p class="col-6">Tổng thanh toán</p>
-                <span class="col-6 text-end">20$</span>
+                <span class="col-6 text-end">${totalMoney}</span>
             </div>
             <div class="row mt-3">
                 <div class="col-6">

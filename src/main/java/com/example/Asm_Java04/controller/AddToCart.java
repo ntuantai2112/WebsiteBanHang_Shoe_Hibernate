@@ -26,51 +26,75 @@ public class AddToCart extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-            String pId = request.getParameter("pid");
-            UUID idProduct = UUID.fromString(pId);
-            ChiTietSanPham product = chiTietSPService.getChiTietSanPhamByIDSP(idProduct);
+            String uri = request.getRequestURI();
+            if(uri.contains("AddToCart")) {
 
-            Double totalMoney = 0.0;
-            HttpSession session = request.getSession();
-            Object obj = session.getAttribute("cart");// luu tam vao session
-            if (obj == null) {// tao moi
-                // Tao mat hang
-                HoaDonChiTiet billProduct = new HoaDonChiTiet();
-                billProduct.setChiTietSanPham(product);
-                billProduct.setSoLuong(1);
-                billProduct.setDonGia(BigDecimal.valueOf(product.getGiaBan()));
-                // gio hang co nhieu mat hang
-                Map<String, HoaDonChiTiet> map = new HashMap<>();
-                map.put(pId, billProduct);// them mat hang vao ds
+                String pId = request.getParameter("pid");
+                UUID idProduct = UUID.fromString(pId);
+                ChiTietSanPham product = chiTietSPService.getChiTietSanPhamByIDSP(idProduct);
 
-                session.setAttribute("cart", map);// luu tam vao session
-                int oneDayInSeconds = 86400; // 24 giờ * 60 phút * 60 giây = 86,400 giây
-                session.setMaxInactiveInterval(oneDayInSeconds);
-            } else {
-                Map<String, HoaDonChiTiet> map = (Map<String, HoaDonChiTiet>) obj;
-
-                HoaDonChiTiet billProduct = map.get(pId);
-
-                if (billProduct == null) {
-                    billProduct = new HoaDonChiTiet();
+                Double totalMoney = 0.0;
+                HttpSession session = request.getSession();
+                Object obj = session.getAttribute("cart");// luu tam vao session
+                if (obj == null) {// tao moi
+                    // Tao mat hang
+                    HoaDonChiTiet billProduct = new HoaDonChiTiet();
                     billProduct.setChiTietSanPham(product);
                     billProduct.setSoLuong(1);
                     billProduct.setDonGia(BigDecimal.valueOf(product.getGiaBan()));
+                    // gio hang co nhieu mat hang
+                    Map<String, HoaDonChiTiet> map = new HashMap<>();
+                    map.put(pId, billProduct);// them mat hang vao ds
 
-                    map.put(pId, billProduct);
+                    session.setAttribute("cart", map);// luu tam vao session
+                    int oneDayInSeconds = 86400; // 24 giờ * 60 phút * 60 giây = 86,400 giây
+                    session.setMaxInactiveInterval(oneDayInSeconds);
                 } else {
+                    Map<String, HoaDonChiTiet> map = (Map<String, HoaDonChiTiet>) obj;
 
-                    billProduct.setDonGia(BigDecimal.valueOf(product.getGiaBan() + 1));
+                    HoaDonChiTiet billProduct = map.get(pId);
+
+                    if (billProduct == null) {
+                        billProduct = new HoaDonChiTiet();
+                        billProduct.setChiTietSanPham(product);
+                        billProduct.setSoLuong(1);
+                        billProduct.setDonGia(BigDecimal.valueOf(product.getGiaBan()));
+
+                        map.put(pId, billProduct);
+                    } else {
+
+                        billProduct.setDonGia(BigDecimal.valueOf(product.getGiaBan() + 1));
+                    }
+
+                    session.setAttribute("cart", map);// luu tam vao session
+                    int oneDayInSeconds = 86400; // 24 giờ * 60 phút * 60 giây = 86,400 giây
+                    session.setMaxInactiveInterval(oneDayInSeconds);
+
                 }
-
-                session.setAttribute("cart", map);// luu tam vao session
-                int oneDayInSeconds = 86400; // 24 giờ * 60 phút * 60 giây = 86,400 giây
-                session.setMaxInactiveInterval(oneDayInSeconds);
+                totalMoney = calculateTotalMoney(session);
+                request.setAttribute("totalMoney", totalMoney);
+                RequestDispatcher dispatcher = request.getRequestDispatcher("/views/GioHang.jsp");
+                dispatcher.forward(request, response);
 
             }
-            response.sendRedirect(request.getContextPath() + "/cart");
 
         }
+
+
+    private double calculateTotalMoney(HttpSession session) {
+        double totalMoney = 0.0;
+
+        Map<String, HoaDonChiTiet> map = (Map<String, HoaDonChiTiet>) session.getAttribute("cart");
+        if (map != null) {
+            for (HoaDonChiTiet billProduct : map.values()) {
+                double productPrice = billProduct.getDonGia().doubleValue();
+                int quantity = billProduct.getSoLuong();
+                totalMoney += productPrice * quantity;
+            }
+        }
+
+        return totalMoney;
+    }
 
 //    }
 

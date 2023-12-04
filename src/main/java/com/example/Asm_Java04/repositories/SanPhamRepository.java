@@ -1,5 +1,6 @@
 package com.example.Asm_Java04.repositories;
 
+import com.example.Asm_Java04.model.ChiTietSanPham;
 import com.example.Asm_Java04.model.SanPham;
 import com.example.Asm_Java04.util.HibernateUtil;
 import jakarta.persistence.TypedQuery;
@@ -134,6 +135,22 @@ public class SanPhamRepository {
         }
         return null;
     }
+
+    // Lấy danh sách chi tiết sản phẩm theo CategoryID
+//    public ArrayList<SanPham> getSanPhamByCategoryID(UUID categoryID) {
+//        ArrayList<ChiTietSanPham> ketQua = new ArrayList<>();
+//        try (Session session = HibernateUtil.getFACTORY().openSession()) {
+//            String jpql = "SELECT c FROM ChiTietSanPham c WHERE c.dongSanPham.id = :categoryId";
+//            TypedQuery<ChiTietSanPham> query = session.createQuery(jpql, ChiTietSanPham.class);
+//            query.setParameter("categoryId", categoryID);
+//            ketQua = (ArrayList<SanPham>) query.getResultList();
+//            return ketQua;
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            // Handle any exceptions that might occur during the query execution
+//        }
+//        return null;
+//    }
 
 
 }

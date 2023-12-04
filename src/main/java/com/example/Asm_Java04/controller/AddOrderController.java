@@ -12,6 +12,7 @@ import jakarta.servlet.annotation.*;
 import java.io.IOException;
 import java.util.Date;
 import java.util.Map;
+import java.util.UUID;
 
 @WebServlet(name = "AddOrderController", value = "/AddOrderController")
 public class AddOrderController extends HttpServlet {
@@ -30,7 +31,8 @@ public class AddOrderController extends HttpServlet {
 
             //TAO HOA DON TRUOC, DE LAY DUOC ID BILL
             HoaDon bill = new HoaDon();
-
+            // Khởi tạo UUID cho 'id'
+//            bill.setId(UUID.randomUUID());
             bill.setNgayTao(new Date());
             System.out.println(bill.getId());
 
@@ -50,7 +52,7 @@ public class AddOrderController extends HttpServlet {
                 //luu lai cac mat hang
                 hoaDonChiTietService.insert(billProduct);
                 // tinh tong gia
-//                total += billProduct.getSoLuong() * billProduct.getDonGia();
+//                total += (long) billProduct.getSoLuong() * billProduct.getDonGia();
             }
 
             ///cap nhat lai bill de co tong gia tien
